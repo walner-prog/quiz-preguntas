@@ -130,48 +130,4 @@ function showSummary() {
 
 
 
-                {
-                    "question": "¿Cuál fue el nombre del filósofo griego considerado el padre de la filosofía occidental?",
-                    "options": ["Tales de Mileto", "Sócrates", "Platón", "Aristóteles"],
-                    "answer": "Tales de Mileto"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del último emperador de Rusia, quien fue asesinado junto con su familia durante la Revolución Rusa?",
-                    "options": ["Nicolás II", "Alejandro III", "Alejandro II", "Pedro II"],
-                    "answer": "Nicolás II"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del líder de la Revolución Haitiana que condujo a la independencia de Haití del dominio francés?",
-                    "options": ["Toussaint Louverture", "Jean-Jacques Dessalines", "Henri Christophe", "Alexandre Pétion"],
-                    "answer": "Toussaint Louverture"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del líder militar y político que dirigió la unificación de Italia en el siglo XIX?",
-                    "options": ["Giuseppe Garibaldi", "Camillo Benso, conde de Cavour", "Víctor Manuel II", "Giuseppe Mazzini"],
-                    "answer": "Giuseppe Garibaldi"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del emperador romano que adoptó el cristianismo como religión oficial del Imperio Romano?",
-                    "options": ["Constantino I", "Augusto", "Julio César", "Marco Aurelio"],
-                    "answer": "Constantino I"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del líder político y militar que estableció el Primer Imperio Francés después de la Revolución Francesa?",
-                    "options": ["Napoleón Bonaparte", "Robespierre", "Luís XVIII", "Carlos X"],
-                    "answer": "Napoleón Bonaparte"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del filósofo alemán cuyas ideas fueron fundamentales para el desarrollo del existencialismo?",
-                    "options": ["Friedrich Nietzsche", "Immanuel Kant", "Søren Kierkegaard", "Jean-Paul Sartre"],
-                    "answer": "Friedrich Nietzsche"
-                },
-                {
-                    "question": "¿Cuál fue el nombre del emperador romano que construyó el Coliseo de Roma?",
-                    "options": ["Vespasiano", "Nerón", "Trajano", "Tito"],
-                    "answer": "Vespasiano"
-                },
-                {
-                "question": "¿Cuál fue el nombre del líder militar y político que desempeñó un papel fundamental en la independencia de los países de América del Sur, incluyendo Argentina, Chile y Perú?",
-                "options": ["Simón Bolívar", "José de San Martín", "Bernardo O'Higgins", "Antonio José de Sucre"],
-                "answer": "Simón Bolívar"
-               },
+              
