@@ -11,7 +11,7 @@ let currentQuestionIndex = 0;
 let currentCategory = '';
 let currentLevel = '';
 let score = 0;
-
+87157445
 startButton.addEventListener('click', startQuiz);
 
 function startQuiz() {
@@ -61,3 +61,28 @@ function nextQuestion() {
 }
 
 nextButton.addEventListener('click', nextQuestion);
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+Explicación del Código (Continuación)
+
+El código proporcionado es una aplicación de prueba de JavaScript que permite a los usuarios responder preguntas y recibir una puntuación basada en sus respuestas. Aquí hay un desglose de las diferentes partes del código:
+
+Escuchas de eventos : startButtontiene un detector de eventos adjunto, que llama a la startQuizfunción cuando se hace clic. También nextButtontiene un detector de eventos adjunto, que llama a la nextQuestionfunción cuando se hace clic.
+Función startQuiz : esta función se llama cuando se hace clic en el botón de inicio. Recupera la categoría y el nivel seleccionados de los menús desplegables correspondientes, restablece las variables necesarias, borra el mensaje de resultado y carga la primera pregunta.
+Función loadQuestion : esta función es responsable de cargar una pregunta en la página. Recupera el objeto de pregunta actual de la questionsmatriz según la categoría y el nivel seleccionados, actualiza los elementos de pregunta y opciones con el contenido apropiado y adjunta detectores de eventos a los botones de respuesta.
+Función checkAnswer : esta función se llama cuando se hace clic en un botón de respuesta. Compara la opción seleccionada con la respuesta correcta para la pregunta actual, actualiza la puntuación y el mensaje de resultado en consecuencia, resalta la respuesta correcta si la respuesta del usuario es incorrecta y desactiva todos los botones de respuesta.
+Función nextQuestion : esta función se llama cuando se hace clic en el botón siguiente. Incrementa la currentQuestionIndexvariable para pasar a la siguiente pregunta, verifica si quedan más preguntas y carga la siguiente pregunta o muestra el resumen del cuestionario si se han respondido todas las preguntas.
+Función showSummary : esta función se llama cuando se han respondido todas las preguntas. Genera un mensaje de resumen basado en la puntuación del usuario y lo muestra en la página. Si hay alguna pregunta incorrecta, también se muestran sus detalles. Finalmente, se agrega un botón para permitir al usuario comenzar una nueva prueba.
+
+Uso dedocument.getElementById()
+
+El document.getElementById()método se utiliza varias veces en el código para recuperar referencias a elementos HTML por su ID único. Este método devuelve el primer elemento del documento que coincide con el ID especificado. Se utiliza comúnmente para manipular e interactuar con elementos específicos en una página web.
+
+Por ejemplo, en el código proporcionado, document.getElementById('quiz')recupera el elemento contenedor del cuestionario, document.getElementById('question')recupera el elemento de pregunta y document.getElementById('next-btn')recupera el siguiente elemento del botón.
+
+Es importante tener en cuenta que el uso de mayúsculas "Id" en el nombre del método debe ser correcto para que el código funcione correctamente. Usar getElementByID()(con una "d" minúscula) no funcionará.
+
+Conclusión
+
+El código proporcionado es una aplicación de prueba de JavaScript que permite a los usuarios responder preguntas y recibir una puntuación basada en sus respuestas. Utiliza el document.getElementById()método para recuperar referencias a elementos HTML y manipular su contenido y comportamiento.

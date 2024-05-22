@@ -52,17 +52,21 @@ function checkAnswer(selectedOption, button) {
     const incorrectIcon = document.createElement('span');
 
     correctIcon.innerHTML = ' ✔️';
+    correctIcon.style.color = 'green'; // Estilo para respuestas correctas
     incorrectIcon.innerHTML = ' ❌';
+    incorrectIcon.style.color = 'red'; // Estilo para respuestas incorrectas
 
     if (selectedOption === currentQuestion.answer) {
-        score += 5; // Each correct answer is worth 5 points
+        score += 5; // Cada respuesta correcta vale 5 puntos
         resultElement.textContent = '¡Respuesta correcta!';
+        resultElement.style.backgroundColor = 'darkslategray'; // Fondo para respuesta correcta
         button.appendChild(correctIcon);
     } else {
         resultElement.textContent = 'Respuesta incorrecta';
+        resultElement.style.backgroundColor = 'lightcoral'; // Fondo para respuesta incorrecta
         button.appendChild(incorrectIcon);
-        incorrectQuestions.push(currentQuestion); // Save incorrect question
-        // Highlight the correct answer
+        incorrectQuestions.push(currentQuestion); // Guardar pregunta incorrecta
+        // Resaltar la respuesta correcta
         const buttons = optionsElement.getElementsByTagName('button');
         for (let btn of buttons) {
             if (btn.textContent === currentQuestion.answer) {
@@ -71,14 +75,21 @@ function checkAnswer(selectedOption, button) {
         }
     }
 
-    // Disable all buttons after selection
+    // Deshabilitar todos los botones después de seleccionar
     const buttons = optionsElement.getElementsByTagName('button');
     for (let btn of buttons) {
         btn.disabled = true;
     }
 
     nextButton.style.display = 'block';
+
+    // Verificar si la puntuación califica para ganar una estrella
+    if (score % 20 === 0) {
+        showStars(score / 20); // Llamar a una función para mostrar las estrellas ganadas
+    }
 }
+
+
 
 function nextQuestion() {
     currentQuestionIndex++;
@@ -89,7 +100,7 @@ function nextQuestion() {
     }
 }
 
-function showSummary() {
+/**function showSummary() {
     let summaryHtml = `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
     if (incorrectQuestions.length > 0) {
         summaryHtml += '<h3>Preguntas incorrectas:</h3>';
@@ -106,6 +117,47 @@ function showSummary() {
     document.getElementById('new-quiz-btn').addEventListener('click', () => {
         window.location.reload();
     });
+} */
+
+function showSummary() {
+    let summaryHtml = `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
+    if (incorrectQuestions.length > 0) {
+        summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
+        incorrectQuestions.forEach((q, index) => {
+            summaryHtml += `<p style="color: red;">${index + 1}. ${q.question}</p>`;
+            summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
+        });
+    } else {
+        summaryHtml += '<p style="color: green;">¡Perfecto! Has acertado todas las preguntas.</p>';
+    }
+
+    // Calculate stars earned
+    const starsEarned = Math.floor(score / 20);
+
+    // Add stars earned to the summary
+    summaryHtml += `<p style="margin-top: 10px;">Estrellas ganadas:</p>`;
+    for (let i = 0; i < starsEarned; i++) {
+        summaryHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
+    }
+
+    summaryHtml += '<br><button id="new-quiz-btn">Nuevo Quiz</button>';
+    quiz.innerHTML = summaryHtml;
+
+    document.getElementById('new-quiz-btn').addEventListener('click', () => {
+        window.location.reload();
+    });
 }
 
+function showStars(starCount) {
+    let starsHtml = '<p>Estrellas ganadas:</p>';
+    for (let i = 0; i < starCount; i++) {
+        starsHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
+    }
+    quiz.insertAdjacentHTML('beforeend', starsHtml);
+}
+
+
 nextButton.addEventListener('click', nextQuestion);
+
+
+
