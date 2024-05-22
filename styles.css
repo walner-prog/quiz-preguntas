@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   color: white;
+}
+
+#quiz {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#question {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para los select */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    appearance: none; /* Para eliminar los estilos de selección del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Estilos para los botones */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para el contenedor del quiz */
+#quiz {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Otros estilos */
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+
+/* Estilos para los select */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    appearance: none; /* Para eliminar los estilos de selección del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los botones */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button[disabled] {
+    background-color: #ff5454;
+    cursor: not-allowed;
+}
+
+/* Estilos para el contenedor del quiz */
+#quiz {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Otros estilos */
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+/* Estilos para los select */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    appearance: none; /* Para eliminar los estilos de selección del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los botones */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button[disabled] {
+    background-color: #f04646;
+    cursor: not-allowed;
+}
+
+/* Estilos para el contenedor del quiz */
+#quiz {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Otros estilos */
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+
+
+/* Estilos para los botones del resumen */
+#summary-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #c31432;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.select-container select {
+    width: 100%;
+}
+
+@media (max-width: 590px) {
+    .select-container  {
+        width: auto;
+        
+    }
+
+    .select-container select {
+        width: 250px;
+    }
+    #category,#level{
+        margin-left: 30px;
+    }
+}

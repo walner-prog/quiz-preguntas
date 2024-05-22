@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>Quiz Educativo</h1>
+                    </div>
+                    <div class="card-body">
+                        <div id="quiz">
+                            <div id="category-selection" class="form-group">
+                                <label for="category">Selecciona una categoría:</label>
+                                <div class="select-container">
+                                    <select id="category" class="form-control">
+                                        <option value="matematicas">Matemáticas</option>
+                                        <option value="lengua_literatura">Lengua y Literatura</option>
+                                        <option value="historia_nicaragua">Historia de Nicaragua</option>
+                                      <!--  <option value="ciencias_naturales">Ciencias Naturales</option>
+                                        <option value="ciencias_sociales">Ciencias Sociales</option>-->
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="level-selection" class="form-group">
+                                <label for="level">Selecciona un nivel:</label>
+                                <div class="select-container">
+                                    <select id="level" class="form-control">
+                                        <option value="facil">Fácil</option>
+                                        <option value="intermedio">Intermedio</option>
+                                        <option value="dificil">Difícil</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <button id="start-btn" class="btn btn-primary btn-block">Empezar</button>
+                            <div id="question" class="mt-4"></div>
+                            <div id="options" class="mt-2"></div>
+                            <button id="next-btn" class="btn btn-secondary btn-block mt-3" style="display: none;">Siguiente</button>
+                            <p id="result" class="mt-3"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="questions.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

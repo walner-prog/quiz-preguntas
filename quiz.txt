@@ -1,0 +1,63 @@
+const quiz = document.getElementById('quiz');
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const nextButton = document.getElementById('next-btn');
+const resultElement = document.getElementById('result');
+const categorySelection = document.getElementById('category');
+const levelSelection = document.getElementById('level');
+const startButton = document.getElementById('start-btn');
+
+let currentQuestionIndex = 0;
+let currentCategory = '';
+let currentLevel = '';
+let score = 0;
+
+startButton.addEventListener('click', startQuiz);
+
+function startQuiz() {
+    currentCategory = categorySelection.value;
+    currentLevel = levelSelection.value;
+    loadQuestion(currentCategory, currentLevel);
+    startButton.style.display = 'none';
+    categorySelection.disabled = true;
+    levelSelection.disabled = true;
+}
+
+function loadQuestion(category, level) {
+    const currentQuestion = questions[category][level][currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+
+    optionsElement.innerHTML = '';
+    currentQuestion.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.addEventListener('click', () => {
+            checkAnswer(option);
+        });
+        optionsElement.appendChild(button);
+    });
+
+    nextButton.style.display = 'none';
+}
+
+function checkAnswer(selectedOption) {
+    const currentQuestion = questions[currentCategory][currentLevel][currentQuestionIndex];
+    if (selectedOption === currentQuestion.answer) {
+        score++;
+        resultElement.textContent = '¡Respuesta correcta!';
+    } else {
+        resultElement.textContent = 'Respuesta incorrecta';
+    }
+    nextButton.style.display = 'block';
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions[currentCategory][currentLevel].length) {
+        loadQuestion(currentCategory, currentLevel);
+    } else {
+        quiz.innerHTML = `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length}</h2>`;
+    }
+}
+
+nextButton.addEventListener('click', nextQuestion);
