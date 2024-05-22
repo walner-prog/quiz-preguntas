@@ -26,6 +26,7 @@ function startQuiz() {
     startButton.style.display = 'none';
     categorySelection.disabled = true;
     levelSelection.disabled = true;
+    finishButton.style.display = 'block'; // Show the "Terminar Quiz" button
 }
 
 function loadQuestion(category, level) {
@@ -154,6 +155,13 @@ function showStars(starCount) {
         starsHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
     }
     quiz.insertAdjacentHTML('beforeend', starsHtml);
+}
+
+const finishButton = document.getElementById('finish-btn');
+finishButton.addEventListener('click', finishQuiz);
+
+function finishQuiz() {
+    showSummary();
 }
 
 
