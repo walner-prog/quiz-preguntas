@@ -134,22 +134,22 @@ select {
 /* Media query para dispositivos móviles */
 @media (max-width: 600px) {
     body {
-        font-size: 18px; /* Incrementa el tamaño del texto en dispositivos móviles */
+        font-size: 17px; /* Incrementa el tamaño del texto en dispositivos móviles */
     }
 
     h2 {
-        font-size: 28px; /* Incrementa el tamaño de los encabezados h2 en dispositivos móviles */
+        font-size: 26px; /* Incrementa el tamaño de los encabezados h2 en dispositivos móviles */
     }
 
     h3 {
-        font-size: 24px; /* Incrementa el tamaño de los encabezados h3 en dispositivos móviles */
+        font-size: 22px; /* Incrementa el tamaño de los encabezados h3 en dispositivos móviles */
     }
 
     p {
-        font-size: 18px; /* Incrementa el tamaño del texto en párrafos en dispositivos móviles */
+        font-size: 16px; /* Incrementa el tamaño del texto en párrafos en dispositivos móviles */
     }
 
     button {
-        font-size: 18px; /* Incrementa el tamaño del texto en botones en dispositivos móviles */
+        font-size: 16px; /* Incrementa el tamaño del texto en botones en dispositivos móviles */
     }
 }
