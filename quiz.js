@@ -47,7 +47,6 @@ function loadQuestion(category, level) {
     nextButton.style.display = 'none';
 }
 
-let answeredQuestions = 0; // Inicializar fuera de la función
 function checkAnswer(selectedOption, button) {
     const currentQuestion = questions[currentCategory][currentLevel][currentQuestionIndex];
     const correctIcon = document.createElement('span');
@@ -123,9 +122,7 @@ function nextQuestion() {
 
 function showSummary() {
     let summaryHtml = `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
-    if (answeredQuestions === 0) {
-        summaryHtml += '<p>No has respondido ninguna pregunta.</p>';
-    } else if (incorrectQuestions.length > 0) {
+    if (incorrectQuestions.length >= 0) {
         summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
         incorrectQuestions.forEach((q, index) => {
             summaryHtml += `<p style="color: red;">${index + 1}. ${q.question}</p>`;
@@ -134,6 +131,7 @@ function showSummary() {
     } else {
         summaryHtml += '<p style="color: green;">¡Perfecto! Has acertado todas las preguntas.</p>';
     }
+
     // Calculate stars earned
     const starsEarned = Math.floor(score / 20);
 
