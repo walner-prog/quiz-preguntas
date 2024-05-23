@@ -7,6 +7,7 @@ const categorySelection = document.getElementById('category');
 const levelSelection = document.getElementById('level');
 const startButton = document.getElementById('start-btn');
 
+
 let currentQuestionIndex = 0;
 let currentCategory = '';
 let currentLevel = '';
