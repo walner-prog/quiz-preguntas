@@ -14,8 +14,9 @@ let currentLevel = '';
 let score = 0;
 let incorrectQuestions = [];
 
-startButton.addEventListener('click', startQuiz);
 
+startButton.addEventListener('click', startQuiz);
+   
 function startQuiz() {
     currentCategory = categorySelection.value;
     currentLevel = levelSelection.value;
@@ -32,7 +33,7 @@ function startQuiz() {
 
 function loadQuestion(category, level) {
     const currentQuestion = questions[category][level][currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
+    questionElement.innerHTML = `${currentQuestion.question} <img src="img/cara-alegre.png" alt="Happy Face" width="20" height="20">`;
 
     optionsElement.innerHTML = '';
     currentQuestion.options.forEach(option => {
@@ -142,13 +143,68 @@ function showSummary() {
         summaryHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
     }
 
+    summaryHtml += '<br><button id="download-btn">Descargar Resultado</button>';
     summaryHtml += '<br><button id="new-quiz-btn">Nuevo Quiz</button>';
     quiz.innerHTML = summaryHtml;
 
+    document.getElementById('download-btn').addEventListener('click', downloadResults);
     document.getElementById('new-quiz-btn').addEventListener('click', () => {
         window.location.reload();
     });
 }
+
+function downloadResults() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Estilos generales
+    doc.setFontSize(16);
+    doc.setTextColor(40);
+
+    // Título y mensaje de agradecimiento
+    doc.text('Resultado del Quiz', 20, 20);
+    doc.setFontSize(12);
+    doc.text('Gracias por aprender con nosotros.', 20, 30);
+
+    // Puntuación
+    doc.setFontSize(14);
+    doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 40);
+
+    // Preguntas incorrectas
+    if (incorrectQuestions.length > 0) {
+        doc.setFontSize(12);
+        doc.setTextColor(255, 0, 0);
+        doc.text('Preguntas incorrectas:', 20, 50);
+
+        incorrectQuestions.forEach((q, index) => {
+            const questionText = `${index + 1}. ${q.question}`;
+            const answerText = `Respuesta correcta: ${q.answer}`;
+            const questionStartY = 60 + (index * 20);
+
+            doc.text(questionText, 20, questionStartY);
+            doc.text(answerText, 20, questionStartY + 10);
+        });
+    } else {
+        doc.setTextColor(0, 128, 0);
+        doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, 50);
+    }
+
+    // Estrellas ganadas
+    const starsEarned = Math.floor(score / 20);
+    if (starsEarned > 0) {
+        doc.setTextColor(40);
+        doc.text('Estrellas ganadas:', 20, 70 + (incorrectQuestions.length * 20));
+
+        for (let i = 0; i < starsEarned; i++) {
+            doc.addImage('img/star.png', 'PNG', 20 + (i * 15), 80 + (incorrectQuestions.length * 20), 10, 10);
+        }
+    }
+
+    // Guardar el PDF
+    doc.save('resultado_quiz.pdf');
+}
+
+
 
 function showStars(starCount) {
     let starsHtml = '<p>Estrellas ganadas:</p>';
