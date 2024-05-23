@@ -136,7 +136,7 @@ function showSummary() {
     const starsEarned = Math.floor(score / 20);
 
     // Add stars earned to the summary
-    summaryHtml += `<p style="margin-top: 10px;">Estrellas ganadas:</p>`;
+    summaryHtml += `<p style="margin-top: 5px;">Estrellas ganadas:</p>`;
     for (let i = 0; i < starsEarned; i++) {
         summaryHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
     }
