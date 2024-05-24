@@ -63,6 +63,10 @@ button[disabled] {
     cursor: not-allowed;
 }
 
+
+
+
+
 span {
     color: #000;
 }
@@ -120,11 +124,27 @@ select {
     }
 
     .select-container select {
-        width: 250px;
+        width:270px;
     }
 
     #category, #level {
-        margin-left: 10px;
+        margin-left: 25px;
+    }
+}
+
+
+/* Estilos responsivos */
+@media (max-width: 400px) {
+    .select-container {
+        width: auto;
+    }
+
+    .select-container select {
+        width:280px;
+    }
+
+    #category, #level {
+        margin-left: 5px;
     }
 }
 

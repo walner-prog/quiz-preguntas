@@ -208,7 +208,7 @@ function downloadResults() {
         });
     } else {
         doc.setTextColor(0, 128, 0);
-        doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, 50);
+        doc.text('¡Perfecto! Has acertado todas las preguntas que respondistes.', 20, 50);
     }
 
     // Estrellas ganadas
@@ -223,9 +223,9 @@ function downloadResults() {
     }
 
     doc.setTextColor(100, 100, 100); // Establece el color del texto en RGB (100, 100, 100) - gris oscuro
-    doc.setFontStyle('italic'); // Establece el estilo de la fuente como itálico
-    doc.setFontSize(10); // Establece el tamaño de fuente en 10 puntos
-    doc.text('Gracias por aprender con nosotros.', 20, 30); // Coloca el texto al final del documento, a 10 puntos del borde inferior
+   
+    
+    doc.text('© 2024 Dev Web. Todos los derechos reservados.', 20, 90); // Coloca el texto al final del documento, a 10 puntos del borde inferior
 
     // Guardar el PDF
     doc.save('resultado_quiz.pdf');
