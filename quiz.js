@@ -103,44 +103,64 @@ function nextQuestion() {
     }
 }
 
-/**function showSummary() {
-    let summaryHtml = `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
-    if (incorrectQuestions.length > 0) {
-        summaryHtml += '<h3>Preguntas incorrectas:</h3>';
-        incorrectQuestions.forEach((q, index) => {
-            summaryHtml += `<p>${index + 1}. ${q.question}</p>`;
-            summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
-        });
-    } else {
-        summaryHtml += '<p>¡Perfecto! Has acertado todas las preguntas.</p>';
-    }
-    summaryHtml += '<button id="new-quiz-btn">Nuevo Quiz</button>';
-    quiz.innerHTML = summaryHtml;
-
-    document.getElementById('new-quiz-btn').addEventListener('click', () => {
-        window.location.reload();
-    });
-} */
 
 function showSummary() {
-    let summaryHtml = `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
-    if (incorrectQuestions.length >= 0) {
-        summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
-        incorrectQuestions.forEach((q, index) => {
-            summaryHtml += `<p style="color: red;">${index + 1}. ${q.question}</p>`;
-            summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
-        });
+    let summaryHtml = '';
+    
+    // Verificar si todas las preguntas han sido respondidas
+    if (currentQuestionIndex === questions[currentCategory][currentLevel].length) {
+        // Todas las preguntas han sido respondidas
+        summaryHtml += `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
+        if (score === questions[currentCategory][currentLevel].length * 5) {
+            summaryHtml += '<p style="color: green;">¡Perfecto! Has acertado todas las preguntas.</p>';
+        } else {
+            summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
+            incorrectQuestions.forEach((q, index) => {
+                summaryHtml += `<p style="color: lightcoral;">${index + 1}. ${q.question}</p>`;
+                summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
+            });
+        }
     } else {
-        summaryHtml += '<p style="color: green;">¡Perfecto! Has acertado todas las preguntas.</p>';
+        // Mostrar el resumen hasta el momento si no se han respondido todas las preguntas
+        summaryHtml += `<h2>Resumen del quiz:</h2>`;
+        summaryHtml += `<p>Puntuación actual: ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
+        
+        // Calcular la cantidad de preguntas restantes por responder
+        const remainingQuestions = questions[currentCategory][currentLevel].length - currentQuestionIndex;
+        summaryHtml += `<p>Te faltan responder ${remainingQuestions} preguntas.</p>`;
+        
+        // Mostrar las estrellas ganadas
+        const starsEarned = Math.floor(score / 20);
+        if (starsEarned > 0) {
+            summaryHtml += `<p>Estrellas ganadas: ${starsEarned}</p>`;
+        } else {
+            summaryHtml += '<p>No se ganaron estrellas hasta el momento.</p>';
+        }
+        
+        // Mostrar las preguntas incorrectas si las hay
+        if (incorrectQuestions.length > 0) {
+            summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
+            incorrectQuestions.forEach((q, index) => {
+                summaryHtml += `<p style="color: lightcoral;">${index + 1}. ${q.question}</p>`;
+                summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
+            });
+        } else {
+            summaryHtml += '<p style="color: green;">No hay preguntas incorrectas hasta el momento.</p>';
+        }
     }
+    
 
     // Calculate stars earned
     const starsEarned = Math.floor(score / 20);
 
-    // Add stars earned to the summary
-    summaryHtml += `<p style="margin-top: 5px;">Estrellas ganadas:</p>`;
-    for (let i = 0; i < starsEarned; i++) {
-        summaryHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
+    // Add stars earned to the summary if at least one star is earned
+    if (starsEarned > 0) {
+        summaryHtml += `<p style="margin-top: 5px;">Estrellas ganadas:</p>`;
+        for (let i = 0; i < starsEarned; i++) {
+            summaryHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
+        }
+    } else {
+        summaryHtml += `<p class="sumarsinestrellas">No se ganaron estrellas.</p>`;
     }
 
     summaryHtml += '<br><button id="download-btn">Descargar Resultado</button>';
@@ -152,6 +172,8 @@ function showSummary() {
         window.location.reload();
     });
 }
+
+
 
 function downloadResults() {
     const { jsPDF } = window.jspdf;
@@ -170,7 +192,7 @@ function downloadResults() {
     doc.setFontSize(14);
     doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 40);
 
-    // Preguntas incorrectas
+    // Preguntas incorrectas o mensaje de éxito
     if (incorrectQuestions.length > 0) {
         doc.setFontSize(12);
         doc.setTextColor(255, 0, 0);
@@ -200,6 +222,11 @@ function downloadResults() {
         }
     }
 
+    doc.setTextColor(100, 100, 100); // Establece el color del texto en RGB (100, 100, 100) - gris oscuro
+    doc.setFontStyle('italic'); // Establece el estilo de la fuente como itálico
+    doc.setFontSize(10); // Establece el tamaño de fuente en 10 puntos
+    doc.text('Gracias por aprender con nosotros.', 20, 30); // Coloca el texto al final del documento, a 10 puntos del borde inferior
+
     // Guardar el PDF
     doc.save('resultado_quiz.pdf');
 }
@@ -208,8 +235,12 @@ function downloadResults() {
 
 function showStars(starCount) {
     let starsHtml = '<p>Estrellas ganadas:</p>';
-    for (let i = 0; i < starCount; i++) {
-        starsHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
+    if (starCount === 0) {
+        starsHtml += '<p>No has ganado ninguna estrella.</p>';
+    } else {
+        for (let i = 0; i < starCount; i++) {
+            starsHtml += '<img src="img/star.png" alt="star" width="20" height="20">';
+        }
     }
     quiz.insertAdjacentHTML('beforeend', starsHtml);
 }
