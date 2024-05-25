@@ -1,0 +1,29 @@
+<div class="row" id="user-info-container" style="display: none;">
+    <div class="col-md-6 col-sm-12 d-flex justify-content-lg-start justify-content-xl-start justify-content-md-start justify-content-center">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Información del Usuario</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="user-info"><span><i class="fas fa-user"></i></span>Nombre:<br> <span id="user-name"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="user-info"><span><i class="fas fa-list-alt"></i></span>Categoría:<br> <span id="selected-category"></span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="user-info"><span><i class="fas fa-level-up-alt"></i></span>Nivel:<br> <span id="selected-level"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="user-info"><span><i class="fas fa-star"></i></span>Puntos: <span id="points-counter">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+/*************
+

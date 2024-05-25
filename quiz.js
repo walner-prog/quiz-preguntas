@@ -162,6 +162,8 @@ function updateUserInfo() {
 
 
 function showSummary() {
+    
+    
     document.getElementById('user-info-container').style.display = 'none';
     let summaryHtml = `<h2>Resultado del Quiz</h2>`;
     summaryHtml += `<p>Nombre: ${nombreApellido}</p>`;
