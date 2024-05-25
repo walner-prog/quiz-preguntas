@@ -64,11 +64,12 @@ function startQuiz() {
 function loadQuestion(category, level) {
     const currentQuestion = questions[category][level][currentQuestionIndex];
     questionElement.innerHTML = `${currentQuestion.question} <img src="img/cara-alegre.png" alt="Happy Face" width="20" height="20">`;
-
+    questionElement.classList.add('fade-in');
     optionsElement.innerHTML = '';
     currentQuestion.options.forEach(option => {
         const button = document.createElement('button');
         button.textContent = option;
+        button.classList.add('slide-in');
         button.addEventListener('click', () => {
             checkAnswer(option, button);
         });
@@ -165,11 +166,11 @@ function showSummary() {
     
     
     document.getElementById('user-info-container').style.display = 'none';
-    let summaryHtml = `<h2>Resultado del Quiz</h2>`;
-    summaryHtml += `<p>Nombre: ${nombreApellido}</p>`;
-    summaryHtml += `<p>Categoría: ${currentCategory}</p>`;
-    summaryHtml += `<p>Nivel: ${currentLevel}</p>`;
-    summaryHtml += `<p>Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
+    let summaryHtml = `<div class="container"><div class="card slide-in-left"><div class="card-header"><h2>Resultado del Quiz</h2></div>`;
+    summaryHtml += `<div class="card-body"><p><strong>Nombre:</strong> ${nombreApellido}</p>`;
+    summaryHtml += `<p><strong>Categoría:</strong> ${currentCategory}</p>`;
+    summaryHtml += `<p><strong>Nivel:</strong> ${currentLevel}</p>`;
+    summaryHtml += `<p><strong>Puntuación:</strong> ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
     // Verificar si todas las preguntas han sido respondidas
     if (currentQuestionIndex === questions[currentCategory][currentLevel].length) {
         // Todas las preguntas han sido respondidas
