@@ -71,6 +71,33 @@ background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, F
 
 }
 
+#start-btn:hover{
+    background: #1f4037;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.user-info {
+    margin-bottom: 0; /* Eliminar margen inferior */
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #e65c00;  /* fallback for old browsers */
+    color: -webkit-linear-gradient(to right, #F9D423, #e65c00);  /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to right, #F9D423, #e65c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.user-info span {
+
+    margin-left: 5px; /* Ajustar el margen izquierdo entre el texto y el valor */
+    color:#12b4f9;
+    
+}
+
+i{
+    color:#ffffff ;
+}
 
 span {
     color: #000;

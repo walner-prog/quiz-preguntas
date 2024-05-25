@@ -6,6 +6,10 @@
     <title>Quiz Educativo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,9 +21,26 @@
                         <h1>Quiz Educativo</h1>
                     </div>
                     <div class="card-body ">
+                       
+                        
+                        
+                        
                         <div id="quiz" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                            <div class="row" id="user-info-container" style="display: none;">
+                                <div class="col-md-6 col-sm-12 d-flex justify-content-between">
+                                    <p class="user-info"><i class="fas fa-user"></i>Nombre:<br> <span id="user-name"></span></p>
+                                    <p class="user-info"><i class="fas fa-list-alt"></i>Categoría:<br> <span id="selected-category"></span></p>
+                                    <p class="user-info"><i class="fas fa-level-up-alt"></i>Nivel:<br> <span id="selected-level"></span></p>
+                                    <p class="user-info"><i class="fas fa-star"></i>Puntos: <span id="points-counter">0</span></p>
+                                </div>
+                            </div>
+                            
+                            <label id="nombre-apellido-label" class="form-label" for="">Por favor completa este campo</label>
+                            <div class="form-group">
+                                <input type="text" id="nombre-apellido" class="form-control" placeholder="Escribe tu nombre y apellido">
+                            </div>
                             <div id="category-selection" class="form-group">
-                                <label class="text-white" for="category">Selecciona una categoría:</label>
+                                <label id="category-label" class="text-white" for="category">Selecciona una categoría:</label>
                                 <div class="select-container text-white">
                                     <select id="category" class="form-control">
                                         <option class="text-white" value="matematicas">Matemáticas</option>
@@ -32,7 +53,7 @@
                             </div>
                             <br>
                             <div id="level-selection" class="form-group">
-                                <label for="level">Selecciona un nivel:</label>
+                                <label id="level-label" for="level">Selecciona un nivel:</label>
                                 <div class="select-container">
                                     <select id="level" class="form-control">
                                         <option value="facil">Fácil</option>
@@ -55,6 +76,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="text-center mt-3">
                     <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
                     <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>

@@ -6,7 +6,23 @@ const resultElement = document.getElementById('result');
 const categorySelection = document.getElementById('category');
 const levelSelection = document.getElementById('level');
 const startButton = document.getElementById('start-btn');
+const nombreApellidoInput = document.getElementById('nombre-apellido');
 
+document.getElementById('start-btn').addEventListener('click', function() {
+    // Ocultar etiquetas y campos de entrada
+    document.getElementById('nombre-apellido-label').style.display = 'none';
+    document.getElementById('nombre-apellido').style.display = 'none';
+    document.getElementById('category-label').style.display = 'none';
+    document.getElementById('category').style.display = 'none';
+    document.getElementById('level-label').style.display = 'none';
+    document.getElementById('level').style.display = 'none';
+
+    // Resto de la lógica para empezar el quiz
+    updateUserInfo(); // Actualizar información del usuario
+    startQuiz(); // Iniciar el quiz
+   
+});
+let nombreApellido = '';3
 
 let currentQuestionIndex = 0;
 let currentCategory = '';
@@ -15,9 +31,11 @@ let score = 0;
 let incorrectQuestions = [];
 
 
-startButton.addEventListener('click', startQuiz);
-   
+
+
+
 function startQuiz() {
+    nombreApellido = nombreApellidoInput.value;
     currentCategory = categorySelection.value;
     currentLevel = levelSelection.value;
     currentQuestionIndex = 0; // Reset index for new game
@@ -28,8 +46,20 @@ function startQuiz() {
     startButton.style.display = 'none';
     categorySelection.disabled = true;
     levelSelection.disabled = true;
+    nombreApellidoInput.style.display = 'none';
     finishButton.style.display = 'block'; // Show the "Terminar Quiz" button
+     // Actualizar información del usuario
+   
+     // Mostrar el contenedor de información del usuario
+     document.getElementById('user-info-container').style.display = 'block';
+     
+    // Mostrar el contenedor de información del usuario
+    document.getElementById('user-info-container').style.display = 'block';
+    // Mostrar el contador de puntos
+    document.getElementById('points-counter').style.display = 'inline';
 }
+
+
 
 function loadQuestion(category, level) {
     const currentQuestion = questions[category][level][currentQuestionIndex];
@@ -64,6 +94,7 @@ function checkAnswer(selectedOption, button) {
         resultElement.textContent = '¡Respuesta correcta!';
         resultElement.style.backgroundColor = 'darkslategray'; // Fondo para respuesta correcta
         button.appendChild(correctIcon);
+        updatePoints(); // Actualizar el contador de puntos
     } else {
         resultElement.textContent = 'Respuesta incorrecta';
         resultElement.style.backgroundColor = 'lightcoral'; // Fondo para respuesta incorrecta
@@ -76,7 +107,21 @@ function checkAnswer(selectedOption, button) {
                 btn.appendChild(correctIcon.cloneNode(true));
             }
         }
+
+        
     }
+
+    // Funciones y variables existentes relacionadas con el funcionamiento del quiz...
+
+// Actualizar información del usuario, categoría y nivel
+// Función para actualizar la información del usuario
+
+
+// Lógica para el botón de empezar
+document.getElementById('start-btn').addEventListener('click', function() {
+    updateUserInfo(); // Actualizar información del usuario
+    // Resto de la lógica para empezar el quiz
+});
 
     // Deshabilitar todos los botones después de seleccionar
     const buttons = optionsElement.getElementsByTagName('button');
@@ -103,10 +148,26 @@ function nextQuestion() {
     }
 }
 
+startButton.addEventListener('click', startQuiz);
+function updateUserInfo() {
+    const userName = document.getElementById('nombre-apellido').value;
+    
+    const selectedCategory = document.getElementById('category').value;
+    const selectedLevel = document.getElementById('level').value;
+
+    document.getElementById('user-name').textContent = userName;
+    document.getElementById('selected-category').textContent = selectedCategory;
+    document.getElementById('selected-level').textContent = selectedLevel;
+}
+
 
 function showSummary() {
-    let summaryHtml = '';
-    
+    document.getElementById('user-info-container').style.display = 'none';
+    let summaryHtml = `<h2>Resultado del Quiz</h2>`;
+    summaryHtml += `<p>Nombre: ${nombreApellido}</p>`;
+    summaryHtml += `<p>Categoría: ${currentCategory}</p>`;
+    summaryHtml += `<p>Nivel: ${currentLevel}</p>`;
+    summaryHtml += `<p>Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
     // Verificar si todas las preguntas han sido respondidas
     if (currentQuestionIndex === questions[currentCategory][currentLevel].length) {
         // Todas las preguntas han sido respondidas
@@ -180,56 +241,75 @@ function downloadResults() {
     const doc = new jsPDF();
 
     // Estilos generales
-    doc.setFontSize(16);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
     doc.setTextColor(40);
 
     // Título y mensaje de agradecimiento
+    doc.setFontSize(18);
     doc.text('Resultado del Quiz', 20, 20);
     doc.setFontSize(12);
-    doc.text('Gracias por aprender con nosotros.', 20, 30);
+    doc.text(`Gracias por participar, ${nombreApellido}.`, 20, 30);
+
+    // Línea divisoria
+    doc.setLineWidth(0.5);
+    doc.setDrawColor(0);
+    doc.line(20, 35, 190, 35);
 
     // Puntuación
     doc.setFontSize(14);
-    doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 40);
+    doc.setTextColor(40);
+    doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 45);
+
+    // Categoría y Nivel
+    doc.setFontSize(12);
+    doc.setTextColor(40);
+    doc.text(`Categoría: ${currentCategory}`, 20, 55);
+    doc.text(`Nivel: ${currentLevel}`, 20, 65);
 
     // Preguntas incorrectas o mensaje de éxito
     if (incorrectQuestions.length > 0) {
-        doc.setFontSize(12);
         doc.setTextColor(255, 0, 0);
-        doc.text('Preguntas incorrectas:', 20, 50);
+        doc.setFontSize(14);
+        doc.text('Preguntas incorrectas:', 20, 75);
 
+        doc.setFontSize(12);
         incorrectQuestions.forEach((q, index) => {
             const questionText = `${index + 1}. ${q.question}`;
             const answerText = `Respuesta correcta: ${q.answer}`;
-            const questionStartY = 60 + (index * 20);
+            const startY = 85 + (index * 30);
 
-            doc.text(questionText, 20, questionStartY);
-            doc.text(answerText, 20, questionStartY + 10);
+            doc.text(questionText, 20, startY);
+            doc.text(answerText, 20, startY + 10);
         });
     } else {
         doc.setTextColor(0, 128, 0);
-        doc.text('¡Perfecto! Has acertado todas las preguntas que respondistes.', 20, 50);
+        doc.setFontSize(14);
+        doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, 75);
     }
 
     // Estrellas ganadas
     const starsEarned = Math.floor(score / 20);
     if (starsEarned > 0) {
         doc.setTextColor(40);
-        doc.text('Estrellas ganadas:', 20, 70 + (incorrectQuestions.length * 20));
+        doc.setFontSize(12);
+        doc.text('Estrellas ganadas:', 20, 165);
 
         for (let i = 0; i < starsEarned; i++) {
-            doc.addImage('img/star.png', 'PNG', 20 + (i * 15), 80 + (incorrectQuestions.length * 20), 10, 10);
+            doc.addImage('img/star.png', 'PNG', 30 + (i * 15), 170, 10, 10);
         }
     }
 
-    doc.setTextColor(100, 100, 100); // Establece el color del texto en RGB (100, 100, 100) - gris oscuro
-   
-    
-    doc.text('© 2024 Dev Web. Todos los derechos reservados.', 20, 90); // Coloca el texto al final del documento, a 10 puntos del borde inferior
+    // Firma y derechos de autor
+    doc.setTextColor(100, 100, 100);
+    doc.setFontSize(10);
+    doc.text('© 2024 Dev Web. Todos los derechos reservados.', 20, 285);
 
     // Guardar el PDF
     doc.save('resultado_quiz.pdf');
 }
+
+
 
 
 
@@ -250,9 +330,14 @@ finishButton.addEventListener('click', finishQuiz);
 
 function finishQuiz() {
     showSummary();
+        // Ocultar el contenedor de información del usuario al finalizar el quiz
+        document.getElementById('user-info-container').style.display = 'none';
 }
 
-
+// Función para actualizar el contador de puntos
+function updatePoints() {
+    document.getElementById('points-counter').textContent = score;
+}
 nextButton.addEventListener('click', nextQuestion);
 
 

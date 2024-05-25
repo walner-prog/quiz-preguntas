@@ -6,7 +6,7 @@ const resultElement = document.getElementById('result');
 const categorySelection = document.getElementById('category');
 const levelSelection = document.getElementById('level');
 const startButton = document.getElementById('start-btn');
-
+const nombreApellido = document.getElementById('nombre-apellido').value;
 
 let currentQuestionIndex = 0;
 let currentCategory = '';
@@ -147,12 +147,6 @@ function showSummary() {
         } else {
             summaryHtml += '<p style="color: green;">No hay preguntas incorrectas hasta el momento.</p>';
         }
-        
-        // Mostrar botón de descarga solo si se han respondido preguntas
-        summaryHtml += '<br>';
-        if (currentQuestionIndex > 0) {
-            summaryHtml += '<button id="download-btn">Descargar Resultado</button>';
-        }
     }
     
 
@@ -169,12 +163,11 @@ function showSummary() {
         summaryHtml += `<p class="sumarsinestrellas">No se ganaron estrellas.</p>`;
     }
 
+    summaryHtml += '<br><button id="download-btn">Descargar Resultado</button>';
     summaryHtml += '<br><button id="new-quiz-btn">Nuevo Quiz</button>';
     quiz.innerHTML = summaryHtml;
 
-    if (currentQuestionIndex > 0) {
-        document.getElementById('download-btn').addEventListener('click', downloadResults);
-    }
+    document.getElementById('download-btn').addEventListener('click', downloadResults);
     document.getElementById('new-quiz-btn').addEventListener('click', () => {
         window.location.reload();
     });
@@ -215,7 +208,7 @@ function downloadResults() {
         });
     } else {
         doc.setTextColor(0, 128, 0);
-        doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, 50);
+        doc.text('¡Perfecto! Has acertado todas las preguntas que respondistes.', 20, 50);
     }
 
     // Estrellas ganadas
@@ -228,6 +221,11 @@ function downloadResults() {
             doc.addImage('img/star.png', 'PNG', 20 + (i * 15), 80 + (incorrectQuestions.length * 20), 10, 10);
         }
     }
+
+    doc.setTextColor(100, 100, 100); // Establece el color del texto en RGB (100, 100, 100) - gris oscuro
+   
+    
+    doc.text('© 2024 Dev Web. Todos los derechos reservados.', 20, 90); // Coloca el texto al final del documento, a 10 puntos del borde inferior
 
     // Guardar el PDF
     doc.save('resultado_quiz.pdf');
@@ -256,6 +254,14 @@ function finishQuiz() {
 
 
 nextButton.addEventListener('click', nextQuestion);
+
+
+
+
+
+
+
+
 
 
 
