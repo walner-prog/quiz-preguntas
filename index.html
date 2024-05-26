@@ -175,9 +175,9 @@
 }
 
 function shareOnWhatsApp() {
-    const quizUrl = window.location.href;
-    const whatsappUrl = `whatsapp://send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
-    window.location.href = whatsappUrl;
+    const quizUrl = encodeURIComponent(window.location.href);
+    const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+    window.open(whatsappUrl, '_blank');
 }
 
 function shareOnInstagram() {
