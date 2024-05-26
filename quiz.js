@@ -23,7 +23,7 @@ document.getElementById('start-btn').addEventListener('click', function() {
     startQuiz(); // Iniciar el quiz
    
 });
-let nombreApellido = '';3
+let nombreApellido = 'Usuario';
 
 let currentQuestionIndex = 0;
 let currentCategory = '';
@@ -160,8 +160,9 @@ function nextQuestion() {
 }
 
 startButton.addEventListener('click', startQuiz);
+
 function updateUserInfo() {
-    const userName = document.getElementById('nombre-apellido').value;
+    const userName = document.getElementById('nombre-apellido').value.trim() || 'Usuario';
     
     const selectedCategory = document.getElementById('category').value;
     const selectedLevel = document.getElementById('level').value;

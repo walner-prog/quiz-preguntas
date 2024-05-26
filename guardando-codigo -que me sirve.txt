@@ -27,3 +27,11 @@
 </div>
 /*************
 
+
+<div class="card-user border border-info pr-4 pl-4 col-md-12 col-sm-12 col-xl-10 d-flex justify-content-lg-start justify-content-xl-start justify-content-md-start justify-content-center flex-wrap">
+    <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-user"></i></span> Nombre<br> <span id="user-name"></span></p>
+    <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-list-alt"></i></span> Categoría<br> <span id="selected-category"></span></p>
+    <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-level-up-alt"></i></span> Nivel<br> <span id="selected-level"></span></p>
+    <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-coins"></i></span> Puntos <span class="bg-warning" id="points-counter">0</span></p>
+    <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-star"></i></span> Estrellas <span id="stars-counter">0</span></p>
+</div>

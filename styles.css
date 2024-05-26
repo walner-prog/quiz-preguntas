@@ -40,14 +40,14 @@ button {
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color:rgb(124, 54, 173);
     color: white;
     cursor: pointer;
     margin-top: 10px;
     display: inline-block;
 }
 
-button:hover {
+.button-especial:hover {
     background: #41295a;  /* fallback for old browsers */
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #237A57, #093028);  /* Chrome 10-25, Safari 5.1-6 */
@@ -94,10 +94,28 @@ background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, F
 .user-info span {
 
     margin-left: 0px; /* Ajustar el margen izquierdo entre el texto y el valor */
-    color:#a7e5ff;
+    color:#e6f7ff;
     margin-left:5px ;
     margin-right: 5px;
 }
+
+/* Estilos para los elementos dinámicos */
+.dynamic-data {
+    background-color: #006c7d; /* Color de fondo */
+    padding: 5px 10px; /* Padding */
+    border-radius: 5px; /* Border radius */
+    color: #fff; /* Color del texto */
+    display: inline-block; /* Asegura que el padding y background se apliquen correctamente */
+    margin-top: 5px;
+     /* Margen superior para separar del texto anterior */
+}
+
+/* Ajustes para la clase bg-warning si es necesario */
+.dynamic-data.bg-warning {
+    background-color: #ffc107; /* Color de fondo específico para puntos */
+    color: #000; /* Color del texto para contraste */
+}
+
 .card-user{
   
 }
