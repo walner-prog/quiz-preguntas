@@ -139,6 +139,11 @@ select {
     margin-bottom: 10px;
 }
 
+/* Cambiar el fondo cuando se pasa el mouse sobre una opción */
+.select-form:hover {
+    background-color: rgb(147, 245, 142); /* Cambia el color de fondo al pasar el mouse */
+  }
+  
 /* Estilos para los botones del resumen */
 #summary-buttons {
     display: flex;
