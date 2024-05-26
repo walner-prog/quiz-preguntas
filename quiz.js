@@ -79,11 +79,12 @@ function loadQuestion(category, level) {
     currentQuestion.options.forEach(option => {
         const button = document.createElement('button');
         button.textContent = option;
-        button.classList.add('slide-in');
+        button.classList.add('custom-button'); // Agrega la clase aquí
         button.addEventListener('click', () => {
             checkAnswer(option, button);
         });
         optionsElement.appendChild(button);
+
     });
 
     // Actualiza el contador de preguntas

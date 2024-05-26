@@ -47,6 +47,22 @@ button {
     display: inline-block;
 }
 
+.custom-button {
+    background-color: rgb(136, 0, 255);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: rgb(90, 0, 139);
+}
+
+
 .button-especial:hover {
     background: #41295a;  /* fallback for old browsers */
     /* fallback for old browsers */
