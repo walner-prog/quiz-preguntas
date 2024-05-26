@@ -185,6 +185,15 @@ select {
     gap: 10px;
     margin-top: 20px;
 }
+#download-btn:hover{
+  background-color:rgb(94, 6, 156);
+  transition: background-color 0.3s ease;
+
+}
+#new-quiz-btn:hover{
+    background-color:rgb(94, 6, 156);
+  transition: background-color 0.3s ease;
+}
 
 .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
