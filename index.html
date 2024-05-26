@@ -125,10 +125,13 @@
                     <div class="text-center mt-3">
                         <div id="share-buttons">
                             <p>Comparte en tus redes favoritas:</p>
-                            <button onclick="shareOnFacebook()" class="btn btn-primary w-25"><i class="fab fa-facebook-square fa-lg"></i></button>
-                            <button onclick="shareOnWhatsApp()" class="btn btn-success w-25"><i class="fab fa-whatsapp-square fa-lg"></i></button>
-                            <button onclick="shareOnInstagram()" class="btn btn-danger w-25"><i class="fab fa-instagram-square fa-lg"></i></button>
+                            <button onclick="shareOnFacebook()" class="btn btn-primary w-20"><i class="fab fa-facebook-square fa-lg"></i></button>
+                            <button onclick="shareOnWhatsApp()" class="btn btn-success w-20"><i class="fab fa-whatsapp-square fa-lg"></i></button>
+
+                            <button onclick="shareOnLinkedIn()" class="btn btn-danger w-20"><i class="fab fa-linkedin fa-lg"></i></button>
+                            <button onclick="shareOnTwitter()" class="btn btn-info w-20"><i class="fab fa-twitter-square fa-lg"></i></button>
                         </div>
+                        
                         
                         
                         
@@ -180,10 +183,18 @@ function shareOnWhatsApp() {
     window.open(whatsappUrl, '_blank');
 }
 
-function shareOnInstagram() {
+
+function shareOnLinkedIn() {
     const quizUrl = window.location.href;
-    const instagramUrl = `https://www.instagram.com/?url=${encodeURIComponent(quizUrl)}`;
-    window.open(instagramUrl, '_blank', 'width=600,height=400');
+    const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+    window.open(linkedInUrl, '_blank', 'width=600,height=400');
+}
+
+function shareOnTwitter() {
+    const quizUrl = window.location.href;
+    const tweetText = encodeURIComponent('¡Echa un vistazo a este increíble quiz!');
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(quizUrl)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
 }
 
     </script>
