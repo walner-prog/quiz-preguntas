@@ -183,7 +183,7 @@ function showSummary() {
             summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
             incorrectQuestions.forEach((q, index) => {
                 summaryHtml += `<p style="color: lightcoral;">${index + 1}. ${q.question}</p>`;
-                summaryHtml += `<p style="color: #D6D6D6;>Respuesta correcta: ${q.answer}</p>`;
+                summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
             });
         }
     } else {
