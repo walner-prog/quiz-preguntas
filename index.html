@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"">
@@ -124,35 +125,48 @@
                         </div>
                     </div>
 
-                    <!-- Modal para la valoración -->
-                    <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header modal-header border border-bottom border-info"  style="color: indigo;" >
-                              <h5 class="modal-title animate__animated animate__bounce" id="ratingModalLabel" style="color: indigo;">Valorar el quiz</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span style="color: indigo;" aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body text-dark">
-                              <form id="ratingForm">
-                                <div class="form-group">
-                                  <label for="ratingSelect" class=" text-success">Selecciona <span style="color: indigo;">tu valoración:</span> </label>
-                                  <select class="form-control select-form" id="ratingSelect">
-                                    <option value="excelente">Excelente</option>
-                                    <option value="bueno">Bueno</option>
-                                    <option value="regular">Regular</option>
-                                  </select>
+                                        <!-- Modal para la valoración -->
+                                        <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header border border-bottom border-info" style="color: indigo;">
+                                                        <h5 class="modal-title animate__animated animate__bounce" id="ratingModalLabel">Valorar el Quiz <i class="fas fa-star" style="color: indigo;"></i></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                                            <span style="color: indigo;" aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-dark" data-aos="fade-up">
+                                                        <p>Por favor, califica la calidad del quiz:</p>
+                                                        <form id="rating-form"  >
+                                                            <div class="form-group">
+                                                                <label for="rating" class="text-success">Puntuación:</label>
+                                                                <select id="rating" name="rating" class="form-control">
+                                                                    <option value="5">5 - Excelente</option>
+                                                                    <option value="4">4 - Muy bueno</option>
+                                                                    <option value="3">3 - Bueno</option>
+                                                                    <option value="2">2 - Regular</option>
+                                                                    <option value="1">1 - Malo</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="comments" class="text-success">Comentarios:</label>
+                                                                <textarea id="comments" name="comments" class="form-control" rows="3" placeholder="Escribe tus comentarios aquí"></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Enviar valoración</button>
+                                                        </form>
+                                                        <div id="thank-you" style="display:none;">
+                                                            <p>¡Gracias por tu valoración!</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                              </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    
                     
                     <div class="text-center mt-3">
                         <div id="share-buttons">
@@ -234,7 +248,52 @@ function shareOnLinkedIn() {
     window.open(linkedInUrl, '_blank', 'width=600,height=400');
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('thank-you').style.display = 'none';
+});
 
+document.getElementById('rating-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Convertir formData a un objeto JSON
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
+    try {
+        const response = await fetch('https://formspree.io/f/xyyraegv', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        });
+
+        if (response.ok) {
+            const thankYou = document.getElementById('thank-you');
+            thankYou.style.display = 'block';
+            thankYou.classList.add('show');
+            thankYou.classList.remove('hide');
+            form.reset(); // Reiniciar el formulario
+            setTimeout(() => {
+                // Ocultar la notificación de confirmación después de 3 segundos
+                thankYou.classList.add('hide');
+                thankYou.classList.remove('show');
+                setTimeout(() => {
+                    thankYou.style.display = 'none';
+                }, 500); // Esperar a que la animación termine antes de ocultar el elemento
+            }, 8000);
+        } else {
+            alert('Hubo un problema con el envío. Inténtalo de nuevo.');
+        }
+    } catch (error) {
+        alert('Hubo un problema con el envío. Inténtalo de nuevo.');
+    }
+});
 
     </script>
     
