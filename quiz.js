@@ -28,6 +28,7 @@ let currentQuestionIndex = 0;
 let currentCategory = '';
 let currentLevel = '';
 let score = 0;
+let totalQuestions = 0;
 let incorrectQuestions = [];
 
 
@@ -57,13 +58,15 @@ function startQuiz() {
     document.getElementById('user-info-container').style.display = 'block';
     // Mostrar el contador de puntos
     document.getElementById('points-counter').style.display = 'inline';
+    // Dentro de la función startQuiz, después de cargar la primera pregunta
+totalQuestions = questions[currentCategory][currentLevel].length;
+loadQuestion(currentCategory, currentLevel);
 }
-
 
 
 function loadQuestion(category, level) {
     const currentQuestion = questions[category][level][currentQuestionIndex];
-    questionElement.innerHTML = `${currentQuestion.question} <img src="img/cara-alegre.png" alt="Happy Face" width="20" height="20">`;
+    questionElement.innerHTML = `${currentQuestion.question} <img src="img/prueba.png" alt="Happy Face" width="30" height="30">`;
     questionElement.classList.add('fade-in');
     optionsElement.innerHTML = '';
     currentQuestion.options.forEach(option => {
@@ -76,10 +79,12 @@ function loadQuestion(category, level) {
         optionsElement.appendChild(button);
     });
 
+    // Actualiza el contador de preguntas
+    document.getElementById('question-counter').textContent = `Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}`;
+
     resultElement.textContent = ''; // Clear previous result message
     nextButton.style.display = 'none';
 }
-
 function checkAnswer(selectedOption, button) {
     const currentQuestion = questions[currentCategory][currentLevel][currentQuestionIndex];
     const correctIcon = document.createElement('span');
@@ -261,36 +266,48 @@ function downloadResults() {
     doc.setDrawColor(0);
     doc.line(20, 35, 190, 35);
 
-    // Puntuación
-    doc.setFontSize(14);
-    doc.setTextColor(40);
-    doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 45);
-
     // Categoría y Nivel
     doc.setFontSize(12);
     doc.setTextColor(40);
-    doc.text(`Categoría: ${currentCategory}`, 20, 55);
-    doc.text(`Nivel: ${currentLevel}`, 20, 65);
+    doc.text(`Categoría: ${currentCategory}`, 20, 45);
+    doc.text(`Nivel: ${currentLevel}`, 20, 55);
+
+    // Puntuación
+    doc.setFontSize(14);
+    doc.setTextColor(40);
+    doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 65);
 
     // Preguntas incorrectas o mensaje de éxito
+    let startY = 85;
     if (incorrectQuestions.length > 0) {
         doc.setTextColor(255, 0, 0);
         doc.setFontSize(14);
-        doc.text('Preguntas incorrectas:', 20, 75);
+        doc.text('Preguntas incorrectas:', 20, startY);
+
+        startY += 10; // Ajuste para separar el título de las preguntas
 
         doc.setFontSize(12);
         incorrectQuestions.forEach((q, index) => {
             const questionText = `${index + 1}. ${q.question}`;
             const answerText = `Respuesta correcta: ${q.answer}`;
-            const startY = 85 + (index * 30);
+            const lineHeight = 10;
 
-            doc.text(questionText, 20, startY);
-            doc.text(answerText, 20, startY + 10);
+            const textLines = doc.splitTextToSize(`${questionText}\n${answerText}`, 170);
+            const remainingSpace = doc.internal.pageSize.height - startY;
+            if (remainingSpace < textLines.length * lineHeight) {
+                doc.addPage();
+                startY = 20;
+            }
+
+            textLines.forEach(line => {
+                doc.text(20, startY, line);
+                startY += lineHeight;
+            });
         });
     } else {
         doc.setTextColor(0, 128, 0);
         doc.setFontSize(14);
-        doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, 75);
+        doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, startY);
     }
 
     // Estrellas ganadas
@@ -298,24 +315,21 @@ function downloadResults() {
     if (starsEarned > 0) {
         doc.setTextColor(40);
         doc.setFontSize(12);
-        doc.text('Estrellas ganadas:', 20, 165);
+        doc.text('Estrellas ganadas:', 20, startY + 10);
 
         for (let i = 0; i < starsEarned; i++) {
-            doc.addImage('img/star.png', 'PNG', 30 + (i * 15), 170, 10, 10);
+            doc.addImage('img/star.png', 'PNG', 30 + (i * 15), startY + 15, 10, 10);
         }
     }
 
     // Firma y derechos de autor
     doc.setTextColor(100, 100, 100);
     doc.setFontSize(10);
-    doc.text('© 2024 Dev Web. Todos los derechos reservados.', 20, 285);
+    doc.text('© 2024 Dev Web. Todos los derechos reservados.', 20, doc.internal.pageSize.height - 10);
 
     // Guardar el PDF
     doc.save('resultado_quiz.pdf');
 }
-
-
-
 
 
 function showStars(starCount) {

@@ -35,14 +35,22 @@
                                         <p class="user-info text-warning mr-2"><span><i class="fas fa-level-up-alt"></i></span>Nivel<br> <span id="selected-level"></span></p>
                                         <p class="user-info text-warning"><span><i class="fas fa-star"></i></span>Puntos <span id="points-counter">0</span></p>
                                     </div>
+
+                                 <div class="col-12 text-left">
+                                 <div id="question-counter" class="text-muted user-info d-flex justify-content-lg-start">
+                                  
+                                 </div>  <span class="text-muted user-info d-flex justify-content-lg-start"><i class="fas fa-question text-white"></i></span>
+                                 </div>
+                               
                                 </div>
 
-                                <label id="nombre-apellido-label" class="form-label ml-3" for="nombre-apellido">Por favor completa este campo</label>
+
+                                <label id="nombre-apellido-label" class="form-label ml-3 text-warning" for="nombre-apellido">Por favor completa este campo</label>
                                 <div class="form-group">
                                     <input type="text" id="nombre-apellido" class="form-control w-75 ml-5" placeholder="Escribe tu nombre y apellido">
                                 </div>
                                 <div id="category-selection" class="form-group">
-                                    <label id="category-label" class="text-white" for="category">Selecciona una categoría:</label>
+                                    <label id="category-label" class="text-white text-warning" for="category">Selecciona una categoría:</label>
                                     <div class="select-container text-white">
                                         <select id="category" class="form-control w-75 ml-5">
                                             <option value="matematicas">Matemáticas</option>
@@ -55,7 +63,7 @@
                                 </div>
                                 <br>
                                 <div id="level-selection" class="form-group">
-                                    <label id="level-label" for="level">Selecciona un nivel:</label>
+                                    <label id="level-label" for="level" class="text-warning">Selecciona un nivel:</label>
                                     <div class="select-container">
                                         <select id="level" class="form-control w-75 ml-5">
                                             <option value="facil">Fácil</option>
@@ -64,6 +72,8 @@
                                         </select>
                                     </div>
                                 </div>
+                               
+                                
                                 <br>
                                 <button id="start-btn" class="btn btn-primary btn-block btn-sm w-75 ml-5">Empezar</button>
 
