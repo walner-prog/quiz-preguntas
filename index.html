@@ -11,71 +11,111 @@
 </head>
 <body>
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 ">
-                <div class="card"  data-aos="fade-up" data-aos-duration="1000">
-                    <div class="card-header text-center">
-                        <h1 data-aos="flip-left"
-                        data-aos-easing="ease-out-cubic"
-                        data-aos-duration="2000" class=" text-info ">Quiz Educativo</h1>
-                    </div>
-                    <div class="card-body">
-                        <div id="quiz" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                            <img id="quiz-start-image" src="img/img.jpg" alt="Imagen de inicio" class="img-fluid w-100 mt-1" style="display: none; margin-top: -60px;"> <br>
-                            <div class="row" id="user-info-container" style="display: none;">
-                                <div class="card-user border border-info pr-4 pl-4  col-md-10 col-sm-12 col-xl-8 d-flex justify-content-lg-start justify-content-xl-start justify-content-md-start justify-content-center">
-                                    <p class="user-info text-warning mr-2"><span><i class="fas fa-user"></i></span>Nombre<br> <span id="user-name"></span></p>
-                                    <p class="user-info text-warning mr-2"><span><i class="fas fa-list-alt"></i></span>Categoría<br> <span id="selected-category"></span></p>
-                                    <p class="user-info text-warning mr-2"><span><i class="fas fa-level-up-alt"></i></span>Nivel<br> <span id="selected-level"></span></p>
-                                    <p class="user-info text-warning"><span><i class="fas fa-star"></i></span>Puntos <span id="points-counter">0</span></p>
+       
+        
+        <div id="content" class="d-none">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h1 data-aos="flip-left"
+                            data-aos-easing="ease-out-cubic"
+                            data-aos-duration="2000" class=" text-info mb-0">Quiz Educativo</h1>
+                            <button id="help-button" class="btn btn-info mb-3">Ayuda</button>
+                        </div>
+                        <div class="card-body">
+                            <div id="quiz" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                                <img id="quiz-start-image" src="img/img.jpg" alt="Imagen de inicio" class="img-fluid w-100 mt-1" style="display: none; margin-top: -60px;"> <br>
+                                <div class="row" id="user-info-container" style="display: none;">
+                                    <div class="card-user border border-info pr-4 pl-4 col-md-10 col-sm-12 col-xl-8 d-flex justify-content-lg-start justify-content-xl-start justify-content-md-start justify-content-center">
+                                        <p class="user-info text-warning mr-2"><span><i class="fas fa-user"></i></span>Nombre<br> <span id="user-name"></span></p>
+                                        <p class="user-info text-warning mr-2"><span><i class="fas fa-list-alt"></i></span>Categoría<br> <span id="selected-category"></span></p>
+                                        <p class="user-info text-warning mr-2"><span><i class="fas fa-level-up-alt"></i></span>Nivel<br> <span id="selected-level"></span></p>
+                                        <p class="user-info text-warning"><span><i class="fas fa-star"></i></span>Puntos <span id="points-counter">0</span></p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <label id="nombre-apellido-label" class="form-label ml-3" for="nombre-apellido">Por favor completa este campo</label>
-                            <div class="form-group">
-                                <input type="text" id="nombre-apellido" class="form-control w-75 ml-5" placeholder="Escribe tu nombre y apellido">
-                            </div>
-                            <div id="category-selection" class="form-group">
-                                <label id="category-label" class="text-white" for="category">Selecciona una categoría:</label>
-                                <div class="select-container text-white">
-                                    <select id="category" class="form-control w-75 ml-5">
-                                        <option value="matematicas">Matemáticas</option>
-                                        <option value="lengua_literatura">Lengua y Literatura</option>
-                                        <option value="historia_nicaragua">Historia de Nicaragua</option>
-                                        <option value="ciencias_naturales">Ciencias Naturales</option>
-                                        <option value="ciencias_sociales">Ciencias Sociales</option>
-                                    </select>
+                                <label id="nombre-apellido-label" class="form-label ml-3" for="nombre-apellido">Por favor completa este campo</label>
+                                <div class="form-group">
+                                    <input type="text" id="nombre-apellido" class="form-control w-75 ml-5" placeholder="Escribe tu nombre y apellido">
                                 </div>
-                            </div>
-                            <br>
-                            <div id="level-selection" class="form-group">
-                                <label id="level-label" for="level">Selecciona un nivel:</label>
-                                <div class="select-container">
-                                    <select id="level" class="form-control w-75 ml-5">
-                                        <option value="facil">Fácil</option>
-                                        <option value="intermedio">Intermedio</option>
-                                        <option value="dificil">Difícil</option>
-                                    </select>
+                                <div id="category-selection" class="form-group">
+                                    <label id="category-label" class="text-white" for="category">Selecciona una categoría:</label>
+                                    <div class="select-container text-white">
+                                        <select id="category" class="form-control w-75 ml-5">
+                                            <option value="matematicas">Matemáticas</option>
+                                            <option value="lengua_literatura">Lengua y Literatura</option>
+                                            <option value="historia_nicaragua">Historia de Nicaragua</option>
+                                            <option value="ciencias_naturales">Ciencias Naturales</option>
+                                            <option value="ciencias_sociales">Ciencias Sociales</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <br>
+                                <div id="level-selection" class="form-group">
+                                    <label id="level-label" for="level">Selecciona un nivel:</label>
+                                    <div class="select-container">
+                                        <select id="level" class="form-control w-75 ml-5">
+                                            <option value="facil">Fácil</option>
+                                            <option value="intermedio">Intermedio</option>
+                                            <option value="dificil">Difícil</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <button id="start-btn" class="btn btn-primary btn-block btn-sm w-75 ml-5">Empezar</button>
+
+                                <div id="question" class="" data-aos="fade-up" data-aos-duration="1000"></div>
+                                <div id="options" class="" data-aos="flip-left" data-aos-duration="1000"></div>
+
+                                <p id="result" class="mt-3" data-aos="fade-up" data-aos-duration="1000"></p>
+
+                                <button id="next-btn" data-aos="flip-up" class="btn btn-success btn-block mt-3 w-75 ml-5" style="display: none;">Siguiente</button>
+                                <br>
+                                <button id="finish-btn" class="btn btn-danger btn-block mt-3 w-75 ml-5" style="display: none;">Terminar Quiz</button>
                             </div>
-                            <br>
-                            <button id="start-btn" class="btn btn-primary btn-block btn-sm w-75 ml-5">Empezar</button>
-
-                            <div id="question" class="" data-aos="fade-up" data-aos-duration="1000"></div>
-                            <div id="options" class="" data-aos="flip-left" data-aos-duration="1000"></div>
-
-                            <p id="result" class="mt-3" data-aos="fade-up" data-aos-duration="1000"></p>
-
-                            <button id="next-btn" data-aos="flip-up" class="btn btn-success btn-block mt-3 w-75 ml-5"" style="display: none;">Siguiente</button>
-                            <br>
-                            <button id="finish-btn" class="btn btn-danger btn-block mt-3 w-75 ml-5"" style="display: none;">Terminar Quiz</button>
                         </div>
                     </div>
-                </div>
 
-                <div class="text-center mt-3">
-                    <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
-                    <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
+                    <!-- Modal de Ayuda -->
+                    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 data-aos="flip-left" class="modal-title text-dark" id="helpModalLabel">Ayuda</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div data-aos="fade-zoom-in"
+                                data-aos-easing="ease-in-back"
+                                data-aos-delay="300"
+                                data-aos-offset="0" class="modal-body text-dark">
+                                    <p>¡Bienvenido al Quiz Educativo!</p>
+                                    <p>En este quiz podrás demostrar tus conocimientos en diversas áreas. A continuación, te explicamos cómo funciona:</p>
+                                    <ul>
+                                        <li>Primero, ingresa tu nombre y apellido en el campo proporcionado.</li>
+                                        <li>Selecciona la categoría de preguntas que deseas responder.</li>
+                                        <li>Selecciona el nivel de dificultad: Fácil, Intermedio o Difícil.</li>
+                                        <li>Cada pregunta tiene múltiples opciones. Selecciona la respuesta correcta.</li>
+                                        <li>Por cada respuesta correcta, ganarás puntos.</li>
+                                        <li>Por cada 20 puntos ganados, recibirás una estrella.</li>
+                                        <li>Para pasar a la siguiente pregunta, haz clic en el botón "Siguiente".</li>
+                                        <li>Al finalizar el quiz, verás un resumen de tus resultados, que podrás descargar.</li>
+                                    </ul>
+                                    <p>¡Buena suerte y diviértete aprendiendo!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
+                        <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,6 +124,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
@@ -92,7 +133,19 @@
     <script src="quiz.js"></script>
 
     <script>
-        AOS.init();
+        $(document).ready(function(){
+            AOS.init();
+            
+            // Ocultar el contenido hasta que la página se cargue completamente
+            $("#content").removeClass("d-none");
+    
+            // Ocultar el modal de ayuda al cargar la página
+            $('#helpModal').modal('hide');
+    
+            // Agregar evento al botón de ayuda para mostrar el modal
+            $("#help-button").click(function(){
+                $('#helpModal').modal('show');
+            });
+        });
     </script>
-</body>
-</html>
+    
