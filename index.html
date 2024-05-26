@@ -22,25 +22,26 @@
                 <div class="col-md-8">
                     <div class="card" data-aos="fade-up" data-aos-duration="1000">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h1  class=" text-info mb-0">Quiz Educativo</h1>
+                            <h1  class="animate__animated animate__backInDown text-info mb-0">Quiz Educativo</h1>
                             <button id="help-button" class="btn btn-info mb-3">Ayuda</button>
                         </div>
                         <div class="card-body">
                             <div id="quiz" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                                 <img id="quiz-start-image" src="img/img.jpg" alt="Imagen de inicio" class="img-fluid w-100 mt-1" style="display: none; margin-top: -60px;"> <br>
-                                <div class="row" id="user-info-container" style="display: none;">
-                                    <div class="card-user border border-info pr-4 pl-4 col-md-10 col-sm-12 col-xl-8 d-flex justify-content-lg-start justify-content-xl-start justify-content-md-start justify-content-center">
-                                        <p class="user-info text-warning mr-2"><span><i class="fas fa-user"></i></span>Nombre<br> <span id="user-name"></span></p>
-                                        <p class="user-info text-warning mr-2"><span><i class="fas fa-list-alt"></i></span>Categoría<br> <span id="selected-category"></span></p>
-                                        <p class="user-info text-warning mr-2"><span><i class="fas fa-level-up-alt"></i></span>Nivel<br> <span id="selected-level"></span></p>
-                                        <p class="user-info text-warning"><span><i class="fas fa-star"></i></span>Puntos <span id="points-counter">0</span></p>
+                                <div class="row " id="user-info-container" style="display: none;">
+                                    <div class="card-user border border-info pr-4 pl-4 col-md-12 col-sm-12 col-xl-8 d-flex justify-content-lg-start justify-content-xl-start justify-content-md-start justify-content-center mw-120 ">
+                                        <p class="user-info text-warning mr-1"><span><i class="fas fa-user"></i></span>Nombre<br> <span id="user-name"></span></p>
+                                        <p class="user-info text-warning mr-1"><span><i class="fas fa-list-alt"></i></span>Categoría<br> <span id="selected-category"></span></p>
+                                        <p class="user-info text-warning mr-1"><span><i class="fas fa-level-up-alt"></i></span>Nivel<br> <span id="selected-level"></span></p>
+                                        <p class="user-info text-warning mr-1"><span><i class="fas fa-coins"></i></span>Puntos <span id="points-counter">0</span></p>
+                                        <p class="user-info text-warning mr-1"><span><i class="fas fa-star"></i></span>Estrellas <span id="stars-counter">0</span></p>
                                     </div>
 
                                  <div class="col-12 text-left">
                                  <div id="question-counter" class="text-muted user-info d-flex justify-content-lg-start">
                                   
-                                 </div>  <span class="text-muted user-info d-flex justify-content-lg-start
-                                 "><i class="fas fa-question text-white"></i></span>
+                                 </div> 
+                                  <span class="text-muted user-info d-flex justify-content-lg-start"><i class="fas fa-question text-white"></i></span>
                                  </div>
                                
                                 </div>
@@ -85,7 +86,7 @@
 
                                 <button id="next-btn" data-aos="flip-up" class="btn btn-success btn-block mt-3 w-75 ml-5" style="display: none;">Siguiente</button>
                                 <br>
-                                <button id="finish-btn" class="btn btn-danger btn-block mt-3 w-75 ml-5" style="display: none;">Terminar Quiz</button>
+                                <button id="finish-btn" class="btn btn-danger btn-block mt-3 w-50 ml-5" style="display: none;">Terminar Quiz</button>
                             </div>
                         </div>
                     </div>

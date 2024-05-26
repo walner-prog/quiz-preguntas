@@ -7,6 +7,7 @@ const categorySelection = document.getElementById('category');
 const levelSelection = document.getElementById('level');
 const startButton = document.getElementById('start-btn');
 const nombreApellidoInput = document.getElementById('nombre-apellido');
+const starsCounter = document.getElementById('stars-counter');
 
 document.getElementById('start-btn').addEventListener('click', function() {
     // Ocultar etiquetas y campos de entrada
@@ -51,13 +52,19 @@ function startQuiz() {
     finishButton.style.display = 'block'; // Show the "Terminar Quiz" button
      // Actualizar información del usuario
    
-     // Mostrar el contenedor de información del usuario
-     document.getElementById('user-info-container').style.display = 'block';
+     
      
     // Mostrar el contenedor de información del usuario
     document.getElementById('user-info-container').style.display = 'block';
     // Mostrar el contador de puntos
     document.getElementById('points-counter').style.display = 'inline';
+   
+    const starsCounter = document.getElementById('stars-counter');
+    if (starsCounter) {
+        starsCounter.style.display = 'inline';
+        starsCounter.textContent = '0'; // Inicializar a 0
+    }
+  
     // Dentro de la función startQuiz, después de cargar la primera pregunta
 totalQuestions = questions[currentCategory][currentLevel].length;
 loadQuestion(currentCategory, currentLevel);
@@ -114,14 +121,10 @@ function checkAnswer(selectedOption, button) {
             }
         }
 
-        
+    
     }
 
-    // Funciones y variables existentes relacionadas con el funcionamiento del quiz...
-
-// Actualizar información del usuario, categoría y nivel
-// Función para actualizar la información del usuario
-
+   
 
 // Lógica para el botón de empezar
 document.getElementById('start-btn').addEventListener('click', function() {
@@ -141,6 +144,8 @@ document.getElementById('start-btn').addEventListener('click', function() {
     if (score % 20 === 0) {
         showStars(score / 20); // Llamar a una función para mostrar las estrellas ganadas
     }
+
+    updateStarsCounter(); // Actualizar el contador de estrellas
 }
 
 
@@ -199,6 +204,8 @@ function showSummary() {
         // Calcular la cantidad de preguntas restantes por responder
         const remainingQuestions = questions[currentCategory][currentLevel].length - currentQuestionIndex;
         summaryHtml += `<p>Te faltan responder ${remainingQuestions} preguntas.</p>`;
+        
+        // Mostrar las estrellas ganadas
         
         // Mostrar las estrellas ganadas
         const starsEarned = Math.floor(score / 20);
@@ -356,6 +363,17 @@ function finishQuiz() {
 // Función para actualizar el contador de puntos
 function updatePoints() {
     document.getElementById('points-counter').textContent = score;
+}
+
+
+// Función para actualizar el contador de estrellas
+function updateStarsCounter() {
+    const starsEarned = Math.floor(score / 20);
+    starsCounter.textContent = starsEarned;
+}
+
+function updateStars(starsEarned) {
+    document.getElementById('stars-counter').textContent = starsEarned;
 }
 nextButton.addEventListener('click', nextQuestion);
 
