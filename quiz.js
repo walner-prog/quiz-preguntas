@@ -16,7 +16,7 @@ document.getElementById('start-btn').addEventListener('click', function() {
     document.getElementById('category').style.display = 'none';
     document.getElementById('level-label').style.display = 'none';
     document.getElementById('level').style.display = 'none';
-
+    document.getElementById('quiz-start-image').style.display = 'block';
     // Resto de la lógica para empezar el quiz
     updateUserInfo(); // Actualizar información del usuario
     startQuiz(); // Iniciar el quiz
@@ -166,27 +166,29 @@ function showSummary() {
     
     
     document.getElementById('user-info-container').style.display = 'none';
-    let summaryHtml = `<div class="container"><div class="card slide-in-left"><div class="card-header"><h2>Resultado del Quiz</h2></div>`;
-    summaryHtml += `<div class="card-body"><p><strong>Nombre:</strong> ${nombreApellido}</p>`;
-    summaryHtml += `<p><strong>Categoría:</strong> ${currentCategory}</p>`;
-    summaryHtml += `<p><strong>Nivel:</strong> ${currentLevel}</p>`;
-    summaryHtml += `<p><strong>Puntuación:</strong> ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
+    let summaryHtml = `<div class="container"><h2 >Resultado del Quiz</h2>`;
+    summaryHtml += `<div style="color: #e65c00;"><p><strong>Nombre:</strong> ${nombreApellido}</p>`;
+    summaryHtml += `<p><strong>Categoría:</strong> ${currentCategory}</p></div>`;
+    summaryHtml += `<div style="color: #e65c00; margin-top: 10px;"><p><strong>Nivel:</strong> ${currentLevel}</p>`;
+    summaryHtml += `<p><strong>Puntuación:</strong> ${score}/${questions[currentCategory][currentLevel].length * 5}</p></div></div>`;
+    
+
     // Verificar si todas las preguntas han sido respondidas
     if (currentQuestionIndex === questions[currentCategory][currentLevel].length) {
         // Todas las preguntas han sido respondidas
-        summaryHtml += `<h2>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
+        summaryHtml += `<h2 style="color: #C4F8FC;>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
         if (score === questions[currentCategory][currentLevel].length * 5) {
             summaryHtml += '<p style="color: green;">¡Perfecto! Has acertado todas las preguntas.</p>';
         } else {
             summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
             incorrectQuestions.forEach((q, index) => {
                 summaryHtml += `<p style="color: lightcoral;">${index + 1}. ${q.question}</p>`;
-                summaryHtml += `<p>Respuesta correcta: ${q.answer}</p>`;
+                summaryHtml += `<p style="color: #D6D6D6;>Respuesta correcta: ${q.answer}</p>`;
             });
         }
     } else {
         // Mostrar el resumen hasta el momento si no se han respondido todas las preguntas
-        summaryHtml += `<h2>Resumen del quiz:</h2>`;
+        summaryHtml += `<h2 style="color: #C4F8FC;>Resumen del quiz:</h2>`;
         summaryHtml += `<p>Puntuación actual: ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
         
         // Calcular la cantidad de preguntas restantes por responder

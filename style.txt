@@ -1,18 +1,27 @@
+/* Estilos generales para el texto */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: #0F2027;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   color: white;
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
 }
 
+/* Estilos para el contenedor del quiz */
 #quiz {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 30px auto;
     text-align: center;
+    padding: 20px;
+    
 }
+.sumarsinestrellas {
+    margin-top: 5px;
+    color: lightcoral;
+}
+
 
 #question {
     font-size: 20px;
@@ -28,87 +37,6 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-span{
-    color: #000;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos para los select */
-select {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
-    appearance: none; /* Para eliminar los estilos de selección del navegador */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-/* Estilos para los botones */
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #45a049;
-    background: #83a4d4;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #b6fbff, #83a4d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   
-
-}
-
-/* Estilos para el contenedor del quiz */
-#quiz {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Otros estilos */
-h1 {
-    margin-bottom: 20px;
-}
-
-p {
-    margin-top: 20px;
-}
-
-
-/* Estilos para los select */
-select {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
-    appearance: none; /* Para eliminar los estilos de selección del navegador */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    margin-bottom: 10px;
-}
-
-/* Estilos para los botones */
-button {
-    padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -120,87 +48,67 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
-    background: #83a4d4;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #b6fbff, #83a4d4);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #b6fbff, #83a4d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #41295a;  /* fallback for old browsers */
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #237A57, #093028);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
 
-}
-
-button[disabled] {
-    background-color: #ff5454;
-    cursor: not-allowed;
-}
-
-/* Estilos para el contenedor del quiz */
-#quiz {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Otros estilos */
-h1 {
-    margin-bottom: 20px;
-}
-
-p {
-    margin-top: 20px;
-}
-
-/* Estilos para los select */
-select {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
-    appearance: none; /* Para eliminar los estilos de selección del navegador */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    margin-bottom: 10px;
-}
-
-/* Estilos para los botones */
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-button:hover {
-    background-color: #45a049;
-    background: #360033;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #0b8793, #360033);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #0b8793, #360033); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
 }
 
 button[disabled] {
     background: #16222A;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
     cursor: not-allowed;
 }
 
-/* Estilos para el contenedor del quiz */
-#quiz {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
+
+#start-btn{
+    background: #8E2DE2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-/* Otros estilos */
+#start-btn:hover{
+    background: #1f4037;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.user-info {
+    margin-bottom: 0; /* Eliminar margen inferior */
+   
+    color: #e65c00;  /* fallback for old browsers */
+    color: -webkit-linear-gradient(to right, #F9D423, #e65c00);  /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to right, #F9D423, #e65c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.user-info span {
+
+    margin-left: 0px; /* Ajustar el margen izquierdo entre el texto y el valor */
+    color:#71d4ff;
+    margin-left:5px ;
+    margin-right: 5px;
+}
+.card-user{
+  
+}
+i{
+    color:gainsboro;
+}
+
+span {
+    color: #000;
+}
+
 h1 {
     margin-bottom: 20px;
 }
@@ -209,7 +117,23 @@ p {
     margin-top: 20px;
 }
 
+/* Estilos para los select */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 
+    appearance: none; /* Para eliminar los estilos de selección del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-bottom: 10px;
+}
 
 /* Estilos para los botones del resumen */
 #summary-buttons {
@@ -222,27 +146,121 @@ p {
 .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: #141E30;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
 }
+
+
 
 .select-container select {
     width: 100%;
 }
 
+/* Estilos responsivos */
 @media (max-width: 590px) {
-    .select-container  {
+    .select-container {
         width: auto;
-        
     }
 
     .select-container select {
-        width: 250px;
+        width:270px;
     }
-    #category,#level{
-        margin-left: 10px;
+
+    #category, #level {
+        margin-left: 25px;
     }
+}
+
+
+/* Estilos responsivos */
+@media (max-width: 400px) {
+    .select-container {
+        width: auto;
+    }
+
+    .select-container select {
+        width:280px;
+    }
+
+    #category, #level {
+        margin-left: 5px;
+    }
+}
+
+/* Estilos para respuestas */
+.correct-answer {
+    background-color: #28a745;
+}
+
+.incorrect-answer {
+    background-color: #dc3545;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+    body {
+        font-size: 17px; /* Incrementa el tamaño del texto en dispositivos móviles */
+    }
+
+    h2 {
+        font-size: 26px; /* Incrementa el tamaño de los encabezados h2 en dispositivos móviles */
+    }
+
+    h3 {
+        font-size: 22px; /* Incrementa el tamaño de los encabezados h3 en dispositivos móviles */
+    }
+
+    p {
+        font-size: 16px; /* Incrementa el tamaño del texto en párrafos en dispositivos móviles */
+    }
+
+    button {
+        font-size: 16px; /* Incrementa el tamaño del texto en botones en dispositivos móviles */
+    }
+}
+
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease-in-out;
 }

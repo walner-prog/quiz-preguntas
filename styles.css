@@ -94,12 +94,16 @@ background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, F
 .user-info span {
 
     margin-left: 0px; /* Ajustar el margen izquierdo entre el texto y el valor */
-    color:#71d4ff;
+    color:#a7e5ff;
     margin-left:5px ;
     margin-right: 5px;
 }
 .card-user{
   
+}
+.quiz-start-image {
+    max-width: 100%;
+    height: auto;
 }
 i{
     color:gainsboro;
