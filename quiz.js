@@ -175,22 +175,22 @@ function updateUserInfo() {
 
 
 function showSummary() {
-    
-    
     document.getElementById('user-info-container').style.display = 'none';
-    let summaryHtml = `<div class="container"><h2 >Resultado del Quiz</h2>`;
+    let summaryHtml = `<div class="container"><h2>Resultado del Quiz</h2>`;
     summaryHtml += `<div style="color: #e65c00;"><p><strong>Nombre:</strong> ${nombreApellido}</p>`;
     summaryHtml += `<p><strong>Categoría:</strong> ${currentCategory}</p></div>`;
     summaryHtml += `<div style="color: #e65c00; margin-top: 10px;"><p><strong>Nivel:</strong> ${currentLevel}</p>`;
     summaryHtml += `<p><strong>Puntuación:</strong> ${score}/${questions[currentCategory][currentLevel].length * 5}</p></div></div>`;
-    
 
     // Verificar si todas las preguntas han sido respondidas
     if (currentQuestionIndex === questions[currentCategory][currentLevel].length) {
-        // Todas las preguntas han sido respondidas
-        summaryHtml += `<h2 style="color: #C4F8FC;>Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
+        summaryHtml += `<h2 style="color: #C4F8FC;">Has completado el quiz. Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}</h2>`;
         if (score === questions[currentCategory][currentLevel].length * 5) {
             summaryHtml += '<p style="color: green;">¡Perfecto! Has acertado todas las preguntas.</p>';
+            // Añadir la medalla
+            summaryHtml += '<p><i class="fas fa-medal" style="color: gold; font-size: 24px;"></i> ¡Felicidades! Has ganado una medalla por responder todas las preguntas correctamente.</p>';
+            summaryHtml += '<p><i class="fas fa-award" style="color: blue; font-size: 24px;"></i> ¡Felicidades! Has obtenido un Certificado de Excelencia.</p>';
+            summaryHtml += '<p><i class="fas fa-unlock" style="color: purple; font-size: 24px;"></i> Tienes acceso a <a href="contenido-exclusivo.html" target="_blank">contenido exclusivo</a>.</p>';
         } else {
             summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
             incorrectQuestions.forEach((q, index) => {
@@ -199,25 +199,16 @@ function showSummary() {
             });
         }
     } else {
-        // Mostrar el resumen hasta el momento si no se han respondido todas las preguntas
-        summaryHtml += `<h2 style="color: #C4F8FC;>Resumen del quiz:</h2>`;
+        summaryHtml += `<h2 style="color: #C4F8FC;">Resumen del quiz:</h2>`;
         summaryHtml += `<p>Puntuación actual: ${score}/${questions[currentCategory][currentLevel].length * 5}</p>`;
-        
-        // Calcular la cantidad de preguntas restantes por responder
         const remainingQuestions = questions[currentCategory][currentLevel].length - currentQuestionIndex;
         summaryHtml += `<p>Te faltan responder ${remainingQuestions} preguntas.</p>`;
-        
-        // Mostrar las estrellas ganadas
-        
-        // Mostrar las estrellas ganadas
         const starsEarned = Math.floor(score / 20);
         if (starsEarned > 0) {
             summaryHtml += `<p>Estrellas ganadas: ${starsEarned}</p>`;
         } else {
             summaryHtml += '<p>No se ganaron estrellas hasta el momento.</p>';
         }
-        
-        // Mostrar las preguntas incorrectas si las hay
         if (incorrectQuestions.length > 0) {
             summaryHtml += '<h3 style="color: red;">Preguntas incorrectas:</h3>';
             incorrectQuestions.forEach((q, index) => {
@@ -228,12 +219,8 @@ function showSummary() {
             summaryHtml += '<p style="color: green;">No hay preguntas incorrectas hasta el momento.</p>';
         }
     }
-    
 
-    // Calculate stars earned
     const starsEarned = Math.floor(score / 20);
-
-    // Add stars earned to the summary if at least one star is earned
     if (starsEarned > 0) {
         summaryHtml += `<p style="margin-top: 5px;">Estrellas ganadas:</p>`;
         for (let i = 0; i < starsEarned; i++) {
@@ -252,6 +239,7 @@ function showSummary() {
         window.location.reload();
     });
 }
+
 
 
 
@@ -286,48 +274,68 @@ function downloadResults() {
     doc.setTextColor(40);
     doc.text(`Puntuación: ${score}/${questions[currentCategory][currentLevel].length * 5}`, 20, 65);
 
-    // Preguntas incorrectas o mensaje de éxito
+    // Determinar si se han respondido todas las preguntas correctamente
     let startY = 85;
-    if (incorrectQuestions.length > 0) {
-        doc.setTextColor(255, 0, 0);
-        doc.setFontSize(14);
-        doc.text('Preguntas incorrectas:', 20, startY);
-
-        startY += 10; // Ajuste para separar el título de las preguntas
-
-        doc.setFontSize(12);
-        incorrectQuestions.forEach((q, index) => {
-            const questionText = `${index + 1}. ${q.question}`;
-            const answerText = `Respuesta correcta: ${q.answer}`;
-            const lineHeight = 10;
-
-            const textLines = doc.splitTextToSize(`${questionText}\n${answerText}`, 170);
-            const remainingSpace = doc.internal.pageSize.height - startY;
-            if (remainingSpace < textLines.length * lineHeight) {
-                doc.addPage();
-                startY = 20;
-            }
-
-            textLines.forEach(line => {
-                doc.text(20, startY, line);
-                startY += lineHeight;
-            });
-        });
-    } else {
+    if (score === questions[currentCategory][currentLevel].length * 5) {
         doc.setTextColor(0, 128, 0);
         doc.setFontSize(14);
         doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, startY);
+        startY += 10;
+        doc.setFontSize(12);
+        doc.setTextColor(40);
+        doc.text('Medalla de Oro: ', 20, startY);
+        doc.addImage('img/oro.jpg', 'JPG', 80, startY - 5, 15, 15);
+        startY += 20;
+        doc.text('Certificado de Excelencia: ', 20, startY);
+        doc.addImage('img/star.png', 'PNG', 110, startY - 5, 15, 15);
+        startY += 20;
+        doc.text('Acceso a contenido exclusivo: ', 20, startY);
+        doc.setTextColor(0, 0, 255);
+        doc.textWithLink('Haz clic aquí para acceder.', 90, startY, { url: 'contenido-exclusivo.html' });
+    } else {
+        // Mostrar preguntas incorrectas si las hay
+        if (incorrectQuestions.length > 0) {
+            doc.setTextColor(255, 0, 0);
+            doc.setFontSize(14);
+            doc.text('Preguntas incorrectas:', 20, startY);
+
+            startY += 10; // Ajuste para separar el título de las preguntas
+
+            doc.setFontSize(12);
+            incorrectQuestions.forEach((q, index) => {
+                const questionText = `${index + 1}. ${q.question}`;
+                const answerText = `Respuesta correcta: ${q.answer}`;
+                const lineHeight = 10;
+
+                const textLines = doc.splitTextToSize(`${questionText}\n${answerText}`, 170);
+                const remainingSpace = doc.internal.pageSize.height - startY;
+                if (remainingSpace < textLines.length * lineHeight) {
+                    doc.addPage();
+                    startY = 20;
+                }
+
+                textLines.forEach(line => {
+                    doc.text(20, startY, line);
+                    startY += lineHeight;
+                });
+            });
+        } else {
+            doc.setTextColor(0, 128, 0);
+            doc.setFontSize(14);
+            doc.text('¡Perfecto! Has acertado todas las preguntas.', 20, startY);
+        }
     }
 
     // Estrellas ganadas
     const starsEarned = Math.floor(score / 20);
     if (starsEarned > 0) {
+        startY += 10; // Añadir un poco de espacio antes de las estrellas
         doc.setTextColor(40);
         doc.setFontSize(12);
-        doc.text('Estrellas ganadas:', 20, startY + 10);
+        doc.text('Estrellas ganadas:', 20, startY);
 
         for (let i = 0; i < starsEarned; i++) {
-            doc.addImage('img/star.png', 'PNG', 30 + (i * 15), startY + 15, 10, 10);
+            doc.addImage('img/star.png', 'PNG', 30 + (i * 15), startY + 5, 10, 10);
         }
     }
 
@@ -339,6 +347,7 @@ function downloadResults() {
     // Guardar el PDF
     doc.save('resultado_quiz.pdf');
 }
+
 
 
 function showStars(starCount) {
