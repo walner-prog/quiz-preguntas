@@ -35,3 +35,54 @@
     <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-coins"></i></span> Puntos <span class="bg-warning" id="points-counter">0</span></p>
     <p class="user-info text-warning mr-1 bg-info p-2 rounded"><span><i class="fas fa-star"></i></span> Estrellas <span id="stars-counter">0</span></p>
 </div>
+
+
+ <!-- Botón para mostrar/ocultar el collapse -->
+        <div class="text-center mb-3">
+            <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#quizInfo" aria-expanded="false" aria-controls="quizInfo">
+                Información del Quiz
+            </button>
+        </div>
+
+        <!-- Contenido del collapse -->
+        <div class="collapse" id="quizInfo">
+            <div class="card card-body">
+                <h2>Instrucciones del Quiz</h2>
+                <p>Responde a las siguientes preguntas seleccionando la opción correcta. Tienes 20 minutos para completar el quiz. Cada respuesta correcta suma 1 punto.</p>
+                <h2>Reglas del Quiz</h2>
+                <ul>
+                    <li>No se permite el uso de material externo.</li>
+                    <li>No está permitido colaborar con otros participantes.</li>
+                    <li>El tiempo es limitado, administra tu tiempo sabiamente.</li>
+                </ul>
+                <h2>Ejemplos de Preguntas</h2>
+                <p><strong>Pregunta 1:</strong> ¿Cuál es la capital de Francia?</p>
+                <ul>
+                    <li>A) Berlín</li>
+                    <li>B) Madrid</li>
+                    <li>C) París</li>
+                    <li>D) Roma</li>
+                </ul>
+                <p><strong>Pregunta 2:</strong> ¿Quién escribió "Don Quijote de la Mancha"?</p>
+                <ul>
+                    <li>A) Gabriel García Márquez</li>
+                    <li>B) Miguel de Cervantes</li>
+                    <li>C) Pablo Neruda</li>
+                    <li>D) Federico García Lorca</li>
+                </ul>
+                <h2>Consejos y Estrategias</h2>
+                <ul>
+                    <li>Lee todas las opciones antes de responder.</li>
+                    <li>Si no estás seguro de una respuesta, marca la que creas más probable y continúa.</li>
+                    <li>Revisa tus respuestas si te sobra tiempo.</li>
+                </ul>
+                <h2>Guía de Temas</h2>
+                <p>El quiz cubrirá los siguientes temas:</p>
+                <ul>
+                    <li>Geografía</li>
+                    <li>Historia</li>
+                    <li>Literatura</li>
+                    <li>Ciencias</li>
+                </ul>
+            </div>
+        </div>
