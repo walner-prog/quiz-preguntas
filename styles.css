@@ -325,50 +325,27 @@ select {
     animation: slideInLeft 0.5s ease-in-out;
 }
 
-.carousel-inner {
-    width: 100%;
-    max-width: 1085px;
-    height: 940px;
-    max-height: 800px;
-    margin: auto;
-    border-radius:10px;
+
+.carousel-item {
+    text-align: center;
 }
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+.carousel-item i {
+    font-size: 4rem;
+    color: #fffd69; /* Color blanco para los íconos */
+    margin-bottom: 0rem;
+
 }
-.carousel-item h3 {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
+
+.carousel-item h5 {
+    
 }
-.carousel-item .icons {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border-radius: 5px;
-}
-.carousel-indicators {
-    bottom: -30px;
-}
-@media (max-width: 600px) {
-    .carousel-inner {
-        height: auto;
-        max-height: none;
-    }
-    .carousel-item h3, .carousel-item .icons {
-        left: 10%;
-        transform: translateX(0);
-    }
+
+.carousel-item.bg-gradient {
+    background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    border-radius: 10px;
 }
 
