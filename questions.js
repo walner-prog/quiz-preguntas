@@ -2265,7 +2265,321 @@ const questions = {
                 "answer": "Simón Bolívar"
                },
             ]
+
+            
         },
+        ingles:{
+            facil:[
+                {
+                    "question": "¿De qué color es el cielo?",
+                    "options": ["Blue", "Green", "Red", "Yellow"],
+                    "answer": "Blue"
+                },
+                {
+                    "question": "¿Cuántas patas tiene un gato?",
+                    "options": ["Two", "Four", "Six", "Eight"],
+                    "answer": "Four"
+                },
+                {
+                    "question": "¿Cuál es la primera letra del abecedario?",
+                    "options": ["A", "B", "C", "D"],
+                    "answer": "A"
+                },
+                {
+                    "question": "¿Qué animal dice 'woof'?",
+                    "options": ["Cat", "Dog", "Cow", "Sheep"],
+                    "answer": "Dog"
+                },
+                {
+                    "question": "¿Qué fruta es amarilla y a los monos les encanta comer?",
+                    "options": ["Apple", "Banana", "Orange", "Grape"],
+                    "answer": "Banana"
+                },
+                {
+                    "question": "¿Qué día viene después del lunes?",
+                    "options": ["Sunday", "Tuesday", "Wednesday", "Thursday"],
+                    "answer": "Tuesday"
+                },
+                {
+                    "question": "¿Cuántos dedos tienes en una mano?",
+                    "options": ["Three", "Four", "Five", "Six"],
+                    "answer": "Five"
+                },
+                {
+                    "question": "¿Cuál es el opuesto de 'arriba'?",
+                    "options": ["Down", "Left", "Right", "Around"],
+                    "answer": "Down"
+                },
+                {
+                    "question": "¿Cómo se llama a un perro bebé?",
+                    "options": ["Kitten", "Puppy", "Cub", "Chick"],
+                    "answer": "Puppy"
+                },
+                {
+                    "question": "¿Qué es 2 + 2?",
+                    "options": ["3", "4", "5", "6"],
+                    "answer": "4"
+                },
+                {
+                    "question": "¿De qué color es el pasto?",
+                    "options": ["Red", "Blue", "Green", "Yellow"],
+                    "answer": "Green"
+                },
+                {
+                    "question": "¿Qué animal dice 'meow'?",
+                    "options": ["Dog", "Sheep", "Cat", "Horse"],
+                    "answer": "Cat"
+                },
+                {
+                    "question": "¿Qué forma tiene una pelota?",
+                    "options": ["Square", "Triangle", "Circle", "Rectangle"],
+                    "answer": "Circle"
+                },
+                {
+                    "question": "¿Cuál es la estación fría y a veces tiene nieve?",
+                    "options": ["Summer", "Winter", "Spring", "Fall"],
+                    "answer": "Winter"
+                },
+                {
+                    "question": "¿Cuántas ruedas tiene una bicicleta?",
+                    "options": ["One", "Two", "Three", "Four"],
+                    "answer": "Two"
+                },
+                {
+                    "question": "¿Qué bebes que viene de las vacas?",
+                    "options": ["Juice", "Milk", "Water", "Soda"],
+                    "answer": "Milk"
+                },
+                {
+                    "question": "¿De qué color son las manzanas?",
+                    "options": ["Blue", "Red", "Pink", "Purple"],
+                    "answer": "Red"
+                },
+                {
+                    "question": "¿Qué te pones en los pies?",
+                    "options": ["Hat", "Shoes", "Shirt", "Pants"],
+                    "answer": "Shoes"
+                },
+                {
+                    "question": "¿Qué hacen las abejas?",
+                    "options": ["Milk", "Honey", "Bread", "Juice"],
+                    "answer": "Honey"
+                },
+                {
+                    "question": "¿De qué color es una señal de alto?",
+                    "options": ["Blue", "Green", "Yellow", "Red"],
+                    "answer": "Red"
+                }
+            ],
+            intermedio:[
+                
+                    {
+                        "question": "¿Qué animal vive en el océano y tiene ocho brazos?",
+                        "options": ["Dolphin", "Octopus", "Shark", "Whale"],
+                        "answer": "Octopus"
+                    },
+                    {
+                        "question": "¿Qué fruta es roja y crece en los árboles?",
+                        "options": ["Banana", "Apple", "Grape", "Orange"],
+                        "answer": "Apple"
+                    },
+                    {
+                        "question": "¿Cuál es el planeta más cercano al sol?",
+                        "options": ["Venus", "Mars", "Mercury", "Earth"],
+                        "answer": "Mercury"
+                    },
+                    {
+                        "question": "¿Qué haces con un lápiz?",
+                        "options": ["Eat", "Sleep", "Write", "Play"],
+                        "answer": "Write"
+                    },
+                    {
+                        "question": "¿Qué insecto hace miel?",
+                        "options": ["Butterfly", "Bee", "Ant", "Spider"],
+                        "answer": "Bee"
+                    },
+                    {
+                        "question": "¿Cuál es el opuesto de 'rápido'?",
+                        "options": ["Slow", "Quick", "Fast", "Run"],
+                        "answer": "Slow"
+                    },
+                    {
+                        "question": "¿Qué animal dice 'moo'?",
+                        "options": ["Sheep", "Cow", "Duck", "Pig"],
+                        "answer": "Cow"
+                    },
+                    {
+                        "question": "¿Cuántos días tiene una semana?",
+                        "options": ["Five", "Six", "Seven", "Eight"],
+                        "answer": "Seven"
+                    },
+                    {
+                        "question": "¿Qué utilizas para cortar papel?",
+                        "options": ["Pencil", "Ruler", "Scissors", "Eraser"],
+                        "answer": "Scissors"
+                    },
+                    {
+                        "question": "¿Cuál es el cuarto mes del año?",
+                        "options": ["March", "April", "May", "June"],
+                        "answer": "April"
+                    },
+                    {
+                        "question": "¿Qué necesitas para nadar?",
+                        "options": ["Bike", "Swimsuit", "Skates", "Shoes"],
+                        "answer": "Swimsuit"
+                    },
+                    {
+                        "question": "¿Qué forma tiene una caja de zapatos?",
+                        "options": ["Circle", "Triangle", "Square", "Rectangle"],
+                        "answer": "Rectangle"
+                    },
+                    {
+                        "question": "¿Qué bebida es caliente y se bebe en las mañanas?",
+                        "options": ["Milk", "Water", "Juice", "Coffee"],
+                        "answer": "Coffee"
+                    },
+                    {
+                        "question": "¿Qué animal tiene una larga trompa y es muy grande?",
+                        "options": ["Lion", "Elephant", "Giraffe", "Kangaroo"],
+                        "answer": "Elephant"
+                    },
+                    {
+                        "question": "¿Qué usas en la cabeza para protegerte del sol?",
+                        "options": ["Shoes", "Hat", "Gloves", "Scarf"],
+                        "answer": "Hat"
+                    },
+                    {
+                        "question": "¿De qué color es una zanahoria?",
+                        "options": ["Red", "Blue", "Orange", "Purple"],
+                        "answer": "Orange"
+                    },
+                    {
+                        "question": "¿Qué estación viene después del verano?",
+                        "options": ["Spring", "Winter", "Fall", "Summer"],
+                        "answer": "Fall"
+                    },
+                    {
+                        "question": "¿Qué usas para limpiar tus dientes?",
+                        "options": ["Brush", "Comb", "Toothbrush", "Soap"],
+                        "answer": "Toothbrush"
+                    },
+                    {
+                        "question": "¿Qué insecto tiene alas y vuela por las flores?",
+                        "options": ["Ant", "Bee", "Butterfly", "Spider"],
+                        "answer": "Butterfly"
+                    },
+                    {
+                        "question": "¿Cuántas horas tiene un día?",
+                        "options": ["12", "24", "36", "48"],
+                        "answer": "24"
+                    }
+                
+                
+            ],
+            dificil:[
+                {
+                    "question": "¿Quién pintó la Mona Lisa?",
+                    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+                    "answer": "Leonardo da Vinci"
+                },
+                {
+                    "question": "¿Cuál es el valor de Pi (π) redondeado a dos decimales?",
+                    "options": ["3.12", "3.14", "3.16", "3.18"],
+                    "answer": "3.14"
+                },
+                {
+                    "question": "¿Qué instrumento tiene teclas y se toca con las manos?",
+                    "options": ["Guitar", "Piano", "Drum", "Violin"],
+                    "answer": "Piano"
+                },
+                {
+                    "question": "¿Cuál es el nombre del mago en 'Harry Potter'?",
+                    "options": ["Frodo", "Gandalf", "Merlin", "Harry"],
+                    "answer": "Harry"
+                },
+                {
+                    "question": "¿Qué planeta es conocido como el 'Planeta Rojo'?",
+                    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+                    "answer": "Mars"
+                },
+                {
+                    "question": "¿Cuál es la suma de los ángulos internos de un triángulo?",
+                    "options": ["90 degrees", "180 degrees", "270 degrees", "360 degrees"],
+                    "answer": "180 degrees"
+                },
+                {
+                    "question": "¿Qué país inventó el papel?",
+                    "options": ["Egypt", "China", "Greece", "India"],
+                    "answer": "China"
+                },
+                {
+                    "question": "¿Qué deporte se juega en Wimbledon?",
+                    "options": ["Soccer", "Basketball", "Tennis", "Cricket"],
+                    "answer": "Tennis"
+                },
+                {
+                    "question": "¿Quién es el autor de 'Matilda'?",
+                    "options": ["Roald Dahl", "J.K. Rowling", "Lewis Carroll", "Mark Twain"],
+                    "answer": "Roald Dahl"
+                },
+                {
+                    "question": "¿Qué gas llenan en los globos para que floten?",
+                    "options": ["Oxygen", "Carbon Dioxide", "Hydrogen", "Helium"],
+                    "answer": "Helium"
+                },
+                {
+                    "question": "¿Cuál es el órgano que bombea sangre por el cuerpo?",
+                    "options": ["Brain", "Lungs", "Heart", "Liver"],
+                    "answer": "Heart"
+                },
+                {
+                    "question": "¿Qué animal es conocido por construir presas?",
+                    "options": ["Beaver", "Otter", "Duck", "Frog"],
+                    "answer": "Beaver"
+                },
+                {
+                    "question": "¿Cuál es el continente más pequeño?",
+                    "options": ["Africa", "Europe", "Australia", "Antarctica"],
+                    "answer": "Australia"
+                },
+                {
+                    "question": "¿Qué tipo de animal es la ballena?",
+                    "options": ["Fish", "Bird", "Mammal", "Reptile"],
+                    "answer": "Mammal"
+                },
+                {
+                    "question": "¿Quién fue el primer presidente de los Estados Unidos?",
+                    "options": ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams"],
+                    "answer": "George Washington"
+                },
+                {
+                    "question": "¿En qué país se encuentra la Torre Eiffel?",
+                    "options": ["Italy", "Spain", "Germany", "France"],
+                    "answer": "France"
+                },
+                {
+                    "question": "¿Qué es la capital de Canadá?",
+                    "options": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+                    "answer": "Ottawa"
+                },
+                {
+                    "question": "¿Qué animal es famoso por su larga siesta invernal?",
+                    "options": ["Squirrel", "Bear", "Rabbit", "Deer"],
+                    "answer": "Bear"
+                },
+                {
+                    "question": "¿Cuál es el término científico para la pérdida de agua de las plantas?",
+                    "options": ["Respiration", "Transpiration", "Perspiration", "Inspiration"],
+                    "answer": "Transpiration"
+                },
+                {
+                    "question": "¿Qué inventó Alexander Graham Bell?",
+                    "options": ["Television", "Telephone", "Computer", "Radio"],
+                    "answer": "Telephone"
+                }
+            ]
+
+        }
     }
          
 
