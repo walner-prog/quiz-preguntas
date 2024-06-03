@@ -27,6 +27,8 @@ document.getElementById('start-btn').addEventListener('click', function() {
 });
 
 // Variables globales
+let session = '';
+let add_users ='';
 let nombreApellido = 'Usuario';
 let profilePictureData = '';
 let currentQuestionIndex = 0;

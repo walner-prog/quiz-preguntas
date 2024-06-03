@@ -18,6 +18,57 @@ const questions = {
                 "answer": "3"
             },
             {
+                "question": "¿Cuánto es 6 + 4?",
+                "options": ["8", "9", "10", "11"],
+                "answer": "10"
+            },
+            {
+                "question": "¿Cuánto es 9 - 2?",
+                "options": ["5", "6", "7", "8"],
+                "answer": "7"
+            },
+            {
+                "question": "¿Cuánto es 2 * 7?",
+                "options": ["12", "13", "14", "15"],
+                "answer": "14"
+            },
+            {
+                "question": "¿Cuánto es 8 / 2?",
+                "options": ["2", "3", "4", "5"],
+                "answer": "4"
+            },
+            {
+                "question": "¿Cuánto es 5 + 5?",
+                "options": ["9", "10", "11", "12"],
+                "answer": "10"
+            },
+            {
+                "question": "¿Cuánto es 12 - 4?",
+                "options": ["6", "7", "8", "9"],
+                "answer": "8"
+            },
+            {
+                "question": "¿Cuánto es 3 * 3?",
+                "options": ["6", "7", "8", "9"],
+                "answer": "9"
+            },
+            {
+                "question": "¿Cuánto es 16 / 4?",
+                "options": ["2", "3", "4", "5"],
+                "answer": "4"
+            },
+            {
+                "question": "¿Cuánto es 2 + 2?",
+                "options": ["3", "4", "5", "6"],
+                "answer": "4"
+            },
+            {
+                "question": "¿Cuánto es 15 - 5?",
+                "options": ["8", "9", "10", "11"],
+                "answer": "10"
+            },
+        
+            {
                 "question": "¿Cuánto es 3 + 4?",
                 "options": ["6", "7", "8", "9"],
                 "answer": "7"
@@ -28,21 +79,8 @@ const questions = {
                 "answer": "10"
             },
            
-            {
-                "question": "¿Cuántos mililitros hay en un litro?",
-                "options": ["10", "100", "1000", "10000"],
-                "answer": "1000"
-            },
-            {
-                "question": "¿Cuál es la unidad de medida más común para medir el peso de objetos pequeños?",
-                "options": ["Gramo", "Kilogramo", "Tonelada", "Mililitro"],
-                "answer": "Gramo"
-            },
-            {
-                "question": "¿Cuántos litros hay en un metro cúbico?",
-                "options": ["10", "100", "1000", "10000"],
-                "answer": "1000"
-            },
+            
+           
             {
                 "question": "¿Cuánto es 9 - 5?",
                 "options": ["2", "3", "4", "5"],
@@ -117,9 +155,9 @@ const questions = {
                 "answer": "9"
             },
             {
-                "question": "¿Cuánto es 6 * 4?",
-                "options": ["22", "23", "24", "25"],
-                "answer": "24"
+                "question": "¿Cuánto es 2 * 4?",
+                "options": ["8", "23", "24", "25"],
+                "answer": "8"
             },
             {
                 "question": "¿Cuánto es 9 + 1?",
@@ -279,16 +317,7 @@ const questions = {
                 "options": ["10", "100", "1000", "10000"],
                 "answer": "1000"
             },
-            {
-                "question": "¿Cuántos gramos hay en un kilogramo?",
-                "options": ["100", "500", "1000", "2000"],
-                "answer": "1000"
-            },
-            {
-                "question": "¿Cuál es la unidad de medida más común para medir el volumen de líquidos?",
-                "options": ["Mililitro", "Centímetro", "Litro", "Kilogramo"],
-                "answer": "Litro"
-            },
+            
             {
                 "question": "¿Cuántos kilogramos hay en una tonelada?",
                 "options": ["100", "1000", "10000", "100000"],
@@ -314,6 +343,86 @@ const questions = {
                 "question": "Juan tiene 16 manzanas. Si decide repartir igualmente las manzanas entre él y sus 3 amigos, ¿cuántas manzanas le corresponden a cada uno?",
                 "options": ["3 manzanas", "4 manzanas", "5 manzanas", "6 manzanas"],
                 "answer": "4 manzanas"
+            },
+            {
+                "question": "¿Cuál es el resultado de (5^3) - 15?",
+                "options": ["110", "115", "120", "125"],
+                "answer": "110"
+            },
+            {
+                "question": "¿Cuál es la raíz cuadrada de 169?",
+                "options": ["11", "12", "13", "14"],
+                "answer": "13"
+            },
+            {
+                "question": "¿Cuál es la raíz cúbica de 27?",
+                "options": ["2", "3", "4", "5"],
+                "answer": "3"
+            },
+            {
+                "question": "Si a = 2, b = 3 y c = 4, ¿Cuál es el resultado de a * (b + c) usando la propiedad asociativa?",
+                "options": ["14", "20", "24", "28"],
+                "answer": "14"
+            },
+            {
+                "question": "¿Cuál es el MCD de 24 y 36?",
+                "options": ["4", "6", "8", "12"],
+                "answer": "12"
+            },
+            {
+                "question": "¿Cuál es el MCM de 6 y 8?",
+                "options": ["12", "18", "24", "30"],
+                "answer": "24"
+            },
+            {
+                "question": "¿Cuál es el resultado de 2 * 3 usando la propiedad conmutativa?",
+                "options": ["5", "6", "7", "8"],
+                "answer": "6"
+            },
+            {
+                "question": "¿Cuál de los siguientes números es impar?",
+                "options": ["4", "8", "11", "16"],
+                "answer": "11"
+            },
+            {
+                "question": "¿Cuál de los siguientes números es primo?",
+                "options": ["9", "12", "17", "18"],
+                "answer": "17"
+            },
+            {
+                "question": "¿Cuál es el resultado de (2^4) + 3?",
+                "options": ["19", "20", "21", "22"],
+                "answer": "19"
+            },
+            {
+                "question": "¿Cuál es la raíz cuadrada de 100?",
+                "options": ["8", "9", "10", "11"],
+                "answer": "10"
+            },
+            {
+                "question": "¿Cuál de los siguientes números es compuesto?",
+                "options": ["2", "3", "5", "6"],
+                "answer": "6"
+            },
+            {
+                "question": "¿Cuál es el resultado de 15 + 20 usando la propiedad conmutativa?",
+                "options": ["30", "35", "40", "45"],
+                "answer": "35"
+            },
+            {
+                "question": "Si a = 3, b = 5 y c = 2, ¿Cuál es el resultado de (a + b) * c usando la propiedad asociativa?",
+                "options": ["10", "12", "14", "16"],
+                "answer": "16"
+            },
+            {
+                "question": "¿Cuál es el MCD de 18 y 24?",
+                "options": ["3", "4", "6", "9"],
+                "answer": "6"
+            },
+            {
+                "question": "¿Cuál es el MCM de 4 y 5?",
+                "options": ["10", "15", "20", "25"],
+                "answer": "20"
             }
             
            
@@ -425,26 +534,59 @@ const questions = {
     },
     lengua_literatura: {
         facil: [
-            {
-                "question": "¿Cuál es la definición de 'sustantivo'?",
-                "options": ["Una acción", "Una persona, lugar o cosa", "Un adjetivo", "Un verbo"],
-                "answer": "Una persona, lugar o cosa"
-            },
-            {
-                "question": "¿Cuál es el antónimo de 'grande'?",
-                "options": ["Pequeño", "Largo", "Ancho", "Alto"],
-                "answer": "Pequeño"
-            },
-            {
-                "question": "¿Qué es un sinónimo de 'rápido'?",
-                "options": ["Lento", "Veloz", "Despacio", "Pausado"],
-                "answer": "Veloz"
-            },
-            {
-                "question": "Completa la oración: La casa es muy ....",
-                "options": ["Grande", "Luminosa", "Tierna", "De ayer"],
-                "answer": "Grande"
-            },
+                {
+        "question": "¿Cuál es la primera letra del abecedario?",
+        "options": ["A", "B", "C", "D"],
+        "answer": "A"
+    },
+    {
+        "question": "¿Cuál de las siguientes es una consonante?",
+        "options": ["A", "E", "I", "B"],
+        "answer": "B"
+    },
+    {
+        "question": "¿Cuál es una vocal?",
+        "options": ["D", "E", "F", "G"],
+        "answer": "E"
+    },
+    {
+        "question": "¿Cuál de las siguientes letras es una consonante?",
+        "options": ["A", "C", "I", "O"],
+        "answer": "C"
+    },
+    {
+        "question": "¿Cuál es una letra que NO es vocal?",
+        "options": ["A", "I", "U", "T"],
+        "answer": "T"
+    },
+    {
+        "question": "¿Cuál es la última vocal del abecedario?",
+        "options": ["A", "E", "I", "U"],
+        "answer": "U"
+    },
+    {
+        "question": "¿Cuál de estas letras es una vocal?",
+        "options": ["B", "D", "O", "G"],
+        "answer": "O"
+    },
+    {
+        "question": "¿Cuál es una letra que es consonante?",
+        "options": ["E", "I", "M", "O"],
+        "answer": "M"
+    },
+    {
+        "question": "¿Cuál de las siguientes es una vocal?",
+        "options": ["J", "K", "L", "A"],
+        "answer": "A"
+    },
+    {
+        "question": "¿Cuál de las siguientes letras es una consonante?",
+        "options": ["A", "E", "N", "I"],
+        "answer": "N"
+    },
+
+            
+            
             {
                 "question": "¿Cuántas letras tiene el abecedario español?",
                 "options": ["26", "27", "28", "29"],
@@ -496,6 +638,110 @@ const questions = {
                 "answer": "I"
             },
             {
+                "question": "¿Cuál de las siguientes palabras tiene la sílaba 'ma'?",
+                "options": ["mesa", "cama", "luna", "sopa"],
+                "answer": "cama"
+            },
+            {
+                "question": "¿Cuál de estas letras es una consonante?",
+                "options": ["A", "E", "I", "R"],
+                "answer": "R"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras comienza con una vocal?",
+                "options": ["sol", "elefante", "ratón", "gato"],
+                "answer": "elefante"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras NO contiene la vocal 'e'?",
+                "options": ["perro", "gato", "león", "mesa"],
+                "answer": "gato"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras tiene la sílaba 'lo'?",
+                "options": ["cama", "malo", "loro", "sol"],
+                "answer": "loro"
+            },
+            {
+                "question": "¿Cuál de estas letras es una vocal?",
+                "options": ["B", "D", "E", "G"],
+                "answer": "E"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras termina con la letra 's'?",
+                "options": ["ratón", "pato", "arroz", "peras"],
+                "answer": "peras"
+            },
+           
+            {
+                "question": "¿Cuál es la cuarta vocal del abecedario?",
+                "options": ["A", "E", "I", "O"],
+                "answer": "O"
+            },
+            {
+                "question": "¿Cuál de estas palabras contiene la sílaba 'to'?",
+                "options": ["casa", "pato", "mesa", "sol"],
+                "answer": "pato"
+            },
+            {
+                "question": "¿Cuál de las siguientes letras es una vocal?",
+                "options": ["B", "C", "A", "D"],
+                "answer": "A"
+            },
+            {
+                "question": "¿Cuál de estas palabras NO contiene la vocal 'o'?",
+                "options": ["gato", "sapo", "pato", "mesa"],
+                "answer": "mesa"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras tiene la sílaba 'ra'?",
+                "options": ["gato", "rata", "casa", "luna"],
+                "answer": "rata"
+            },
+            {
+                "question": "¿Cuál de estas letras es una consonante?",
+                "options": ["E", "I", "M", "O"],
+                "answer": "M"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras termina con la letra 'r'?",
+                "options": ["gato", "perro", "amar", "casa"],
+                "answer": "amar"
+            },
+            {
+                "question": "¿Cuál de estas palabras comienza con la vocal 'e'?",
+                "options": ["elefante", "ratón", "sol", "mesa"],
+                "answer": "elefante"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras tiene la sílaba 'lu'?",
+                "options": ["luz", "luna", "lobo", "loro"],
+                "answer": "luna"
+            },
+            {
+                "question": "¿Cuál de estas letras es una vocal?",
+                "options": ["R", "T", "U", "S"],
+                "answer": "U"
+            },
+            {
+                "question": "¿Cuál de estas palabras NO contiene la consonante 's'?",
+                "options": ["sol", "piso", "casa", "loro"],
+                "answer": "loro"
+            },
+            {
+                "question": "¿Cuál de las siguientes palabras tiene la sílaba 'mi'?",
+                "options": ["camino", "mesa", "sol", "gato"],
+                "answer": "camino"
+            },
+            {
+                "question": "¿Cuál de estas letras es una consonante?",
+                "options": ["A", "E", "G", "I"],
+                "answer": "G"
+            }
+            
+        ],
+        intermedio: [
+            {
                 "question": "¿Cuál es el sinónimo de 'alegre'?",
                 "options": ["Contento", "Triste", "Enojado", "Aburrido"],
                 "answer": "Contento"
@@ -505,26 +751,7 @@ const questions = {
                 "options": ["Frío", "Alto", "Duro", "Blando"],
                 "answer": "Frío"
             },
-            {
-                "question": "¿Qué es un verbo?",
-                "options": ["Un lugar", "Una acción", "Una persona", "Un objeto"],
-                "answer": "Una acción"
-            },
-            {
-                "question": "¿Qué es un adjetivo?",
-                "options": ["Una acción", "Una descripción", "Un sustantivo", "Un verbo"],
-                "answer": "Una descripción"
-            },
-            {
-                "question": "¿Cuál es el antónimo de 'feliz'?",
-                "options": ["Triste", "Alegre", "Contento", "Satisfecho"],
-                "answer": "Triste"
-            },
-            {
-                "question": "¿Qué es un sinónimo de 'inteligente'?",
-                "options": ["Tonto", "Sabio", "Perezoso", "Lento"],
-                "answer": "Sabio"
-            },
+           
             {
                 "question": "Completa la oración: El libro está muy ....",
                 "options": ["Interesante", "Ayer", "Rápido", "Arriba"],
@@ -532,7 +759,7 @@ const questions = {
             },
             {
                 "question": "¿Qué palabra tiene una tilde?",
-                "options": ["Casa", "Árbol", "Perro", "Lápiz"],
+                "options": ["Casa", "Árbol", "Perro", "Ninguna"],
                 "answer": "Árbol"
             },
             {
@@ -562,7 +789,7 @@ const questions = {
             },
             {
                 "question": "¿Cuál es una palabra grave?",
-                "options": ["Fácil", "Árbol", "Joven", "Rápido"],
+                "options": ["Ninguna", "Árbol", "Joven", "Rápido"],
                 "answer": "Árbol"
             },
             {
@@ -570,19 +797,47 @@ const questions = {
                 "options": ["Fácil", "Árbol", "Joven", "Médico"],
                 "answer": "Médico"
             },
-            {
-                "question": "¿Cuál es la cuarta vocal del abecedario?",
-                "options": ["A", "E", "I", "O"],
-                "answer": "O"
+             {
+                "question": "¿Qué es un verbo?",
+                "options": ["Un lugar", "Una acción", "Una persona", "Un objeto"],
+                "answer": "Una acción"
             },
             {
-                "question": "¿Cuál es el sinónimo de 'triste'?",
-                "options": ["Alegre", "Contento", "Apesadumbrado", "Satisfecho"],
-                "answer": "Apesadumbrado"
-            }
-            
-        ],
-        intermedio: [
+                "question": "¿Qué es un adjetivo?",
+                "options": ["Una acción", "Una descripción", "Un sustantivo", "Un verbo"],
+                "answer": "Una descripción"
+            },
+            {
+                "question": "¿Cuál es el antónimo de 'feliz'?",
+                "options": ["Triste", "Alegre", "Contento", "Satisfecho"],
+                "answer": "Triste"
+            },
+            {
+                "question": "¿Qué es un sinónimo de 'inteligente'?",
+                "options": ["Tonto", "Sabio", "Perezoso", "Lento"],
+                "answer": "Sabio"
+            },
+
+            {
+                "question": "¿Cuál es la definición de 'sustantivo'?",
+                "options": ["Una acción", "Una persona, lugar o cosa", "Un adjetivo", "Un verbo"],
+                "answer": "Una persona, lugar o cosa"
+            },
+            {
+                "question": "¿Cuál es el antónimo de 'grande'?",
+                "options": ["Pequeño", "Largo", "Ancho", "Alto"],
+                "answer": "Pequeño"
+            },
+            {
+                "question": "¿Qué es un sinónimo de 'rápido'?",
+                "options": ["Lento", "Veloz", "Despacio", "Pausado"],
+                "answer": "Veloz"
+            },
+            {
+                "question": "Completa la oración: La casa es muy ....",
+                "options": ["Grande", "Luminosa", "Tierna", "De ayer"],
+                "answer": "Grande"
+            },
             {
                 question: "¿Quién escribió 'Don Quijote de la Mancha'?",
                 options: ["Miguel de Cervantes", "Gabriel García Márquez", "William Shakespeare", "Leo Tolstoy"],
