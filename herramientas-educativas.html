@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+      <!-- Metadatos Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="Quiz Educativo">
+    <meta property="og:description" content="¡Demuestra tus conocimientos con este quiz educativo interactivo!">
+    <meta property="og:image" content="img/quiz.jpg">
+    <meta property="og:url" content="https://quiz-educativo.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+    <div class="container mt-5 ">
+   
+    <h1 class="text-center"> <span class=" text-warning">Herramientas</span> Matemáticas</h1>
+    <div class="form-group container-md justify-content-center d-flex justify-content-center align-items-center" data-aos="fade-down"  data-aos-duration="1000" data-aos-once="true">
+        <div class="col-lg-6">
+        <label for="toolSelect">Elige una herramienta:</label>
+        <select class="form-control bg-warning w-60 justify-content-center" id="toolSelect" >
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="primeComposite">Números Primos o Compuestos</option>
+            <option value="evenOdd">Números Pares o Impares</option>
+            <option value="gcdLcm">MCD o MCM</option>
+            <option value="sqrtCbrt">Raíz Cuadrada o Cúbica</option>
+            <option value="power">Potencia</option>
+        </select>
+    </div>
+    </div>
+    <div id="toolContainer" data-aos="fade-down"  data-aos-duration="1000" data-aos-once="true">
+        <!-- Aquí se mostrarán las herramientas -->
+    </div>
+       
+        <div class="text-center mt-3" data-aos="fade-down"  data-aos-duration="1000" data-aos-once="true">
+            
+             <a href="/index.html" class="btn btn btn-sm text-white" style="background-color: rgb(15, 56, 110);" >Volver a inicio</a>
+            <div id="share-buttons">
+                <p>Comparte en tus redes favoritas:</p>
+                <button onclick="shareOnFacebook()" class="btn btn-primary w-20"><i class="fab fa-facebook-square fa-lg"></i></button>
+                <button onclick="shareOnWhatsApp()" class="btn btn-success w-20"><i class="fab fa-whatsapp-square fa-lg"></i></button>
+
+                <button onclick="shareOnLinkedIn()" class="btn btn-danger w-20"><i class="fab fa-linkedin fa-lg"></i></button>
+                <button onclick="shareOnTwitter()" class="btn btn-info w-20"><i class="fab fa-twitter-square fa-lg"></i></button>
+
+                
+            </div>
+            
+            
+            
+            
+            <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
+        </div>
+     </div>
+        
+
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+  
+
+    <script>
+         AOS.init();
+
+
+        function shareOnFacebook() {
+    const quizUrl = window.location.href;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}`;
+    window.open(facebookUrl, '_blank', 'width=600,height=400');
+}
+
+function shareOnWhatsApp() {
+    const quizUrl = encodeURIComponent(window.location.href);
+    const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+
+function shareOnLinkedIn() {
+    const quizUrl = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+    window.open(linkedInUrl, '_blank', 'width=600,height=400');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('thank-you').style.display = 'none';
+});
+
+document.getElementById('toolSelect').addEventListener('change', function() {
+            let selectedTool = this.value;
+            let toolContainer = document.getElementById('toolContainer');
+
+            // Limpiar el contenedor
+            toolContainer.innerHTML = '';
+
+            // Mostrar la herramienta seleccionada
+            switch(selectedTool) {
+                case 'primeComposite':
+                    toolContainer.innerHTML = `
+                        <div class="card container-md">
+                            <div class="card-body">
+                                <h2 class="card-title">Números Primos o Compuestos</h2>
+                                <div class="form-group">
+                                    <label for="numberInput">Introduce un número:</label>
+                                    <input type="number" id="numberInput" class="form-control">
+                                </div>
+                                <button class="btn btn-warning" onclick="checkPrimeComposite()">Calcular</button>
+                                <div id="result"></div>
+                            </div>
+                        </div>`;
+                    break;
+                case 'evenOdd':
+                    toolContainer.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Números Pares o Impares</h2>
+                                <div class="form-group">
+                                    <label for="numberInput">Introduce un número:</label>
+                                    <input type="number" id="numberInput" class="form-control">
+                                </div>
+                                <button class="btn btn-warning" onclick="checkEvenOdd()">Calcular</button>
+                                <div id="result"></div>
+                            </div>
+                        </div>`;
+                    break;
+                case 'gcdLcm':
+                    toolContainer.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">MCD o MCM</h2>
+                                <div class="form-group">
+                                    <label for="numberInput1">Introduce el primer número:</label>
+                                    <input type="number" id="numberInput1" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="numberInput2">Introduce el segundo número:</label>
+                                    <input type="number" id="numberInput2" class="form-control">
+                                </div>
+                                <button class="btn btn-warning" onclick="calculateGcdLcm()">Calcular</button>
+                                <div id="result"></div>
+                            </div>
+                        </div>`;
+                    break;
+                case 'sqrtCbrt':
+                    toolContainer.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Raíz Cuadrada o Cúbica</h2>
+                                <div class="form-group">
+                                    <label for="numberInput">Introduce un número:</label>
+                                    <input type="number" id="numberInput" class="form-control">
+                                </div>
+                                <button class="btn btn-warning" onclick="calculateSqrtCbrt()">Calcular</button>
+                                <div id="result"></div>
+                            </div>
+                        </div>`;
+                    break;
+                case 'power':
+                    toolContainer.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Potencia</h2>
+                                <div class="form-group">
+                                    <label for="baseInput">Introduce la base:</label>
+                                    <input type="number" id="baseInput" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exponentInput">Introduce el exponente:</label>
+                                    <input type="number" id="exponentInput" class="form-control">
+                                </div>
+                                <button class="btn btn-warning" onclick="calculatePower()">Calcular</button>
+                                <div id="result"></div>
+                            </div>
+                        </div>`;
+                    break;
+                default:
+                    toolContainer.innerHTML = '';
+            }
+        });
+
+        // Función para verificar si un número es primo o compuesto
+        function checkPrimeComposite() {
+            let number = parseInt(document.getElementById('numberInput').value);  // Obtener el número ingresado
+            let result = document.getElementById('result');  // Obtener el contenedor para el resultado
+
+            // Verificar si el número es válido
+            if (isNaN(number) || number < 1) {
+                result.textContent = 'Por favor, introduce un número válido.';
+                return;
+            }
+
+            // Verificar si el número es 1
+            if (number === 1) {
+                result.textContent = '1 no es ni primo ni compuesto.';
+                return;
+            }
+
+            // Verificar si el número es primo o compuesto
+            for (let i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    result.textContent = `${number} es un número compuesto.`;
+                    resetInput('numberInput');
+                    return;
+                }
+            }
+            result.textContent = `${number} es un número primo.`;
+            resetInput('numberInput');
+        }
+
+        // Función para verificar si un número es par o impar
+        function checkEvenOdd() {
+            let number = parseInt(document.getElementById('numberInput').value);  // Obtener el número ingresado
+            let result = document.getElementById('result');  // Obtener el contenedor para el resultado
+
+            // Verificar si el número es válido
+            if (isNaN(number)) {
+                result.textContent = 'Por favor, introduce un número válido.';
+                return;
+            }
+
+            // Verificar si el número es par o impar
+            result.textContent = number % 2 === 0 ? `${number} es un número par.` : `${number} es un número impar.`;
+            resetInput('numberInput');
+        }
+
+        // Función para calcular el MCD y MCM de dos números
+        function calculateGcdLcm() {
+            let number1 = parseInt(document.getElementById('numberInput1').value);  // Obtener el primer número ingresado
+            let number2 = parseInt(document.getElementById('numberInput2').value);  // Obtener el segundo número ingresado
+            let result = document.getElementById('result');  // Obtener el contenedor para el resultado
+
+            // Verificar si los números son válidos
+            if (isNaN(number1) || isNaN(number2) || number1 < 1 || number2 < 1) {
+                result.textContent = 'Por favor, introduce números válidos.';
+                return;
+            }
+
+            // Función para calcular el MCD
+            const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
+            // Función para calcular el MCM
+            const lcm = (a, b) => (a * b) / gcd(a, b);
+
+            // Mostrar el resultado
+            result.textContent = `MCD: ${gcd(number1, number2)}, MCM: ${lcm(number1, number2)}`;
+            resetInput('numberInput1');
+            resetInput('numberInput2');
+        }
+
+        // Función para calcular la raíz cuadrada y cúbica de un número
+        function calculateSqrtCbrt() {
+            let number = parseInt(document.getElementById('numberInput').value);  // Obtener el número ingresado
+            let result = document.getElementById('result');  // Obtener el contenedor para el resultado
+
+            // Verificar si el número es válido
+            if (isNaN(number) || number < 0) {
+                result.textContent = 'Por favor, introduce un número válido.';
+                return;
+            }
+
+            // Mostrar el resultado
+            result.innerHTML = `Raíz Cuadrada: ${Math.sqrt(number).toFixed(2)}, Raíz Cúbica: ${Math.cbrt(number).toFixed(2)}`;
+            resetInput('numberInput');
+        }
+
+        // Función para calcular la potencia de un número
+        function calculatePower() {
+            let base = parseInt(document.getElementById('baseInput').value);  // Obtener la base ingresada
+            let exponent = parseInt(document.getElementById('exponentInput').value);  // Obtener el exponente ingresado
+            let result = document.getElementById('result');  // Obtener el contenedor para el resultado
+
+            // Verificar si la base y el exponente son válidos
+            if (isNaN(base) || isNaN(exponent)) {
+                result.textContent = 'Por favor, introduce números válidos.';
+                return;
+            }
+
+            // Mostrar el resultado
+            result.textContent = `${base} elevado a la ${exponent} es ${Math.pow(base, exponent)}`;
+            resetInput('baseInput');
+            resetInput('exponentInput');
+        }
+
+        // Función para resetear el valor de un input
+        function resetInput(inputId) {
+            document.getElementById(inputId).value = '';
+        }
+
+    </script>
+
+    
+    
+        
+    </body>
+</html>
