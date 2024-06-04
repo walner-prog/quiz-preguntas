@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+      <!-- Metadatos Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="Quiz Educativo">
+    <meta property="og:description" content="¡Demuestra tus conocimientos con este quiz educativo interactivo!">
+    <meta property="og:image" content="img/quiz.jpg">
+    <meta property="og:url" content="https://quiz-educativo.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+    <style>
+       card-body{
+            color: white;
+        }
+    </style>
+   
+    <div class="container mt-5" >
+        <h4 class="text-center my-5"> <span class=" text-warning">Explorando</span>  el Universo del <span class=" text-warning">Lenguaje.</span> </h4>
+        <div class="row justify-content-around mt-5">
+            
+         <!-- Tarjeta 1: Abecedario -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Abecedario</h5>
+            <span><i class="fas fa-font"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Conoce las letras que componen el abecedario en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more2">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more2">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: El abecedario español está compuesto por 27 letras: A, B, C, D, E, F, G, H, I, J, K, L, M, N, Ñ, O, P, Q, R, S, T, U, V, W, X, Y, Z.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 2: Vocales -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Vocales</h5>
+            <span><i class="fas fa-vr-cardboard"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre las vocales en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more3">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more3">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: Las vocales en español son A, E, I, O, U.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 3: Consonantes -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Consonantes</h5>
+            <span><i class="fas fa-concierge-bell"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre las consonantes en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more4">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more4">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: Las consonantes en español son B, C, D, F, G, H, J, K, L, M, N, Ñ, P, Q, R, S, T, V, W, X, Y, Z.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 4: Sílabas -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Sílabas</h5>
+            <span><i class="fas fa-sitemap"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende a dividir palabras en sílabas.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more5">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more5">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: La palabra 'casa' tiene dos sílabas: ca-sa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 5: Palabras agudas -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Palabras Agudas</h5>
+            <span><i class="fas fa-arrow-up"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre las palabras agudas en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more6">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more6">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: La palabra 'café' es aguda porque la sílaba tónica es la última.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 6: Palabras graves -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Palabras Graves</h5>
+            <span><i class="fas fa-arrow-down"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre las palabras graves en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more7">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more7">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: La palabra 'árbol' es grave porque la sílaba tónica es la penúltima.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 7: Palabras esdrújulas -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Palabras Esdrújulas</h5>
+            <span><i class="fas fa-arrow-circle-up"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre las palabras esdrújulas en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more8">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more8">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: La palabra 'música' es esdrújula porque la sílaba tónica es la antepenúltima.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 8: Sinónimos -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Sinónimos</h5>
+            <span><i class="fas fa-equals"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre los sinónimos en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more9">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more9">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: 'Feliz', 'contento' y 'alegre' son sinónimos porque tienen un significado similar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 9: Antónimos -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Antónimos</h5>
+            <span><i class="fas fa-not-equal"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre los antónimos en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more10">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more10">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: 'Feliz' y 'triste' son antónimos porque tienen significados opuestos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 10: Sustantivos -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Sustantivos</h5>
+            <span><i class="fas fa-book"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre los sustantivos en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more11">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more11">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: 'Perro', 'ciudad', 'amor' y 'alegría' son sustantivos porque nombran a un animal, un lugar y sentimientos, respectivamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 11: Pronombres -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Pronombres</h5>
+            <span><i class="fas fa-user"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre los pronombres en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more12">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more12">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: 'Él', 'ella', 'nosotros', 'ustedes' son pronombres porque pueden reemplazar a los sustantivos en una oración.</p>
+               </div>
+           
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 12: Adjetivos -->
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 mb-sm-0">
+    <div class="card card-temas" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Adjetivos</h5>
+            <span><i class="fas fa-ad"></i></span>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-muted">Aprende sobre los adjetivos en español.</p>
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <i class="fas fa-heart"></i>
+                <a href="#" class="btn btn-warning btn-sm" data-toggle="collapse" data-target="#more13">Mostrar más</a>
+            </div>
+            <div class="collapse" id="more13">
+                <div class="mt-3 text-muted">
+                    <p>Ejemplo: 'Rápido', 'bonito', 'grande' son adjetivos porque describen características de los sustantivos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div class="text-center mt-3" data-aos="fade-down"  data-aos-duration="1000" data-aos-once="true">
+            
+             <a href="/index.html" class="btn btn btn-sm text-white" style="background-color: rgb(15, 56, 110);" >Volver a inicio</a>
+            <div id="share-buttons">
+                <p>Comparte en tus redes favoritas:</p>
+                <button onclick="shareOnFacebook()" class="btn btn-primary w-20"><i class="fab fa-facebook-square fa-lg"></i></button>
+                <button onclick="shareOnWhatsApp()" class="btn btn-success w-20"><i class="fab fa-whatsapp-square fa-lg"></i></button>
+
+                <button onclick="shareOnLinkedIn()" class="btn btn-danger w-20"><i class="fab fa-linkedin fa-lg"></i></button>
+                <button onclick="shareOnTwitter()" class="btn btn-info w-20"><i class="fab fa-twitter-square fa-lg"></i></button>
+
+                
+            </div>
+            
+            
+            
+            
+            <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
+        </div>
+    </div>
+        
+
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+  
+
+    <script>
+         AOS.init();
+
+
+        function shareOnFacebook() {
+    const quizUrl = window.location.href;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}`;
+    window.open(facebookUrl, '_blank', 'width=600,height=400');
+}
+
+function shareOnWhatsApp() {
+    const quizUrl = encodeURIComponent(window.location.href);
+    const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+
+function shareOnLinkedIn() {
+    const quizUrl = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+    window.open(linkedInUrl, '_blank', 'width=600,height=400');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('thank-you').style.display = 'none';
+});
+
+
+
+    </script>
+
+    
+    
+        
+    </body>
+</html>
