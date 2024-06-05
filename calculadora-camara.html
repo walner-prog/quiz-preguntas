@@ -131,7 +131,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.14.0/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@3.5.0/dist/mobilenet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.0.4/dist/mobilenet.min.js"></script>
 
     <script>
         AOS.init();
@@ -154,12 +154,8 @@
         function shareOnLinkedIn() {
             const quizUrl = window.location.href;
             const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
-            window.open(linkedInUrl, '_blank', 'width=600,height=400');
-        }
-
-        async function solveWithCamera() {
-            try {
-                const net = await mobilenet.load();
+            window.open(link
+            const net = await mobilenet.load();
                 const video = document.createElement('video');
                 video.width = 200;
                 video.height = 200;
