@@ -24,9 +24,15 @@
 <body>
     <div class="container mt-5 ">
    
-    <h1 class="text-center"> <span class=" text-warning">Herramientas</span> Matemáticas</h1>
+   
+    <div class="card-header d-flex justify-content-center align-items-center" data-aos="fade-down"    data-aos-duration="1000" data-aos-once="true">
+        <h4 class="text-center mb-1 mr-2"> <span class=" text-warning">Herramientas</span> Matemáticas</h4>
+         <button type="button" class="btn btn-info btn-sm text-center" data-toggle="modal" data-target="#helpToolsModal">
+         <i class="fas fa-question-circle"></i> Ayuda
+         </button>
+     </div>
     <div class="form-group container-md justify-content-center d-flex justify-content-center align-items-center" data-aos="fade-down"  data-aos-duration="1000" data-aos-once="true">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-md-6">
         <label for="toolSelect"><span class=" text-warning">Elige</span> una herramienta:</label>
         <select class="form-control bg-warning w-60 justify-content-center" id="toolSelect" >
             <option value="" disabled selected>Selecciona una opción</option>
@@ -64,6 +70,34 @@
         </div>
      </div>
         
+<!-- Modal de Ayuda - Herramientas Matemáticas -->
+<div class="modal fade" id="helpToolsModal" tabindex="-1" aria-labelledby="helpToolsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border border-bottom border-info" style="color: indigo;">
+                <h5 class="modal-title animate__animated animate__bounce" id="helpToolsModalLabel">Ayuda <i class="fas fa-address-card" style="color: indigo;"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span style="color: indigo;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-dark" data-aos="fade-up">
+                <p class="text-success">¡Bienvenido a las Herramientas Matemáticas!</p>
+                <p>En esta sección encontrarás una variedad de herramientas educativas diseñadas para ayudarte a explorar y comprender conceptos matemáticos de manera interactiva. A continuación, te explicamos cómo utilizarlas:</p>
+                <ul>
+                    <li>Selecciona la herramienta matemática que deseas explorar.</li>
+                    <li>Lee la descripción de la herramienta y las instrucciones proporcionadas.</li>
+                    <li>Utiliza las diferentes herramientas para aprender, practicar y mejorar tus habilidades matemáticas.</li>
+                    <li>Experimenta con las herramientas y personaliza tus ejercicios según tus necesidades.</li>
+                    <li>Diviértete explorando y aprendiendo con nuestras herramientas matemáticas interactivas.</li>
+                </ul>
+                <p class="text-success">¡Disfruta de tu experiencia de aprendizaje con nuestras herramientas matemáticas!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
         
     </div>
@@ -119,7 +153,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                     toolContainer.innerHTML = `
                         <div class="card container-md col-lg-6">
                             <div class="card-body">
-                                <h2 class="card-title">Números Primos o Compuestos</h2>
+                                <h4 class="card-title">Números Primos o Compuestos</h4>
                                 <div class="form-group">
                                     <label for="numberInput">Introduce un número:</label>
                                     <input type="number" id="numberInput" class="form-control">
@@ -133,7 +167,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                     toolContainer.innerHTML = `
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">Números Pares o Impares</h2>
+                                <h4 class="card-title">Números Pares o Impares</h4>
                                 <div class="form-group">
                                     <label for="numberInput">Introduce un número:</label>
                                     <input type="number" id="numberInput" class="form-control">
@@ -147,7 +181,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                     toolContainer.innerHTML = `
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">MCD o MCM</h2>
+                                <h4 class="card-title">MCD o MCM</h4>
                                 <div class="form-group">
                                     <label for="numberInput1">Introduce el primer número:</label>
                                     <input type="number" id="numberInput1" class="form-control">
@@ -165,7 +199,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                     toolContainer.innerHTML = `
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">Raíz Cuadrada o Cúbica</h2>
+                                <h4 class="card-title">Raíz Cuadrada o Cúbica</h4>
                                 <div class="form-group">
                                     <label for="numberInput">Introduce un número:</label>
                                     <input type="number" id="numberInput" class="form-control">
@@ -179,7 +213,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                     toolContainer.innerHTML = `
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">Potencia</h2>
+                                <h4 class="card-title">Potencia</h4>
                                 <div class="form-group">
                                     <label for="baseInput">Introduce la base:</label>
                                     <input type="number" id="baseInput" class="form-control">

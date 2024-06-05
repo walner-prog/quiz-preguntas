@@ -23,10 +23,14 @@
 </head>
 <body>
     <div class="container mt-5">
-
-        <h4 class="text-center mb-4"> <span class=" text-warning">Resolver</span> Propiedades Matemáticas</h4>
-
-        <div class="card mx-auto" style="max-width: 500px;">
+        
+        <div class="card-header d-flex justify-content-center align-items-center" data-aos="fade-down"    data-aos-duration="1000" data-aos-once="true">
+           <h4 class="text-center mb-1 mr-2"> <span class=" text-warning">Resolver</span> Propiedades Matemáticas</h4>
+            <button type="button" class="btn btn-info btn-sm text-center" data-toggle="modal" data-target="#helpPropertiesModal">
+            <i class="fas fa-question-circle"></i> Ayuda
+            </button>
+        </div>
+        <div class="card mx-auto mt-2" style="max-width: 500px;" data-aos="fade-up"    data-aos-duration="1000" data-aos-once="true">
             <div class="card-body">
                 <h5 class="card-title text-warning">Selecciona el tipo de propiedad</h5>
                 <div class="form-group">
@@ -38,7 +42,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="numbersInput">Números:</label>
+                    <label for="numbersInput">Ingresa los Números<br> separados por coma:</label>
                     <input type="text" class="form-control" id="numbers" placeholder="Ingrese los números separados por comas (,)" required>
                 </div>
                 <button onclick="solveExercise()" class="btn btn-warning">Resolver</button>
@@ -59,6 +63,36 @@
             <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
             <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
         </div>
+
+        <!-- Modal de Ayuda - Herramienta de Propiedades Matemáticas -->
+<div class="modal fade" id="helpPropertiesModal" tabindex="-1" aria-labelledby="helpPropertiesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border border-bottom border-info" style="color: indigo;">
+                <h5 class="modal-title animate__animated animate__bounce" id="helpPropertiesModalLabel">Ayuda <i class="fas fa-address-card" style="color: indigo;"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span style="color: indigo;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-dark" data-aos="fade-up">
+                <p class="text-success">¡Bienvenido a la Herramienta de Propiedades Matemáticas!</p>
+                <p>Esta herramienta te permite resolver ejercicios relacionados con las propiedades matemáticas fundamentales, como la conmutativa, asociativa y distributiva. A continuación, te explicamos cómo utilizarla:</p>
+                <ul>
+                    <li>Selecciona el tipo de propiedad matemática que deseas resolver.</li>
+                    <li>Lee atentamente la descripción del ejercicio y las instrucciones proporcionadas.</li>
+                    <li>Aplica la propiedad matemática correspondiente para resolver el ejercicio.</li>
+                    <li>Verifica tu respuesta y repite el proceso si es necesario.</li>
+                    <li>Utiliza esta herramienta para practicar y consolidar tu comprensión de las propiedades matemáticas básicas.</li>
+                </ul>
+                <p class="text-success">¡Diviértete resolviendo ejercicios y mejorando tus habilidades matemáticas!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

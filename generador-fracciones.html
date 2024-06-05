@@ -24,10 +24,15 @@
 <body>
     <div class="container mt-5">
 
-      
-        <div class="card mx-auto" style="max-width: 500px;" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
+        <div class="card-header d-flex justify-content-center align-items-center" data-aos="fade-down"    data-aos-duration="1000" data-aos-once="true">
+            <h4 class="text-center mb-1 mr-2"> <span class=" text-warning">Generador</span> de Fracciones</h4>
+             <button type="button" class="btn btn-info btn-sm text-center" data-toggle="modal" data-target="#helpFractionModal">
+             <i class="fas fa-question-circle"></i> Ayuda
+             </button>
+         </div>
+        <div class="card mx-auto mt-2" style="max-width: 500px;" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
             <div class="card-body">
-                <h5 class="card-title"><span class=" text-warning">Generador</span> de Fracciones<span class=" text-success"> Aleatorias</span></h5>
+              
                 <div class="form-group">
                     <label for="fractionInput">Fracción:</label>
                     <input type="text" id="fractionInput" class="form-control">
@@ -43,7 +48,8 @@
                 </div>
                 <button id="generateButton" class="btn btn-warning">Generar</button>
                 <button id="calculateButton" class="btn btn-success" disabled>Calcular</button>
-                <div id="result"></div>
+                <div id="result" class="mt-3 alert alert-info" role="alert"></div>
+               
             </div>
         </div>
 
@@ -59,6 +65,36 @@
             <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
             <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
         </div>
+
+        <!-- Modal de Ayuda - Generador de Fracciones -->
+<div class="modal fade" id="helpFractionModal" tabindex="-1" aria-labelledby="helpFractionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border border-bottom border-info" style="color: indigo;">
+                <h5 class="modal-title animate__animated animate__bounce" id="helpFractionModalLabel">Ayuda <i class="fas fa-address-card" style="color: indigo;"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span style="color: indigo;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-dark" data-aos="fade-up">
+                <p class="text-success">¡Bienvenido al Generador de Fracciones!</p>
+                <p>Esta herramienta te permite practicar y comprender conceptos fraccionarios mediante la generación de fracciones aleatorias. A continuación, te explicamos cómo utilizarla:</p>
+                <ul>
+                    <li>Selecciona el tipo de fracción que deseas generar: propia, impropia o mixta.</li>
+                    <li>Especifica el rango de numeradores y denominadores para personalizar las fracciones generadas.</li>
+                    <li>Haz clic en el botón "Generar Fracción" para obtener una fracción aleatoria.</li>
+                    <li>Utiliza la fracción generada para realizar operaciones matemáticas, comparaciones, o como práctica para simplificar fracciones.</li>
+                    <li>Repite el proceso para generar más fracciones y consolidar tu comprensión de conceptos fraccionarios.</li>
+                </ul>
+                <p class="text-success">¡Diviértete explorando y practicando con fracciones!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
