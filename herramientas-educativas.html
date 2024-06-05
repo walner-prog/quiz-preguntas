@@ -27,7 +27,7 @@
     <h1 class="text-center"> <span class=" text-warning">Herramientas</span> Matemáticas</h1>
     <div class="form-group container-md justify-content-center d-flex justify-content-center align-items-center" data-aos="fade-down"  data-aos-duration="1000" data-aos-once="true">
         <div class="col-lg-6">
-        <label for="toolSelect">Elige una herramienta:</label>
+        <label for="toolSelect"><span class=" text-warning">Elige</span> una herramienta:</label>
         <select class="form-control bg-warning w-60 justify-content-center" id="toolSelect" >
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="primeComposite">Números Primos o Compuestos</option>
@@ -117,7 +117,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
             switch(selectedTool) {
                 case 'primeComposite':
                     toolContainer.innerHTML = `
-                        <div class="card container-md">
+                        <div class="card container-md col-lg-6">
                             <div class="card-body">
                                 <h2 class="card-title">Números Primos o Compuestos</h2>
                                 <div class="form-group">
@@ -125,7 +125,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                                     <input type="number" id="numberInput" class="form-control">
                                 </div>
                                 <button class="btn btn-warning" onclick="checkPrimeComposite()">Calcular</button>
-                                <div id="result"></div>
+                                <div id="result" class="mt-3 alert alert-info" role="alert"></div>
                             </div>
                         </div>`;
                     break;
@@ -139,7 +139,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                                     <input type="number" id="numberInput" class="form-control">
                                 </div>
                                 <button class="btn btn-warning" onclick="checkEvenOdd()">Calcular</button>
-                                <div id="result"></div>
+                                <div id="result" class="mt-3 alert alert-info" role="alert"></div>
                             </div>
                         </div>`;
                     break;
@@ -157,7 +157,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                                     <input type="number" id="numberInput2" class="form-control">
                                 </div>
                                 <button class="btn btn-warning" onclick="calculateGcdLcm()">Calcular</button>
-                                <div id="result"></div>
+                                <div id="result" class="mt-3 alert alert-info" role="alert"></div>
                             </div>
                         </div>`;
                     break;
@@ -171,7 +171,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                                     <input type="number" id="numberInput" class="form-control">
                                 </div>
                                 <button class="btn btn-warning" onclick="calculateSqrtCbrt()">Calcular</button>
-                                <div id="result"></div>
+                                <div id="result" class="mt-3 alert alert-info" role="alert"></div>
                             </div>
                         </div>`;
                     break;
@@ -189,7 +189,7 @@ document.getElementById('toolSelect').addEventListener('change', function() {
                                     <input type="number" id="exponentInput" class="form-control">
                                 </div>
                                 <button class="btn btn-warning" onclick="calculatePower()">Calcular</button>
-                                <div id="result"></div>
+                                <div id="result" class="mt-3 alert alert-info" role="alert"></div>
                             </div>
                         </div>`;
                     break;

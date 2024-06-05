@@ -28,7 +28,7 @@
 
         <div class="card mx-auto" style="max-width: 500px;">
             <div class="card-body">
-                <h5 class="card-title">Seleccione el tipo de problema y la dificultad</h5>
+                <h5 class="card-title"><span class=" text-warning">Seleccione</span> el tipo de problema y la dificultad</h5>
                 <div class="form-group">
                     <label for="problemType">Tipo de problema:</label>
                     <select class="form-control" id="problemType">
@@ -50,16 +50,12 @@
                     </select>
                 </div>
                 <button id="btn-generar" class="btn btn-warning">Generar Problema</button>
-                <div id="problema-section" class="mt-3">
-                    <p id="problema"></p>
-                    <div class="form-group">
-                        <label for="respuesta">Tu Respuesta:</label>
-                        <input type="number" class="form-control" id="respuesta">
-                    </div>
-                    <button id="btn-verificar" class="btn btn-success">Verificar Respuesta</button>
-                    <p id="verificacion" class="mt-3"></p>
-                </div>
-                <p id="solucion" class="mt-3"></p>
+                <div id="problema" class="mt-3"></div>
+                <input type="text" id="respuesta" class="form-control mt-3" placeholder="Ingrese su respuesta">
+                <button id="btn-verificar" class="btn btn-success mt-3">Verificar Respuesta</button>
+                <div id="verificacion" class="mt-3"></div>
+                <button id="btn-solucion" class="btn btn-info mt-3">Mostrar Solución</button>
+                <div id="solucion" class="mt-3 alert alert-info" role="alert"></div>
             </div>
         </div>
         <div class="text-center mt-3" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
@@ -108,113 +104,146 @@
             window.open(linkedInUrl, '_blank', 'width=600,height=400');
         }
 
-        function generarNumeroAleatorio(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+       // Genera un número aleatorio entre min y max (inclusive)
+       function generarNumeroAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
-function generarProblema({ tipo, dificultad }) {
-    let problema = '';
-    let solucion = '';
+        // Genera un problema matemático y su solución basado en el tipo y la dificultad
+        function generarProblema({ tipo, dificultad }) {
+            let problema = '';
+            let solucion = '';
 
-    let num1, num2, num3;
+            // Generar números aleatorios según la dificultad
+            let num1, num2, num3;
 
-    switch (dificultad) {
-        case 'facil':
-            num1 = generarNumeroAleatorio(1, 10);
-            num2 = generarNumeroAleatorio(1, 10);
-            num3 = generarNumeroAleatorio(1, 10);
-            break;
-        case 'medio':
-            num1 = generarNumeroAleatorio(10, 50);
-            num2 = generarNumeroAleatorio(10, 50);
-            num3 = generarNumeroAleatorio(10, 50);
-            break;
-        case 'dificil':
-            num1 = generarNumeroAleatorio(50, 100);
-            num2 = generarNumeroAleatorio(50, 100);
-            num3 = generarNumeroAleatorio(50, 100);
-            break;
-    }
+            switch (dificultad) {
+                case 'facil':
+                    num1 = generarNumeroAleatorio(1, 10);
+                    num2 = generarNumeroAleatorio(1, 10);
+                    num3 = generarNumeroAleatorio(1, 10);
+                    break;
+                case 'medio':
+                    num1 = generarNumeroAleatorio(10, 50);
+                    num2 = generarNumeroAleatorio(10, 50);
+                    num3 = generarNumeroAleatorio(10, 50);
+                    break;
+                case 'dificil':
+                    num1 = generarNumeroAleatorio(50, 100);
+                    num2 = generarNumeroAleatorio(50, 100);
+                    num3 = generarNumeroAleatorio(50, 100);
+                    break;
+            }
 
-    switch (tipo) {
-        case 'suma':
-            problema = `En un tren había ${num1} personas. Al llegar a la estación bajaron ${num2} y subieron ${num3}. ¿Cuántas personas iban en el tren al salir de la estación?`;
-            solucion = num1 - num2 + num3;
-            break;
-        case 'resta':
-            problema = `En una granja hay ${num1} manzanas. Si se recogen ${num2} y se consumen ${num3}, ¿cuántas manzanas quedan en la granja?`;
-            solucion = num1 - num2 - num3;
-            break;
-        case 'multiplicacion':
-            problema = `Un agricultor tiene ${num1} campos. Si cada campo produce ${num2} toneladas de trigo y el precio de venta es ${num3} dólares por tonelada, ¿cuánto ganará el agricultor?`;
-            solucion = num1 * num2 * num3;
-            break;
-        case 'division':
-            num2 = num2 === 0 ? 1 : num2;  // Evitar división por cero
-            problema = `Un total de ${num1} estudiantes se dividen en ${num2} grupos de trabajo. ¿Cuántos estudiantes hay en cada grupo?`;
-            solucion = (num1 / num2).toFixed(2);  // Redondear a 2 decimales
-            break;
-        case 'ecuacion':
-            problema = `Para resolver la ecuación ${num1}x + ${num2} = ${num3}, ¿cuál es el valor de x?`;
-            solucion = ((num3 - num2) / num1).toFixed(2);
-            break;
-        case 'geometria':
-            problema = `Calcular el área de un triángulo con base ${num1} y altura ${num2}.`;
-            solucion = (0.5 * num1 * num2).toFixed(2);
-            break;
-        default:
-            throw new Error(`Tipo de problema desconocido: ${tipo}`);
-    }
+            // Generar el problema y su solución según el tipo de problema
+            switch (tipo) {
+                case 'suma':
+                    // Asegurar que el resultado sea positivo
+                    if (num1 - num2 + num3 >= 0) {
+                        problema = `En un tren había ${num1} personas. Al llegar a la estación bajaron ${num2} y subieron ${num3}. ¿Cuántas personas iban en el tren al salir de la estación?`;
+                        solucion = num1 - num2 + num3;
+                    } else {
+                        return generarProblema({ tipo, dificultad });
+                    }
+                    break;
+                case 'resta':
+                    // Asegurar que el resultado sea positivo
+                    if (num1 - num2 - num3 >= 0) {
+                        problema = `En una granja hay ${num1} manzanas. Si se recogen ${num2} y se consumen ${num3}, ¿cuántas manzanas quedan en la granja?`;
+                        solucion = num1 - num2 - num3;
+                    } else {
+                        return generarProblema({ tipo, dificultad });
+                    }
+                    break;
+                case 'multiplicacion':
+                    problema = `Un agricultor tiene ${num1} campos. Si cada campo produce ${num2} toneladas de trigo y el precio de venta es ${num3} dólares por tonelada, ¿cuánto ganará el agricultor?`;
+                    solucion = num1 * num2 * num3;
+                    break;
+                case 'division':
+                    num2 = num2 === 0 ? 1 : num2;  // Evitar división por cero
+                    problema = `Un total de ${num1} estudiantes se dividen en ${num2} grupos de trabajo. ¿Cuántos estudiantes hay en cada grupo?`;
+                    solucion = (num1 / num2).toFixed(2);  // Redondear a 2 decimales
+                    break;
+                case 'ecuacion':
+                    problema = `Para resolver la ecuación ${num1}x + ${num2} = ${num3}, ¿cuál es el valor de x?`;
+                    solucion = ((num3 - num2) / num1).toFixed(2);
+                    break;
+                case 'geometria':
+                    problema = `Calcular el área de un triángulo con base ${num1} y altura ${num2}.`;
+                    solucion = (0.5 * num1 * num2).toFixed(2);
+                    break;
+                default:
+                    throw new Error(`Tipo de problema desconocido: ${tipo}`);
+            }
 
-    return { problema, solucion };
-}
+            return { problema, solucion };
+        }
 
-function generarProblemaAleatorio() {
-    const tipo = document.getElementById('problemType').value;
-    const dificultad = document.getElementById('difficulty').value;
+        // Genera un problema aleatorio basado en la selección del usuario
+        function generarProblemaAleatorio() {
+            const tipo = document.getElementById('problemType').value;
+            const dificultad = document.getElementById('difficulty').value;
 
-    if (tipo === 'combinado') {
-        const tipos = ['suma', 'resta', 'multiplicacion', 'division', 'ecuacion', 'geometria'];
-        const tipoAleatorio = tipos[generarNumeroAleatorio(0, tipos.length - 1)];
-        return generarProblema({ tipo: tipoAleatorio, dificultad });
-    } else {
-        return generarProblema({ tipo, dificultad });
-    }
-}
+            if (tipo === 'combinado') {
+                const tipos = ['suma', 'resta', 'multiplicacion', 'division', 'ecuacion', 'geometria'];
+                const tipoAleatorio = tipos[generarNumeroAleatorio(0, tipos.length - 1)];
+                return generarProblema({ tipo: tipoAleatorio, dificultad });
+            } else {
+                return generarProblema({ tipo, dificultad });
+            }
+        }
 
-function handleGenerarClick() {
-    const { problema, solucion } = generarProblemaAleatorio();
-    document.getElementById('problema').innerText = `Problema: ${problema}`;
-    document.getElementById('problema').dataset.solution = solucion;
-    document.getElementById('respuesta').value = '';  // Limpiar el input de respuesta
-    document.getElementById('solucion').innerText = '';  // Limpiar la solución anterior
-    document.getElementById('verificacion').innerText = '';  // Limpiar la verificación anterior
-}
+        // Maneja el clic en el botón de "Generar Problema"
+        function handleGenerarClick() {
+            const { problema, solucion } = generarProblemaAleatorio();
+            document.getElementById('problema').innerText = `Problema: ${problema}`;
+            document.getElementById('problema').dataset.solution = solucion;
+            document.getElementById('respuesta').value = '';  // Limpiar el input de respuesta
+            document.getElementById('solucion').innerText = '';  // Limpiar la solución anterior
+            document.getElementById('verificacion').innerText = '';  // Limpiar la verificación anterior
+        }
 
-function verificarRespuesta() {
-    const respuestaUsuario = document.getElementById('respuesta').value;
-    const solucion = document.getElementById('problema').dataset.solution;
-    const verificacion = document.getElementById('verificacion');
+        // Verifica la respuesta del usuario
+        function verificarRespuesta() {
+            const problemaElement = document.getElementById('problema');
+            const respuestaUsuario = document.getElementById('respuesta').value.trim();
+            const solucion = problemaElement.dataset.solution;
+            const verificacion = document.getElementById('verificacion');
 
-    if (respuestaUsuario == solucion) {
-        verificacion.innerText = '¡Correcto! La respuesta es correcta.';
-        verificacion.style.color = 'green';
-    } else {
-        verificacion.innerText = 'Incorrecto. Intenta de nuevo o consulta la solución.';
-        verificacion.style.color = 'red';
-    }
-}
+            // Verificar si hay un problema generado
+            if (!problemaElement.innerText) {
+                verificacion.innerText = 'Por favor, genera un problema primero.';
+                verificacion.style.color = 'red';
+                return;
+            }
 
-function mostrarSolucion() {
-    const solucion = document.getElementById('problema').dataset.solution;
-    document.getElementById('solucion').innerText = `Solución: ${solucion}`;
-}
+            // Verificar si el usuario ha ingresado una respuesta
+            if (!respuestaUsuario) {
+                verificacion.innerText = 'Por favor, ingrese su respuesta.';
+                verificacion.style.color = 'red';
+                return;
+            }
 
-document.getElementById('btn-generar').addEventListener('click', handleGenerarClick);
-document.getElementById('btn-verificar').addEventListener('click', verificarRespuesta);
-document.getElementById('btn-solucion').addEventListener('click', mostrarSolucion);
+            // Comparar la respuesta del usuario con la solución
+            if (respuestaUsuario == solucion) {
+                verificacion.innerText = '¡Correcto! La respuesta es correcta.';
+                verificacion.style.color = 'green';
+            } else {
+                verificacion.innerText = 'Incorrecto. Intenta de nuevo o consulta la solución.';
+                verificacion.style.color = 'red';
+            }
+        }
 
+        // Muestra la solución del problema
+        function mostrarSolucion() {
+            const solucion = document.getElementById('problema').dataset.solution;
+            document.getElementById('solucion').innerText = `Solución: ${solucion}`;
+        }
 
+        // Asignar manejadores de eventos a los botones
+        document.getElementById('btn-generar').addEventListener('click', handleGenerarClick);
+        document.getElementById('btn-verificar').addEventListener('click', verificarRespuesta);
+        document.getElementById('btn-solucion').addEventListener('click', mostrarSolucion);
 
     </script>
     
