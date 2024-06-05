@@ -9,7 +9,7 @@ const levelSelection = document.getElementById('level');
 const startButton = document.getElementById('start-btn');
 const nombreApellidoInput = document.getElementById('nombre-apellido');
 const starsCounter = document.getElementById('stars-counter');
-
+const repeatAudioButton = document.getElementById('repeat-audio-btn');
 // Evento click en el botón de inicio
 document.getElementById('start-btn').addEventListener('click', function() {
     // Ocultar etiquetas y campos de entrada
@@ -96,7 +96,19 @@ function loadQuestion(category, level) {
 
     resultElement.textContent = ''; // Limpiar mensaje de resultado anterior
     nextButton.style.display = 'none'; // Ocultar botón de siguiente pregunta
+
+    playQuestionAudio(currentQuestion.question); // Reproducir el audio de la pregunta
 }
+
+// Función para reproducir el audio de la pregunta
+function playQuestionAudio(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'es-ES'; // Establecer el idioma a español
+    speechSynthesis.speak(utterance);
+   
+}
+
+
 
 function checkAnswer(selectedOption, button) {
     const currentQuestion = questions[currentCategory][currentLevel][currentQuestionIndex];
