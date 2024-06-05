@@ -1,0 +1,139 @@
+<!-- Tu código HTML -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <!-- Metadatos Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="Quiz Educativo">
+    <meta property="og:description" content="¡Demuestra tus conocimientos con este quiz educativo interactivo!">
+    <meta property="og:image" content="img/quiz.jpg">
+    <meta property="og:url" content="https://quiz-educativo.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <header class="card-header text-white mx-auto col-lg-8">
+            <div class="container text-center">
+                <h4>Calculadora Gráfica</h4>
+            </div>
+        </header>
+        <main class="my-5">
+            <div class="card card mx-auto mt-2 col-lg-8 col-md-10">
+                <section id="input-section" class="mb-5">
+                    <h2 class="mb-3">Ingrese la función:</h2>
+                    <div class="input-group">
+                        <input type="text" id="function-input" class="form-control" placeholder="Ejemplo: y = x^2">
+                        
+                    </div>
+                    <div class="input-group-append input-group">
+                        <button id="graph-button" class="btn btn-success mt-3">Graficar</button>
+                    </div>
+                </section>
+                <section id="graph-section">
+                    <h2>Gráfica:</h2>
+                    <canvas id="graph-canvas"></canvas>
+                </section>
+                
+            </div>
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        AOS.init();
+    
+        // Función para compartir en Facebook
+        function shareOnFacebook() {
+            const quizUrl = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+    
+        // Función para compartir en WhatsApp
+        function shareOnWhatsApp() {
+            const quizUrl = encodeURIComponent(window.location.href);
+            const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    
+        // Función para compartir en LinkedIn
+        function shareOnLinkedIn() {
+            const quizUrl = window.location.href;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+            window.open(linkedInUrl, '_blank', 'width=600,height=400');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona el botón de graficar
+    const graphButton = document.getElementById('graph-button');
+
+    // Agrega un event listener al botón de graficar
+    graphButton.addEventListener('click', function() {
+        // Obtiene la función ingresada por el usuario
+        const functionInput = document.getElementById('function-input').value;
+
+        // Llama a la función para graficar
+        drawGraph(functionInput);
+    });
+
+    // Función para graficar la función ingresada por el usuario
+function drawGraph(func) {
+    const canvas = document.getElementById('graph-canvas').getContext('2d');
+
+    // Limpia el canvas antes de dibujar el nuevo gráfico
+    canvas.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Crea un nuevo gráfico utilizando Chart.js
+    new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels: [...Array(100).keys()], // Crea 100 puntos para el eje x
+            datasets: [{
+                label: 'Función',
+                borderColor: 'rgb(75, 192, 192)',
+                data: calculateFunctionValues(func), // Calcula los valores de la función
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+
+    // Función para calcular los valores de la función
+    function calculateFunctionValues(func) {
+        const values = [];
+        for (let x = -5; x <= 5; x += 0.1) {
+            values.push(eval(func.replace('x', x))); // Evalúa la función para cada valor de x
+        }
+        return values;
+    }
+});
+
+        
+
+    </script>
+    

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Metadatos Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="Quiz Educativo">
+    <meta property="og:description" content="¡Demuestra tus conocimientos con este quiz educativo interactivo!">
+    <meta property="og:image" content="img/quiz.jpg">
+    <meta property="og:url" content="https://quiz-educativo.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-body">
+                  <input type="text" class="form-control mb-2" id="input" readonly>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-secondary btn-block" onclick="clearInput()">C</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-secondary btn-block" onclick="deleteLast()">⌫</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-secondary btn-block" onclick="solve()">=</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-secondary btn-block" onclick="solveWithCamera()">📷</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('7')">7</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('8')">8</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('9')">9</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('/')">/</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('4')">4</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('5')">5</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('6')">6</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('*')">*</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('1')">1</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('2')">2</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('3')">3</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('-')">-</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('0')">0</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('.')">.</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('+')">+</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('(')">(</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput(')')">)</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('^')">^</button>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-primary btn-block" onclick="appendInput('%')">%</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="text-center mt-3" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
+            <a href="/index.html" class="btn btn btn-sm text-white" style="background-color: rgb(15, 56, 110);">Volver a inicio</a>
+            <div id="share-buttons">
+                <p>Comparte en tus redes favoritas:</p>
+                <button onclick="shareOnFacebook()" class="btn btn-primary w-20"><i class="fab fa-facebook-square fa-lg"></i></button>
+                <button onclick="shareOnWhatsApp()" class="btn btn-success w-20"><i class="fab fa-whatsapp-square fa-lg"></i></button>
+                <button onclick="shareOnLinkedIn()" class="btn btn-danger w-20"><i class="fab fa-linkedin fa-lg"></i></button>
+                <button onclick="shareOnTwitter()" class="btn btn-info w-20"><i class="fab fa-twitter-square fa-lg"></i></button>
+            </div>
+            <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.14.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@3.5.0/dist/mobilenet.min.js"></script>
+
+    <script>
+        AOS.init();
+
+        // Función para compartir en Facebook
+        function shareOnFacebook() {
+            const quizUrl = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+
+        // Función para compartir en WhatsApp
+        function shareOnWhatsApp() {
+            const quizUrl = encodeURIComponent(window.location.href);
+            const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Función para compartir en LinkedIn
+        function shareOnLinkedIn() {
+            const quizUrl = window.location.href;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+            window.open(linkedInUrl, '_blank', 'width=600,height=400');
+        }
+
+        async function solveWithCamera() {
+            try {
+                const net = await mobilenet.load();
+                const video = document.createElement('video');
+                video.width = 200;
+                video.height = 200;
+
+                const constraints = { audio: false, video: { facingMode: 'environment' } };
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                
+                video.srcObject = stream;
+                document.body.appendChild(video); // Añadir el video al DOM para que pueda reproducirse
+
+                video.onloadedmetadata = async () => {
+                    video.play();
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = video.width;
+                    canvas.height = video.height;
+                    const ctx = canvas.getContext('2d');
+
+                    // Esperar a que el video esté listo para tomar una imagen
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    ctx.drawImage(video, 0, 0, video.width, video.height);
+                    const img = tf.browser.fromPixels(canvas).toFloat().div(tf.scalar(255)).expandDims();
+                    const predictions = await net.classify(img);
+                    const result = predictions[0].className;
+
+                    appendInput(result);
+
+                    // Detener la transmisión y eliminar el video del DOM
+                    stream.getTracks().forEach(track => track.stop());
+                    document.body.removeChild(video);
+                };
+            } catch (error) {
+                console.error('Error al usar la cámara o clasificar la imagen:', error);
+            }
+        }
+
+        let input = document.getElementById('input');
+
+        function appendInput(value) {
+            input.value += value;
+        }
+
+        function clearInput() {
+            input.value = '';
+        }
+
+        function deleteLast() {
+            input.value = input.value.slice(0, -1);
+        }
+
+        function solve() {
+            try {
+                input.value = eval(input.value);
+            } catch (error) {
+                input.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>

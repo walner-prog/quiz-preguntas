@@ -1,0 +1,91 @@
+<!-- Tu código HTML -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <!-- Metadatos Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="Quiz Educativo">
+    <meta property="og:description" content="¡Demuestra tus conocimientos con este quiz educativo interactivo!">
+    <meta property="og:image" content="img/quiz.jpg">
+    <meta property="og:url" content="https://quiz-educativo.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+        
+            <div class="card ">
+                <h1 class="text-center mb-0">Calculadora Gráfica + Math</h1>
+                <div class="input-group mt-3">
+                    <input type="text" id="problemInput" class="form-control" placeholder="Introduce el problema matemático">
+                    
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" onclick="solveProblem()">Resolver</button>
+                </div>
+            </div>
+      
+        <main class="py-5">
+            <div class="container">
+                <div id="calculatorTabs" class="nav nav-pills justify-content-center mb-4">
+                    <a href="/grafica.html" class="nav-link active">Gráfica</a>
+                    <a href="#" class="nav-link">Científica</a>
+                    <a href="#" class="nav-link">Fracciones</a>
+                    <a href="#" class="nav-link">Álgebra</a>
+                    <a href="#" class="nav-link">Matrices</a>
+                </div>
+                <div id="calculatorContent">
+                    <!-- Aquí se mostrarán las calculadoras -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    
+    <script>
+        AOS.init();
+    
+        // Función para compartir en Facebook
+        function shareOnFacebook() {
+            const quizUrl = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+    
+        // Función para compartir en WhatsApp
+        function shareOnWhatsApp() {
+            const quizUrl = encodeURIComponent(window.location.href);
+            const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    
+        // Función para compartir en LinkedIn
+        function shareOnLinkedIn() {
+            const quizUrl = window.location.href;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+            window.open(linkedInUrl, '_blank', 'width=600,height=400');
+        }
+
+       
+        
+
+    </script>
+    
