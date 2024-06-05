@@ -1,0 +1,159 @@
+<!-- Tu código HTML -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Educativo</title>
+    <link rel="icon" type="image/x-icon" href="img/icons.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-4YgSEqfOxm3EgEXa7or2hq41UnPd2K4f+Clz5bFkslS/s3XdSWTlczqD8VB5U5L9wDr6qJPjKZ5s3wFft4rZUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <!-- Metadatos Open Graph para compartir en redes sociales -->
+    <meta property="og:title" content="Quiz Educativo">
+    <meta property="og:description" content="¡Demuestra tus conocimientos con este quiz educativo interactivo!">
+    <meta property="og:image" content="img/quiz.jpg">
+    <meta property="og:url" content="https://quiz-educativo.netlify.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+        <h4 class="text-center mb-4"> <span class=" text-warning">Resolver</span> Propiedades Matemáticas</h4>
+
+        <div class="card mx-auto" style="max-width: 500px;">
+            <div class="card-body">
+                <h5 class="card-title text-warning">Selecciona el tipo de propiedad</h5>
+                <div class="form-group">
+                    <label for="propertyType">Tipo de propiedad:</label>
+                    <select class="form-control" id="propertyType">
+                        <option value="conmutativa">Propiedad Conmutativa</option>
+                        <option value="asociativa">Propiedad Asociativa</option>
+                        <option value="distributiva">Propiedad Distributiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numbersInput">Números:</label>
+                    <input type="text" class="form-control" id="numbers" placeholder="Ingrese los números separados por comas (,)" required>
+                </div>
+                <button onclick="solveExercise()" class="btn btn-warning">Resolver</button>
+
+                <p id="result" class="mt-3"></p>
+            </div>
+        </div>
+        
+
+        <div class="text-center mt-3" data-aos="fade-down" data-aos-duration="1000" data-aos-once="true">
+            <a href="/index.html" class="btn btn btn-sm text-white" style="background-color: rgb(15, 56, 110);">Volver a inicio</a>
+            <div id="share-buttons">
+                <p>Comparte en tus redes favoritas:</p>
+                <button onclick="shareOnFacebook()" class="btn btn-primary w-20"><i class="fab fa-facebook-square fa-lg"></i></button>
+                <button onclick="shareOnWhatsApp()" class="btn btn-success w-20"><i class="fab fa-whatsapp-square fa-lg"></i></button>
+                <button onclick="shareOnLinkedIn()" class="btn btn-danger w-20"><i class="fab fa-linkedin fa-lg"></i></button>
+                <button onclick="shareOnTwitter()" class="btn btn-info w-20"><i class="fab fa-twitter-square fa-lg"></i></button>
+            </div>
+            <p>&copy; 2024 Dev Web. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="mailto:ca140611@gmail.com">ca140611@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    
+    <script>
+        AOS.init();
+    
+        // Función para compartir en Facebook
+        function shareOnFacebook() {
+            const quizUrl = window.location.href;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+    
+        // Función para compartir en WhatsApp
+        function shareOnWhatsApp() {
+            const quizUrl = encodeURIComponent(window.location.href);
+            const whatsappUrl = `https://api.whatsapp.com/send?text=¡Echa un vistazo a este increíble quiz! ${quizUrl}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    
+        // Función para compartir en LinkedIn
+        function shareOnLinkedIn() {
+            const quizUrl = window.location.href;
+            const linkedInUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(quizUrl)}`;
+            window.open(linkedInUrl, '_blank', 'width=600,height=400');
+        }
+
+        function solveExercise() {
+    const property = document.getElementById('propertyType').value;
+    const numbersString = document.getElementById('numbers').value.trim();
+    const numbersArray = numbersString.split(',').map(num => parseInt(num.trim()));
+
+    let result;
+
+    switch(property) {
+        case 'conmutativa':
+            result = solveConmutative(numbersArray);
+            break;
+        case 'asociativa':
+            result = solveAssociative(numbersArray);
+            break;
+        case 'distributiva':
+            result = solveDistributive(numbersArray);
+            break;
+        default:
+            result = "Selecciona una propiedad válida.";
+    }
+
+    document.getElementById('result').innerText = result;
+}
+
+function solveConmutative(numbers) {
+    if (numbers.length !== 2) {
+        return "La propiedad conmutativa solo aplica para dos números.";
+    }
+
+    const [a, b] = numbers;
+    const operation = `${a} + ${b}`;
+    const result = a + b;
+    return `La propiedad conmutativa para ${a} y ${b} es: ${operation} = ${result}`;
+}
+
+function solveAssociative(numbers) {
+    if (numbers.length !== 3) {
+        return "La propiedad asociativa solo aplica para tres números.";
+    }
+
+    const [a, b, c] = numbers;
+    const operation1 = `(${a} + ${b}) + ${c}`;
+    const result1 = (a + b) + c;
+    const operation2 = `${a} + (${b} + ${c})`;
+    const result2 = a + (b + c);
+    return `La propiedad asociativa para ${a}, ${b} y ${c} es: ${operation1} = ${result1}, ${operation2} = ${result2}`;
+}
+
+function solveDistributive(numbers) {
+    if (numbers.length !== 3) {
+        return "La propiedad distributiva solo aplica para tres números.";
+    }
+
+    const [a, b, c] = numbers;
+    const operation1 = `${a} * (${b} + ${c})`;
+    const result1 = a * (b + c);
+    const operation2 = `(${a} * ${b}) + (${a} * ${c})`;
+    const result2 = (a * b) + (a * c);
+    return `La propiedad distributiva para ${a}, ${b} y ${c} es: ${operation1} = ${result1}, ${operation2} = ${result2}`;
+}
+
+    </script>
+    
