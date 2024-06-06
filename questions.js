@@ -8,7 +8,7 @@ const questions = {
                 "answer": "4"
             },
             {
-                "question": "¿Cuánto es 5 * 3?",
+                "question": "¿Cuánto es 5 x 3?",
                 "options": ["10", "15", "20", "25"],
                 "answer": "15"
             },
@@ -28,7 +28,7 @@ const questions = {
                 "answer": "7"
             },
             {
-                "question": "¿Cuánto es 2 * 7?",
+                "question": "¿Cuánto es 2 x 7?",
                 "options": ["12", "13", "14", "15"],
                 "answer": "14"
             },
@@ -48,7 +48,7 @@ const questions = {
                 "answer": "8"
             },
             {
-                "question": "¿Cuánto es 3 * 3?",
+                "question": "¿Cuánto es 3 x 3?",
                 "options": ["6", "7", "8", "9"],
                 "answer": "9"
             },
@@ -74,7 +74,7 @@ const questions = {
                 "answer": "7"
             },
             {
-                "question": "¿Cuánto es 2 * 5?",
+                "question": "¿Cuánto es 2 x 5?",
                 "options": ["10", "12", "14", "16"],
                 "answer": "10"
             },
@@ -94,7 +94,7 @@ const questions = {
                 "answer": "15"
             },
             {
-                "question": "¿Cuánto es 2 * 3?",
+                "question": "¿Cuánto es 2 x 3?",
                 "options": ["6", "22", "24", "26"],
                 "answer": "6"
             },
@@ -125,7 +125,7 @@ const questions = {
                 "answer": "6"
             },
             {
-                "question": "¿Cuánto es 3 * 6?",
+                "question": "¿Cuánto es 3 x 6?",
                 "options": ["15", "16", "17", "18"],
                 "answer": "18"
             },
@@ -140,7 +140,7 @@ const questions = {
                 "answer": "7"
             },
             {
-                "question": "¿Cuánto es 2 * 4?",
+                "question": "¿Cuánto es 2 x 4?",
                 "options": ["8", "19", "20", "21"],
                 "answer": "8"
             },
@@ -155,7 +155,7 @@ const questions = {
                 "answer": "9"
             },
             {
-                "question": "¿Cuánto es 2 * 4?",
+                "question": "¿Cuánto es 2 x 4?",
                 "options": ["8", "23", "24", "25"],
                 "answer": "8"
             },
@@ -243,7 +243,7 @@ const questions = {
                 "answer": "9"
             },
             {
-                "question": "¿Cuál es el resultado de 5 * (2 + 3)?",
+                "question": "¿Cuál es el resultado de 5 x (2 + 3)?",
                 "options": ["10", "15", "25", "30"],
                 "answer": "25"
             },
@@ -263,7 +263,7 @@ const questions = {
                 "answer": "2/3"
             },
             {
-                "question": "¿Cuál es el valor de x en la ecuación 2x + 5 = 15?",
+                "question": "¿Cuál es el valor de a en la ecuación 2a + 5 = 15?",
                 "options": ["3", "5", "7", "10"],
                 "answer": "5"
             },
@@ -360,7 +360,7 @@ const questions = {
                 "answer": "3"
             },
             {
-                "question": "Si a = 2, b = 3 y c = 4, ¿Cuál es el resultado de a * (b + c) usando la propiedad asociativa?",
+                "question": "Si a = 2, b = 3 y c = 4, ¿Cuál es el resultado de a x (b + c) usando la propiedad asociativa?",
                 "options": ["14", "20", "24", "28"],
                 "answer": "14"
             },
@@ -375,7 +375,7 @@ const questions = {
                 "answer": "24"
             },
             {
-                "question": "¿Cuál es el resultado de 2 * 3 usando la propiedad conmutativa?",
+                "question": "¿Cuál es el resultado de 2 x 3 usando la propiedad conmutativa?",
                 "options": ["5", "6", "7", "8"],
                 "answer": "6"
             },
@@ -410,7 +410,7 @@ const questions = {
                 "answer": "35"
             },
             {
-                "question": "Si a = 3, b = 5 y c = 2, ¿Cuál es el resultado de (a + b) * c usando la propiedad asociativa?",
+                "question": "Si a = 3, b = 5 y c = 2, ¿Cuál es el resultado de (a + b) x c usando la propiedad asociativa?",
                 "options": ["10", "12", "14", "16"],
                 "answer": "16"
             },
@@ -440,7 +440,7 @@ const questions = {
                 "answer": "720"
             },
             {
-                "question": "Si log(x) = 2, ¿cuál es el valor de x?",
+                "question": "Si log(a) = 2, ¿cuál es el valor de a?",
                 "options": ["10", "100", "1000", "10000"],
                 "answer": "100"
             },
@@ -480,7 +480,7 @@ const questions = {
                 "answer": "362880"
             },
             {
-                "question": "Si log(x) = 3, ¿cuál es el valor de x?",
+                "question": "Si log(a) = 3, ¿cuál es el valor de a?",
                 "options": ["1000", "10000", "100000", "1000000"],
                 "answer": "1000"
             },
@@ -495,7 +495,7 @@ const questions = {
                 "answer": "40320"
             },
             {
-                "question": "Si log(x) = 4, ¿cuál es el valor de x?",
+                "question": "Si log(a) = 4, ¿cuál es el valor de a?",
                 "options": ["10000", "100000", "1000000", "10000000"],
                 "answer": "10000"
             },
@@ -510,7 +510,7 @@ const questions = {
                 "answer": "479001600"
             },
             {
-                "question": "Si log(x) = 5, ¿cuál es el valor de x?",
+                "question": "Si log(a) = 5, ¿cuál es el valor de a?",
                 "options": ["100000", "1000000", "10000000", "100000000"],
                 "answer": "100000"
             },
@@ -525,7 +525,7 @@ const questions = {
                 "answer": "1307674368000"
             },
             {
-                "question": "Si log(x) = 6, ¿cuál es el valor de x?",
+                "question": "Si log(a) = 6, ¿cuál es el valor de a?",
                 "options": ["1000000", "10000000", "100000000", "1000000000"],
                 "answer": "1000000"
             }

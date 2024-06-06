@@ -77,6 +77,8 @@ function startQuiz() {
   loadQuestion(currentCategory, currentLevel);
 }
 
+var questionAudioPlayed = false; // Variable para controlar si el audio de la pregunta se ha reproducido
+
 function loadQuestion(category, level) {
   // Obtener la pregunta actual según la categoría, nivel y el índice actual
   var currentQuestion = questions[category][level][currentQuestionIndex]; // Mostrar la pregunta en el elemento HTML y agregar una imagen opcional
@@ -108,6 +110,52 @@ function loadQuestion(category, level) {
 
 
 function playQuestionAudio(text) {
+  // Convertir números en texto
+  text = text.replace(/\d+/g, function (match) {
+    var numberMap = {
+      '0': 'cero',
+      '1': 'uno',
+      '2': 'dos',
+      '3': 'tres',
+      '4': 'cuatro',
+      '5': 'cinco',
+      '6': 'seis',
+      '7': 'siete',
+      '8': 'ocho',
+      '9': 'nueve',
+      '10': 'diez',
+      '11': 'once',
+      '12': 'doce',
+      '13': 'trece',
+      '14': 'catorce',
+      '15': 'quince',
+      '16': 'dieciséis',
+      '17': 'diecisiete',
+      '18': 'dieciocho',
+      '19': 'diecinueve',
+      '20': 'veinte',
+      '30': 'treinta',
+      '40': 'cuarenta',
+      '50': 'cincuenta',
+      '60': 'sesenta',
+      '70': 'setenta',
+      '80': 'ochenta',
+      '90': 'noventa',
+      '100': 'cien'
+    };
+    return numberMap[match] || match; // Si no es un número, devolver el mismo valor
+  }); // Reemplazar símbolos de operaciones con su equivalente en texto
+
+  var operationMap = {
+    '+': 'más',
+    '-': 'menos',
+    'x': 'por',
+    '/': 'dividido por' // Puedes agregar más símbolos y sus equivalencias en texto según sea necesario
+
+  };
+  text = text.replace(/[+\-x\/]/g, function (match) {
+    return operationMap[match] || match;
+  });
   var utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'es-ES'; // Establecer el idioma a español
 

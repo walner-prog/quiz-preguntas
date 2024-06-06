@@ -7,7 +7,7 @@ var questions = {
       "options": ["3", "4", "5", "6"],
       "answer": "4"
     }, {
-      "question": "¿Cuánto es 5 * 3?",
+      "question": "¿Cuánto es 5 x 3?",
       "options": ["10", "15", "20", "25"],
       "answer": "15"
     }, {
@@ -23,7 +23,7 @@ var questions = {
       "options": ["5", "6", "7", "8"],
       "answer": "7"
     }, {
-      "question": "¿Cuánto es 2 * 7?",
+      "question": "¿Cuánto es 2 x 7?",
       "options": ["12", "13", "14", "15"],
       "answer": "14"
     }, {
@@ -39,7 +39,7 @@ var questions = {
       "options": ["6", "7", "8", "9"],
       "answer": "8"
     }, {
-      "question": "¿Cuánto es 3 * 3?",
+      "question": "¿Cuánto es 3 x 3?",
       "options": ["6", "7", "8", "9"],
       "answer": "9"
     }, {
@@ -59,7 +59,7 @@ var questions = {
       "options": ["6", "7", "8", "9"],
       "answer": "7"
     }, {
-      "question": "¿Cuánto es 2 * 5?",
+      "question": "¿Cuánto es 2 x 5?",
       "options": ["10", "12", "14", "16"],
       "answer": "10"
     }, {
@@ -71,7 +71,7 @@ var questions = {
       "options": ["12", "13", "14", "15"],
       "answer": "15"
     }, {
-      "question": "¿Cuánto es 2 * 3?",
+      "question": "¿Cuánto es 2 x 3?",
       "options": ["6", "22", "24", "26"],
       "answer": "6"
     }, {
@@ -95,7 +95,7 @@ var questions = {
       "options": ["4", "5", "6", "7"],
       "answer": "6"
     }, {
-      "question": "¿Cuánto es 3 * 6?",
+      "question": "¿Cuánto es 3 x 6?",
       "options": ["15", "16", "17", "18"],
       "answer": "18"
     }, {
@@ -107,7 +107,7 @@ var questions = {
       "options": ["5", "6", "7", "8"],
       "answer": "7"
     }, {
-      "question": "¿Cuánto es 2 * 4?",
+      "question": "¿Cuánto es 2 x 4?",
       "options": ["8", "19", "20", "21"],
       "answer": "8"
     }, {
@@ -119,7 +119,7 @@ var questions = {
       "options": ["7", "8", "9", "10"],
       "answer": "9"
     }, {
-      "question": "¿Cuánto es 2 * 4?",
+      "question": "¿Cuánto es 2 x 4?",
       "options": ["8", "23", "24", "25"],
       "answer": "8"
     }, {
@@ -184,7 +184,7 @@ var questions = {
       "options": ["7", "9", "11", "14"],
       "answer": "9"
     }, {
-      "question": "¿Cuál es el resultado de 5 * (2 + 3)?",
+      "question": "¿Cuál es el resultado de 5 x (2 + 3)?",
       "options": ["10", "15", "25", "30"],
       "answer": "25"
     }, {
@@ -200,7 +200,7 @@ var questions = {
       "options": ["1/2", "2/3", "3/4", "4/5"],
       "answer": "2/3"
     }, {
-      "question": "¿Cuál es el valor de x en la ecuación 2x + 5 = 15?",
+      "question": "¿Cuál es el valor de a en la ecuación 2a + 5 = 15?",
       "options": ["3", "5", "7", "10"],
       "answer": "5"
     }, {
@@ -272,7 +272,7 @@ var questions = {
       "options": ["2", "3", "4", "5"],
       "answer": "3"
     }, {
-      "question": "Si a = 2, b = 3 y c = 4, ¿Cuál es el resultado de a * (b + c) usando la propiedad asociativa?",
+      "question": "Si a = 2, b = 3 y c = 4, ¿Cuál es el resultado de a x (b + c) usando la propiedad asociativa?",
       "options": ["14", "20", "24", "28"],
       "answer": "14"
     }, {
@@ -284,7 +284,7 @@ var questions = {
       "options": ["12", "18", "24", "30"],
       "answer": "24"
     }, {
-      "question": "¿Cuál es el resultado de 2 * 3 usando la propiedad conmutativa?",
+      "question": "¿Cuál es el resultado de 2 x 3 usando la propiedad conmutativa?",
       "options": ["5", "6", "7", "8"],
       "answer": "6"
     }, {
@@ -312,7 +312,7 @@ var questions = {
       "options": ["30", "35", "40", "45"],
       "answer": "35"
     }, {
-      "question": "Si a = 3, b = 5 y c = 2, ¿Cuál es el resultado de (a + b) * c usando la propiedad asociativa?",
+      "question": "Si a = 3, b = 5 y c = 2, ¿Cuál es el resultado de (a + b) x c usando la propiedad asociativa?",
       "options": ["10", "12", "14", "16"],
       "answer": "16"
     }, {
@@ -333,7 +333,7 @@ var questions = {
       "options": ["720", "840", "960", "1080"],
       "answer": "720"
     }, {
-      "question": "Si log(x) = 2, ¿cuál es el valor de x?",
+      "question": "Si log(a) = 2, ¿cuál es el valor de a?",
       "options": ["10", "100", "1000", "10000"],
       "answer": "100"
     }, {
@@ -365,7 +365,7 @@ var questions = {
       "options": ["362880", "40320", "518400", "725760"],
       "answer": "362880"
     }, {
-      "question": "Si log(x) = 3, ¿cuál es el valor de x?",
+      "question": "Si log(a) = 3, ¿cuál es el valor de a?",
       "options": ["1000", "10000", "100000", "1000000"],
       "answer": "1000"
     }, {
@@ -377,7 +377,7 @@ var questions = {
       "options": ["40320", "362880", "3628800", "39916800"],
       "answer": "40320"
     }, {
-      "question": "Si log(x) = 4, ¿cuál es el valor de x?",
+      "question": "Si log(a) = 4, ¿cuál es el valor de a?",
       "options": ["10000", "100000", "1000000", "10000000"],
       "answer": "10000"
     }, {
@@ -389,7 +389,7 @@ var questions = {
       "options": ["479001600", "3628800", "87178291200", "1307674368000"],
       "answer": "479001600"
     }, {
-      "question": "Si log(x) = 5, ¿cuál es el valor de x?",
+      "question": "Si log(a) = 5, ¿cuál es el valor de a?",
       "options": ["100000", "1000000", "10000000", "100000000"],
       "answer": "100000"
     }, {
@@ -401,7 +401,7 @@ var questions = {
       "options": ["1307674368000", "87178291200", "20922789888000", "209227898880000"],
       "answer": "1307674368000"
     }, {
-      "question": "Si log(x) = 6, ¿cuál es el valor de x?",
+      "question": "Si log(a) = 6, ¿cuál es el valor de a?",
       "options": ["1000000", "10000000", "100000000", "1000000000"],
       "answer": "1000000"
     }]
