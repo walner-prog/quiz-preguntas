@@ -118,7 +118,7 @@ function playQuestionAudio(text) {
 
     // Reemplazar símbolos de operaciones con su equivalente en texto
     const operationMap = {
-        '+': 'más', '-': 'menos', 'x': 'por', '/': 'dividido por'
+        '+': 'más', '-': 'menos', 'x': 'por', '/': 'dividido por','s': 'ese', 'c': 'se',
         // Puedes agregar más símbolos y sus equivalencias en texto según sea necesario
     };
     text = text.replace(/[+\-x\/]/g, match => operationMap[match] || match);

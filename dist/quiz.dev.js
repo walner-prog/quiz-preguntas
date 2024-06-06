@@ -150,7 +150,9 @@ function playQuestionAudio(text) {
     '+': 'más',
     '-': 'menos',
     'x': 'por',
-    '/': 'dividido por' // Puedes agregar más símbolos y sus equivalencias en texto según sea necesario
+    '/': 'dividido por',
+    's': 'ese',
+    'c': 'se' // Puedes agregar más símbolos y sus equivalencias en texto según sea necesario
 
   };
   text = text.replace(/[+\-x\/]/g, function (match) {

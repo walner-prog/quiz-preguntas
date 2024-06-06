@@ -747,7 +747,7 @@ const questions = {
                 "answer": "Contento"
             },
             {
-                "question": "Completa la oración: El día está muy **caliente**.",
+                "question": "Completa la oración: El día está muy ",
                 "options": ["Frío", "Alto", "Duro", "Blando"],
                 "answer": "Frío"
             },
