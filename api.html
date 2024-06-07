@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima en Tiempo Real</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .weather-icon {
+            font-size: 50px;
+        }
+        .weather-card {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-family: 'Open Sans', sans-serif;
+            background: #16222A;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .form-control:focus {
+            /* Estilos personalizados cuando el select está en foco */
+            color:#3A6073;
+            box-shadow: 0 0 0 0.2rem rgba(0, 4, 255, 0.185); /* Cambia el color del sombreado aquí */
+            border-color: rgba(0, 23, 92, 0.25); /* Cambia el color del borde aquí si lo deseas */
+        }
+        option {
+            color: #ffffff; /* Cambia el color del texto */
+            background-color: #16222A;  /* fallback for old browsers */
+            background-color: -webkit-linear-gradient(to top, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+            background-color: linear-gradient(to top, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        option:hover {
+            color: #ffffff; /* Cambia el color del texto al pasar el mouse */
+            background-color: #021b42;  /* fallback for old browsers */
+            background-color: -webkit-linear-gradient(to top, #6FB1FC, #4364F7, #0052D4);  /* Chrome 10-25, Safari 5.1-6 */
+            background-color: linear-gradient(to top, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .temp {
+            font-size: 27px;
+        }
+        .city {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .date-time {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .details {
+            font-size: 14px;
+        }
+        .icon-small {
+            font-size: 20px;
+        }
+        .text-color {
+            color: #c1bfbf;
+        }
+        .date, .time {
+            display: block;
+        }
+        .extended-forecast {
+            margin-top: 20px;
+        }
+        .forecast-card {
+            margin-bottom: 20px;
+            background: #16222A;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            border-radius: 5px;
+            margin-right: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center col-lg-3 col-md-8 mt-5">
+        <h2 class="text-white">Estado del Clima </h2>
+        <div class="form-group">
+            <label for="city-select " class="text-white">Selecciona una ciudad:</label>
+            <select id="city-select" class="form-control">
+                <option value="Managua">Managua</option>
+                <option value="London">London</option>
+                <option value="New York">New York</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Paris">Paris</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Moscow">Moscow</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Buenos Aires">Buenos Aires</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Sao Paulo">Sao Paulo</option>
+                <option value="Hong Kong">Hong Kong</option>
+                <option value="Bangkok">Bangkok</option>
+                <option value="Seoul">Seoul</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Lima">Lima</option>
+                </select>
+                </div>
+                <div id="weather-card" class="weather-card">
+                <!-- Weather information will be displayed here -->
+                </div>
+                <div class="container">
+                <div class="extended-forecast row " id="extended-forecast">
+                <!-- Extended forecast will be displayed here -->
+                </div>
+                </div>
+                </div>
+                <script>
+                    const apiKey = '3c743983734341f81c2486dcce043049';
+                    const defaultCity = 'Managua';
+                    const apiUrl = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+                    const extendedApiUrl = (city) => `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+                
+                    const weatherIcons = {
+                        'Clear': 'fa-sun text-warning',
+                        'Clouds': 'fa-cloud text-white',
+                        'Rain': 'fa-cloud-showers-heavy text-white',
+                        'Drizzle': 'fa-cloud-rain text-white',
+                        'Thunderstorm': 'fa-bolt text-white',
+                        'Snow': 'fa-snowflake text-white',
+                        'Mist': 'fa-smog text-white',
+                        'Smoke': 'fa-smog text-white',
+                        'Haze': 'fa-smog text-white',
+                        'Dust': 'fa-smog text-white',
+                        'Fog': 'fa-smog text-white',
+                        'Sand': 'fa-smog text-white',
+                        'Ash': 'fa-smog text-white',
+                        'Squall': 'fa-smog text-white',
+                        'Tornado': 'fa-tornado text-white'
+                    };
+                
+                    let currentCity = defaultCity;
+                    let timezoneOffset = 0;
+                
+                    function updateWeather(city) {
+                        fetch(apiUrl(city))
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener el clima');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const weatherCard = document.getElementById('weather-card');
+                                const iconClass = weatherIcons[data.weather[0].main] || 'fa-question';
+                                currentCity = city;
+                                timezoneOffset = data.timezone;
+                                const now = moment.utc().add(timezoneOffset, 'seconds');
+                                const date = now.format('DD/MM/YYYY');
+                                const time = now.format('h:mm:ss A');
+                                const windSpeedKmh = (data.wind.speed * 3.6).toFixed(2); // Convert from m/s to km/h
+                                const rainProbability = data.clouds.all ? data.clouds.all : 0; // Usar la nubosidad como probabilidad de precipitaciones
+                
+                                weatherCard.innerHTML = `
+                                    <div class="row">
+                                        <div class="col-6 city text-white">${data.name}</div>
+                                        <div class="col-6 temp text-white">${data.main.temp}°C</div>
+                                    </div>
+                                    <div class="date-time">
+                                        <span class="date text-white">${date}</span>
+                                        <span class="time text-white">${time}</span>
+                                    </div>
+                                    <div class="details text-color">
+                                        <i class="fas ${iconClass} weather-icon"></i>
+                                        <p>Descripción: ${data.weather[0].description}</p>
+                                        <p><i class="fas fa-tint icon-small"></i> Humedad: ${data.main.humidity}%</p>
+                                        <p><i class="fas fa-wind icon-small"></i> Viento: ${windSpeedKmh} km/h</p>
+                                        <p><i class="fas fa-umbrella icon-small"></i> Prob. de precipitaciones: ${rainProbability}%</p>
+                                    </div>
+                                `;
+                                updateExtendedForecast(city); // Update extended forecast when weather is updated
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener el clima:', error);
+                            });
+                    }
+                
+                    function updateExtendedForecast(city) {
+                        fetch(extendedApiUrl(city))
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener el pronóstico extendido');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const extendedForecastContainer = document.getElementById('extended-forecast');
+                                extendedForecastContainer.innerHTML = ''; // Clear previous forecast data
+                
+                                // Find the index for the forecast that starts from the next day
+                                const tomorrowIndex = data.list.findIndex(forecast => {
+                                    const forecastTime = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds');
+                                    return forecastTime.isAfter(moment().endOf('day'));
+                                });
+                
+                                // Display forecast for the next 7 days starting from tomorrow
+                                for (let i = tomorrowIndex; i < tomorrowIndex + 7; i++) {
+                                    const forecast = data.list[i];
+                                    const forecastDate = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds').format('dddd DD/MM');
+                                    const forecastTemp = forecast.main.temp;
+                                    const forecastIcon = weatherIcons[forecast.weather[0].main] || 'fa-question';
+                
+                                    // Create forecast card
+                                    const forecastCard = document.createElement('div');
+                                    forecastCard.classList.add('col', 'forecast-card');
+                                    forecastCard.innerHTML = `
+                                        <div class="text-color">${forecastDate}</div>
+                                        <div class="weather-icon"><i class="fas ${forecastIcon}"></i></div>
+                                        <div class="temp text-white">${forecastTemp}°C</div>
+                                    `;
+                                    extendedForecastContainer.appendChild(forecastCard);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener el pronóstico extendido:', error);
+                            });
+                    }
+                
+                    document.getElementById('city-select').addEventListener('change', (event) => {
+                        updateWeather(event.target.value);
+                    });
+                
+                    function updateTime() {
+                        const weatherCard = document.getElementById('weather-card');
+                        if (weatherCard.innerHTML) {
+                            const now = moment.utc().add(timezoneOffset, 'seconds');
+                            const date = now.format('DD/MM/YYYY');
+                            const time = now.format('h:mm:ss A');
+                            const dateElement = weatherCard.querySelector('.date');
+                            const timeElement = weatherCard.querySelector('.time');
+                            dateElement.textContent = date;
+                            timeElement.textContent = time;
+                        }
+                    }
+                
+                    updateWeather(defaultCity);
+                    setInterval(updateTime, 1000); // Update time every second
+                </script>
+                
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+

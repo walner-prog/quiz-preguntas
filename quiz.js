@@ -129,8 +129,6 @@ function playQuestionAudio(text) {
 }
 
 
-
-
 function checkAnswer(selectedOption, button) {
     const currentQuestion = questions[currentCategory][currentLevel][currentQuestionIndex];
     const correctIcon = document.createElement('span');

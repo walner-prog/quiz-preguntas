@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado del Tiempo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        .weather-icon {
+            width: 50px;
+            height: 50px;
+        }
+        .weather-card {
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Estado del Tiempo Actual en Managua</h2>
+                <div id="current-weather" class="weather-card card bg-light"></div>
+                <h2 class="mt-4">Pronóstico Extendido</h2>
+                <div id="forecast" class="row"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '3c743983734341f81c2486dcce043049';
+        const city = 'Managua';
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener el clima');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Mostrar el clima actual
+                const currentWeather = data.list[0];
+                const currentWeatherDiv = document.getElementById('current-weather');
+                currentWeatherDiv.innerHTML = `
+                    <div class="card-body">
+                        <h3 class="card-title">${city}</h3>
+                        <img src="http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" alt="Weather Icon" class="weather-icon">
+                        <p class="card-text">Temperatura: ${currentWeather.main.temp}°C</p>
+                        <p class="card-text">Descripción: ${currentWeather.weather[0].description}</p>
+                        <p class="card-text">Humedad: ${currentWeather.main.humidity}%</p>
+                        <p class="card-text">Viento: ${currentWeather.wind.speed} m/s</p>
+                        <p class="card-text">Presión: ${currentWeather.main.pressure} hPa</p>
+                        <p class="card-text">Visibilidad: ${currentWeather.visibility / 1000} km</p>
+                    </div>
+                `;
+
+                // Mostrar el pronóstico extendido
+                const forecastDiv = document.getElementById('forecast');
+                forecastDiv.innerHTML = '<div class="row w-100"></div>';
+                for (let i = 0; i < data.list.length; i += 8) {
+                    const forecast = data.list[i];
+                    const forecastDate = new Date(forecast.dt * 1000);
+                    forecastDiv.innerHTML += `
+                        <div class="col-md-3 weather-card card bg-light">
+                            <div class="card-body">
+                                <h4 class="card-title">${forecastDate.toLocaleDateString('es-ES', { weekday: 'long' })}</h4>
+                                <img src="http://openweathermap.org/img/w/${forecast.weather[0].icon}.png" alt="Weather Icon" class="weather-icon">
+                                <p class="card-text">Temp: ${forecast.main.temp}°C</p>
+                                <p class="card-text">Desc: ${forecast.weather[0].description}</p>
+                                <p class="card-text">Humedad: ${forecast.main.humidity}%</p>
+                                <p class="card-text">Viento: ${forecast.wind.speed} m/s</p>
+                                <p class="card-text">Presión: ${forecast.main.pressure} hPa</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el clima:', error);
+            });
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima en Tiempo Real</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+   
+</head>
+<body>
+    <style>
+        .container{
+            background-color:darkslateblue';
+        }
+        .weather-icon {
+            font-size: 50px;
+        }
+        .weather-card {
+            margin: 20px auto;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Clima en Tiempo Real</h2>
+                <div id="weather-container" class="row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '3c743983734341f81c2486dcce043049';
+        const defaultCity = 'Managua';
+        const cities = ['Managua', 'London', 'New York', 'Tokyo', 'Sydney'];
+        const apiUrl = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+
+        const weatherIcons = {
+            'Clear': 'fa-sun',
+            'Clouds': 'fa-cloud',
+            'Rain': 'fa-cloud-showers-heavy',
+            'Drizzle': 'fa-cloud-rain',
+            'Thunderstorm': 'fa-bolt',
+            'Snow': 'fa-snowflake',
+            'Mist': 'fa-smog',
+            'Smoke': 'fa-smog',
+            'Haze': 'fa-smog',
+            'Dust': 'fa-smog',
+            'Fog': 'fa-smog',
+            'Sand': 'fa-smog',
+            'Ash': 'fa-smog',
+            'Squall': 'fa-smog',
+            'Tornado': 'fa-tornado'
+        };
+
+        function updateWeather() {
+            const weatherContainer = document.getElementById('weather-container');
+            weatherContainer.innerHTML = ''; // Clear previous content
+
+            cities.forEach(city => {
+                fetch(apiUrl(city))
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('No se pudo obtener el clima');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const iconClass = weatherIcons[data.weather[0].main] || 'fa-question';
+                        const weatherCard = `
+                            <div class="col-md-3 col-sm-4 weather-card card bg-light">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title">${data.name}</h3>
+                                    <i class="fas ${iconClass} weather-icon"></i>
+                                    <p class="card-text">Temperatura: ${data.main.temp}°C</p>
+                                    <p class="card-text">Descripción: ${data.weather[0].description}</p>
+                                    <p class="card-text">Humedad: ${data.main.humidity}%</p>
+                                    <p class="card-text">Viento: ${data.wind.speed} m/s</p>
+                                    <p class="card-text">Presión: ${data.main.pressure} hPa</p>
+                                    <p class="card-text">Visibilidad: ${data.visibility / 1000} km</p>
+                                </div>
+                            </div>
+                        `;
+                        weatherContainer.innerHTML += weatherCard;
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener el clima:', error);
+                    });
+            });
+        }
+
+        // Update weather every 10 minutes
+        updateWeather();
+        setInterval(updateWeather, 600000);
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima en Tiempo Real</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        .weather-icon {
+            font-size: 50px;
+        }
+        .weather-card {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
+        .temp {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .city {
+            font-size: 20px;
+        }
+        .date-time {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .details {
+            font-size: 14px;
+        }
+        .icon-small {
+            font-size: 20px;
+        }
+        .weather-card{
+            background: #fceabb;  /* fallback for old browsers */
+              background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center col-lg-3">
+        <h2>Clima en Tiempo Real</h2>
+        <div class="form-group">
+            <label for="city-select">Selecciona una ciudad:</label>
+            <select id="city-select" class="form-control">
+                <option value="Managua">Managua</option>
+                <option value="London">London</option>
+                <option value="New York">New York</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Sydney">Sydney</option>
+            </select>
+        </div>
+        <div id="weather-card" class="weather-card">
+            <!-- Weather information will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '3c743983734341f81c2486dcce043049';
+        const defaultCity = 'Managua';
+        const apiUrl = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+
+        const weatherIcons = {
+            'Clear': 'fa-sun',
+            'Clouds': 'fa-cloud',
+            'Rain': 'fa-cloud-showers-heavy',
+            'Drizzle': 'fa-cloud-rain',
+            'Thunderstorm': 'fa-bolt',
+            'Snow': 'fa-snowflake',
+            'Mist': 'fa-smog',
+            'Smoke': 'fa-smog',
+            'Haze': 'fa-smog',
+            'Dust': 'fa-smog',
+            'Fog': 'fa-smog',
+            'Sand': 'fa-smog',
+            'Ash': 'fa-smog',
+            'Squall': 'fa-smog',
+            'Tornado': 'fa-tornado'
+        };
+
+        function updateWeather(city) {
+            fetch(apiUrl(city))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo obtener el clima');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const weatherCard = document.getElementById('weather-card');
+                    const iconClass = weatherIcons[data.weather[0].main] || 'fa-question';
+                    const now = new Date();
+                    const dateTime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+                    weatherCard.innerHTML = `
+                        <div class="row">
+                            <div class="col-6 temp">${data.main.temp}°C</div>
+                            <div class="col-6 city">${data.name}</div>
+                        </div>
+                        <div class="date-time">${dateTime}</div>
+                        <div class="details">
+                            <i class="fas ${iconClass} weather-icon"></i>
+                            <p>Descripción: ${data.weather[0].description}</p>
+                            <p><i class="fas fa-tint icon-small"></i> Humedad: ${data.main.humidity}%</p>
+                            <p><i class="fas fa-wind icon-small"></i> Viento: ${data.wind.speed} m/s</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error al obtener el clima:', error);
+                });
+        }
+
+        document.getElementById('city-select').addEventListener('change', (event) => {
+            updateWeather(event.target.value);
+        });
+
+        function updateTime() {
+            const weatherCard = document.getElementById('weather-card');
+            if (weatherCard.innerHTML) {
+                const now = new Date();
+                const dateTime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+                const dateTimeElement = weatherCard.querySelector('.date-time');
+                dateTimeElement.textContent = dateTime;
+            }
+        }
+
+        updateWeather(defaultCity);
+        setInterval(updateTime, 1000); // Update time every second
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
