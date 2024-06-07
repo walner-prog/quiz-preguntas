@@ -124,15 +124,25 @@
                 <option value="Lima">Lima</option>
                 </select>
                 </div>
-                <div id="weather-card" class="weather-card">
-                <!-- Weather information will be displayed here -->
+                <div id="weather-card" class="weather-card">  </div>
+               
+              
+               
+               
                 </div>
-                <div class="container">
-                <div class="extended-forecast row " id="extended-forecast">
-                <!-- Extended forecast will be displayed here -->
-                </div>
-                </div>
-                </div>
+                <div class="container text-center  align-content-center ">
+                    <!--                   <div id="hourly-forecast" class="row extended-forecast"></div>
+-->
+                     <h3 class=" text-white">Clima extendido </h3>
+                     <div class="extended-forecast row col-md-12" id="extended-forecast"></div>
+                    
+                     
+                 </div>
+                 <div class="container text-center  mb-5">
+                    <div id="weather-alerts" class="col-lg-4 col-md-10  align-content-md-center"></div>
+                    <div id="air-quality" class="  text-dark badge badge-warning "></div>
+                 </div>
+                     
                 <script>
                     const apiKey = '3c743983734341f81c2486dcce043049';
                     const defaultCity = 'Managua';
@@ -197,6 +207,9 @@
                                     </div>
                                 `;
                                 updateExtendedForecast(city); // Update extended forecast when weather is updated
+                                updateHourlyForecast(city); // Update hourly forecast
+                                updateWeatherAlerts(city); // Update weather alerts
+                                updateAirQuality(data.coord.lat, data.coord.lon); // Update air quality with lat/lon
                             })
                             .catch(error => {
                                 console.error('Error al obtener el clima:', error);
@@ -204,46 +217,57 @@
                     }
                 
                     function updateExtendedForecast(city) {
-                        fetch(extendedApiUrl(city))
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('No se pudo obtener el pronóstico extendido');
-                                }
-                                return response.json();
-                            })
-                            .then(data => {
-                                const extendedForecastContainer = document.getElementById('extended-forecast');
-                                extendedForecastContainer.innerHTML = ''; // Clear previous forecast data
-                
-                                // Find the index for the forecast that starts from the next day
-                                const tomorrowIndex = data.list.findIndex(forecast => {
-                                    const forecastTime = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds');
-                                    return forecastTime.isAfter(moment().endOf('day'));
-                                });
-                
-                                // Display forecast for the next 7 days starting from tomorrow
-                                for (let i = tomorrowIndex; i < tomorrowIndex + 7; i++) {
-                                    const forecast = data.list[i];
-                                    const forecastDate = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds').format('dddd DD/MM');
-                                    const forecastTemp = forecast.main.temp;
-                                    const forecastIcon = weatherIcons[forecast.weather[0].main] || 'fa-question';
-                
-                                    // Create forecast card
-                                    const forecastCard = document.createElement('div');
-                                    forecastCard.classList.add('col', 'forecast-card');
-                                    forecastCard.innerHTML = `
-                                        <div class="text-color">${forecastDate}</div>
-                                        <div class="weather-icon"><i class="fas ${forecastIcon}"></i></div>
-                                        <div class="temp text-white">${forecastTemp}°C</div>
-                                    `;
-                                    extendedForecastContainer.appendChild(forecastCard);
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error al obtener el pronóstico extendido:', error);
-                            });
-                    }
-                
+    fetch(extendedApiUrl(city))
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo obtener el pronóstico extendido');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const extendedForecastContainer = document.getElementById('extended-forecast');
+            extendedForecastContainer.innerHTML = ''; // Clear previous forecast data
+
+            // Create a row to contain the forecast cards
+            const forecastRow = document.createElement('div');
+            forecastRow.classList.add('row');
+            
+            // Find the index for the forecast that starts from the next day
+            const tomorrowIndex = data.list.findIndex(forecast => {
+                const forecastTime = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds');
+                return forecastTime.isAfter(moment().endOf('day'));
+            });
+
+            // Display forecast for the next 7 days starting from tomorrow
+            for (let i = tomorrowIndex; i < tomorrowIndex + 7; i++) {
+                const forecast = data.list[i];
+                const forecastDate = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds').format('dddd DD/MM');
+                const forecastTemp = forecast.main.temp;
+                const forecastIcon = weatherIcons[forecast.weather[0].main] || 'fa-question';
+
+                // Create forecast card
+                const forecastCol = document.createElement('div');
+                forecastCol.classList.add('col-lg-2', 'col-md-6', 'col-sm-6', 'mb-3'); // Responsive columns
+                const forecastCard = document.createElement('div');
+                forecastCard.classList.add('card', 'forecast-card', 'p-3', 'bg-dark', 'text-white');
+                forecastCard.innerHTML = `
+                    <div class="text-color">${forecastDate}</div>
+                    <div class="weather-icon my-2"><i class="fas ${forecastIcon}"></i></div>
+                    <div class="temp text-white">${forecastTemp}°C</div>
+                `;
+                forecastCol.appendChild(forecastCard);
+                forecastRow.appendChild(forecastCol);
+            }
+
+            // Append the row to the extended forecast container
+            extendedForecastContainer.appendChild(forecastRow);
+        })
+        .catch(error => {
+            console.error('Error al obtener el pronóstico extendido:', error);
+        });
+}
+
+
                     document.getElementById('city-select').addEventListener('change', (event) => {
                         updateWeather(event.target.value);
                     });
@@ -263,7 +287,130 @@
                 
                     updateWeather(defaultCity);
                     setInterval(updateTime, 1000); // Update time every second
+                
+                    const hourlyApiUrl = (city) => `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+                
+                    function updateHourlyForecast(city) {
+                        fetch(hourlyApiUrl(city))
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener el pronóstico por hora');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const hourlyForecastContainer = document.getElementById('hourly-forecast');
+                                hourlyForecastContainer.innerHTML = '';
+                
+                                data.list.slice(0, 24).forEach(forecast => { // Mostrar solo las próximas 24 horas
+                                    const forecastTime = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds').format('HH:mm');
+                                    const forecastTemp = forecast.main.temp;
+                                    const forecastIcon = weatherIcons[forecast.weather[0].main] || 'fa-question';
+                
+                                    const forecastCard = document.createElement('div');
+                                    forecastCard.classList.add('col', 'forecast-card');
+                                    forecastCard.innerHTML = `
+                                        <div class="text-color">${forecastTime}</div>
+                                        <div class="weather-icon"><i class="fas ${forecastIcon}"></i></div>
+                                        <div class="temp text-white">${forecastTemp}°C</div>
+                                    `;
+                                    hourlyForecastContainer.appendChild(forecastCard);
+                                });
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener el pronóstico por hora:', error);
+                            });
+                    }
+                
+                    const alertsApiUrl = (lat, lon) => `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,daily&appid=${apiKey}&lang=es`;
+                
+                    function updateWeatherAlerts(city) {
+                        fetch(apiUrl(city))
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener las coordenadas para las alertas');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const lat = data.coord.lat;
+                                const lon = data.coord.lon;
+                                fetch(alertsApiUrl(lat, lon))
+                                    .then(response => response.json())
+                                    .then(alertData => {
+                                        const alertsContainer = document.getElementById('weather-alerts');
+                                        alertsContainer.innerHTML = '';
+                
+                                        if (alertData.alerts && alertData.alerts.length > 0) {
+                                            alertData.alerts.forEach(alert => {
+                                                const alertCard = document.createElement('div');
+                                                alertCard.classList.add('alert', 'alert-warning');
+                                                alertCard.innerHTML = `
+                                                    <strong>${alert.event}</strong>: ${alert.description}
+                                                    <br><small>${new Date(alert.start * 1000).toLocaleString()} - ${new Date(alert.end * 1000).toLocaleString()}</small>
+                                                `;
+                                                alertsContainer.appendChild(alertCard);
+                                            });
+                                        } else {
+                                            alertsContainer.innerHTML = '<div class="alert alert-info">No hay alertas meteorológicas.</div>';
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error al obtener las alertas meteorológicas:', error);
+                                    });
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener las coordenadas:', error);
+                            });
+                    }
+                
+                    const airQualityApiUrl = (lat, lon) => `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+                
+                    function updateAirQuality(lat, lon) {
+                        fetch(airQualityApiUrl(lat, lon))
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener la calidad del aire');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const airQualityContainer = document.getElementById('air-quality');
+                                airQualityContainer.innerHTML = '';
+                
+                                const airQualityIndex = data.list[0].main.aqi;
+                                const airQualityDescription = getAirQualityDescription(airQualityIndex);
+                
+                                const airQualityCard = document.createElement('div');
+                                airQualityCard.classList.add('air-quality-card');
+                                airQualityCard.innerHTML = `
+                                    <div class="text-secondary">Índice de calidad del aire: ${airQualityIndex}</div>
+                                    <div class="text-muted ">Calidad: ${airQualityDescription}</div>
+                                `;
+                                airQualityContainer.appendChild(airQualityCard);
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener la calidad del aire:', error);
+                            });
+                    }
+                
+                    function getAirQualityDescription(index) {
+                        switch(index) {
+                            case 1: return 'Buena';
+                            case 2: return 'Moderada';
+                            case 3: return 'No saludable para grupos sensibles';
+                            case 4: return 'No saludable';
+                            case 5: return 'Muy no saludable';
+                            case 6: return 'Peligrosa';
+                            default: return 'Desconocida';
+                        }
+                    }
+                
+                    // Llama a estas funciones en updateWeather o cuando se necesite
+                    updateAirQuality(defaultCity);
+                
                 </script>
+                
                 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
