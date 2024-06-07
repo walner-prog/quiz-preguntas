@@ -108,7 +108,7 @@
 </head>
 <body>
     <div class="container text-center col-lg-3 col-md-8 mt-5">
-        <h2 class="text-white">Estado del Clima </h2>
+        <h2 class="text-warning">Estado del Clima </h2>
         <div class="form-group ">
             <label for="city-select " class="text-white">Selecciona una ciudad:</label>
             <select id="city-select" class="form-control ">
@@ -154,14 +154,14 @@
                 <div class="container text-center  align-content-center mt-4 ">
                     <!--<div id="hourly-forecast" class="row extended-forecast"></div>
 -->
-                     <h3 class=" text-white">Clima extendido </h3>
+                     <h3 class=" text-warning">Clima extendido </h3>
                      <div class="extended-forecast row col-md-12" id="extended-forecast"></div>
                     
-                    
+                     <div class="container text-center col-lg-6 col-md-6">
+                        <div id="air-quality" class="p-2 mt-5"></div>
+                     </div>
                  </div>
-                 <div class="container text-center col-lg-8 col-md-6">
-                    <div id="air-quality" class="p-2 mt-5"></div>
-                 </div>
+                
                 
                 
                 <script>
@@ -212,7 +212,7 @@
                 
                                 weatherCard.innerHTML = `
                                     <div class="row">
-                                        <div class="col-6 city text-white">${data.name}</div>
+                                        <div class="col-6 city text-warning">${data.name}</div>
                                         <div class="col-6 temp text-white">${data.main.temp}°C</div>
                                     </div>
                                     <div class="date-time">
@@ -272,7 +272,7 @@
                 const forecastCard = document.createElement('div');
                 forecastCard.classList.add('card', 'forecast-card', 'p-3', 'bg-dark', 'text-white');
                 forecastCard.innerHTML = `
-                    <div class="text-color">${forecastDate}</div>
+                    <div class="text-warning">${forecastDate}</div>
                     <div class="weather-icon my-2"><i class="fas ${forecastIcon}"></i></div>
                     <div class="temp text-white">${forecastTemp}°C</div>
                 `;
@@ -373,7 +373,7 @@
                                                 alertsContainer.appendChild(alertCard);
                                             });
                                         } else {
-                                            alertsContainer.innerHTML = '<div class="alert alert-info">No hay alertas meteorológicas.</div>';
+                                            alertsContainer.innerHTML = '<div class="alert alert-warning text-secondary">No hay alertas meteorológicas.</div>';
                                         }
                                     })
                                     .catch(error => {
@@ -421,9 +421,9 @@ function updateAirQuality(lat, lon) {
             const airQualityCard = document.createElement('div');
             airQualityCard.classList.add('air-quality-card', 'p-3', 'bg-dark', 'text-white');
             airQualityCard.innerHTML = `
-                <div class="text-white">Índice de calidad del aire:<br>   <span class="aire-indice badge-warning border border-2 border-bottom">${airQualityIndex}</span> </div>
-                <div class="text-white">Calidad: <br> <span class="aire-indice badge-warning border border-2 border-bottom">${airQualityDescription}</span> </div>
-                <div class="text-white">Componentes:</div>
+                <div class="text-warning">Índice de calidad del aire:<br>   <span class="aire-indice badge-secondary border border-2 border-bottom">${airQualityIndex}</span> </div>
+                <div class="text-warning">Calidad: <br> <span class="aire-indice badge-secondary border border-2 border-bottom">${airQualityDescription}</span> </div>
+                <div class="text-warning">Componentes:</div>
             `;
         
             // Agregar cada componente al card
@@ -435,7 +435,7 @@ function updateAirQuality(lat, lon) {
                 componentCol.classList.add('col-6', 'col-md-4', 'col-lg-3', 'mb-3');
 
                 const badge = document.createElement('span');
-                badge.classList.add('badge', 'bg-warning', 'd-flex', 'align-items-center');
+                badge.classList.add('badge', 'bg-secondary', 'd-flex', 'align-items-center');
                 badge.innerHTML = `
                     <i class="fas ${getComponentIcon(component)} me-2"></i> 
                     ${component.toUpperCase()}: ${components[component]}
