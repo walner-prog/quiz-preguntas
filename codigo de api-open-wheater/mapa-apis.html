@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Explorer</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        /* styles.css */
+
+/* Estilos personalizados para el cuerpo de la página */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para la sección de búsqueda */
+#search-section {
+    margin-top: 50px;
+}
+
+/* Estilos para la tarjeta de personaje */
+.character-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.character-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.character-card h4 {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.character-card p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+    </style>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper blue">
+            <a href="#" class="brand-logo center">Marvel Explorer</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <!-- Search Section -->
+        <section id="search-section" class="section">
+            <div class="row">
+                <div class="input-field col s12 m8 offset-m2">
+                    <input id="search-input" type="text" class="validate">
+                    <label for="search-input">Buscar personaje...</label>
+                </div>
+                <div class="input-field col s12 m2">
+                    <button class="btn waves-effect waves-light" onclick="searchCharacter()">Buscar<i class="material-icons right">search</i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Character Info Section -->
+        <section id="character-info" class="section">
+            <!-- Aquí se mostrará la información del personaje -->
+        </section>
+    </div>
+    
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JS -->
+    
+
+    <script>
+        // script.js
+
+// Aquí se utilizan las claves de la API de Marvel
+const publicKey = 'd7ca37d211dd8e00b2503e2c73be598d';
+
+function searchCharacter() {
+    const input = document.getElementById('search-input').value.trim();
+    if (input === '') return;
+
+    const apiUrl = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${input}&apikey=${publicKey}`;
+    
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo obtener la información del personaje');
+            }
+            return response.json();
+        })
+        .then(data => {
+            displayCharacter(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function displayCharacter(data) {
+    const characterInfo = document.getElementById('character-info');
+    characterInfo.innerHTML = '';
+
+    data.data.results.forEach(character => {
+        const characterCard = document.createElement('div');
+        characterCard.classList.add('character-card', 'col', 's12', 'm6', 'l4');
+
+        const characterImage = document.createElement('img');
+        characterImage.src = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+        characterImage.alt = character.name;
+
+        const characterName = document.createElement('h4');
+        characterName.textContent = character.name;
+
+        const characterDescription = document.createElement('p');
+        characterDescription.textContent = character.description || 'Sin descripción disponible.';
+
+        characterCard.appendChild(characterImage);
+        characterCard.appendChild(characterName);
+        characterCard.appendChild(characterDescription);
+        
+        characterInfo.appendChild(characterCard);
+    });
+}
+
+    </script>
+</body>
+</html>

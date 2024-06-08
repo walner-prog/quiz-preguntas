@@ -108,6 +108,10 @@
 </head>
 <body>
     <div class="container text-center col-lg-3 col-md-8 mt-5">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
         <h2 class="text-warning">Estado del Clima </h2>
         <div class="form-group ">
             <label for="city-select " class="text-white">Selecciona una ciudad:</label>
@@ -151,11 +155,12 @@
                
                
                 </div>
-                <div class="container text-center  align-content-center mt-4 mr-5 ">
+               
+                <div class="container text-center  align-content-center mt-4  ">
                     <!--<div id="hourly-forecast" class="row extended-forecast"></div>
 -->
-                     <h3 class=" text-warning">Clima extendido </h3>
-                     <div class="extended-forecast row col-md-12" id="extended-forecast"></div>
+                      <h3 class=" text-warning ">Clima extendido </h3>
+                     <div class="extended-forecast  col-md-12" id="extended-forecast"></div>
                     
                      <div class="container text-center col-lg-6 col-md-6">
                         <div id="air-quality" class="p-2 mt-5"></div>
@@ -282,7 +287,7 @@
 
                 // Create forecast card
                 const forecastCol = document.createElement('div');
-                forecastCol.classList.add('col-lg-3', 'col-md-6', 'col-sm-6', 'mb-2'); // Responsive columns
+                forecastCol.classList.add('col-lg-2', 'col-md-3', 'col-sm-6', 'mb-2'); // Responsive columns
                 const forecastCard = document.createElement('div');
                 forecastCard.classList.add('card', 'forecast-card', 'p-3', 'bg-dark', 'text-white');
                 forecastCard.innerHTML = `
@@ -301,6 +306,7 @@
             console.error('Error al obtener el pronóstico extendido:', error);
         });
 }
+
 
 
                     document.getElementById('city-select').addEventListener('change', (event) => {
