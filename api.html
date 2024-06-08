@@ -151,7 +151,7 @@
                
                
                 </div>
-                <div class="container text-center  align-content-center mt-4 ">
+                <div class="container text-center  align-content-center mt-4 mr-5 ">
                     <!--<div id="hourly-forecast" class="row extended-forecast"></div>
 -->
                      <h3 class=" text-warning">Clima extendido </h3>
@@ -252,23 +252,37 @@
             // Create a row to contain the forecast cards
             const forecastRow = document.createElement('div');
             forecastRow.classList.add('row');
-            
-            // Find the index for the forecast that starts from the next day
-            const tomorrowIndex = data.list.findIndex(forecast => {
+
+            // Get the current date and ensure we start from the next day
+            const now = moment.utc().add(timezoneOffset, 'seconds').endOf('day');
+            let currentDay = now.clone().add(1, 'day').startOf('day');
+
+            // Collect forecast data for the next 7 days
+            const dailyForecasts = [];
+
+            for (const forecast of data.list) {
                 const forecastTime = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds');
-                return forecastTime.isAfter(moment().endOf('day'));
-            });
+                if (forecastTime.isSameOrAfter(currentDay, 'day')) {
+                    // Push the forecast if it's for the new day
+                    dailyForecasts.push(forecast);
+
+                    // Move to the next day
+                    currentDay.add(1, 'day').startOf('day');
+
+                    // Stop collecting after 7 days
+                    if (dailyForecasts.length >= 7) break;
+                }
+            }
 
             // Display forecast for the next 7 days starting from tomorrow
-            for (let i = tomorrowIndex; i < tomorrowIndex + 7; i++) {
-                const forecast = data.list[i];
+            dailyForecasts.forEach(forecast => {
                 const forecastDate = moment.unix(forecast.dt).utc().add(timezoneOffset, 'seconds').format('dddd DD/MM');
                 const forecastTemp = forecast.main.temp;
                 const forecastIcon = weatherIcons[forecast.weather[0].main] || 'fa-question';
 
                 // Create forecast card
                 const forecastCol = document.createElement('div');
-                forecastCol.classList.add('col-lg-2', 'col-md-6', 'col-sm-6', 'mb-2'); // Responsive columns
+                forecastCol.classList.add('col-lg-3', 'col-md-6', 'col-sm-6', 'mb-2'); // Responsive columns
                 const forecastCard = document.createElement('div');
                 forecastCard.classList.add('card', 'forecast-card', 'p-3', 'bg-dark', 'text-white');
                 forecastCard.innerHTML = `
@@ -278,7 +292,7 @@
                 `;
                 forecastCol.appendChild(forecastCard);
                 forecastRow.appendChild(forecastCol);
-            }
+            });
 
             // Append the row to the extended forecast container
             extendedForecastContainer.appendChild(forecastRow);
