@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima en Tiempo Real</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+            Columna
+          </div>
+          <div class="col-4">
+            Columna
+          </div>
+          <div class="col-4">
+            Columna
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+         <div class="col-4">Contenedor de 4 columnnas</div>
+         <div class="col-8">Contenedor de 8 columnna</div>
+       </div>
+     </div>
+    <div class="container text-center col-lg-3 col-md-8 mt-5">
+       
+        <h2 class="text-warnin color-red">Estado del Clima </h2>
+           <div class="form-group ">
+                 <label for="city-select " class="text-white">Selecciona una ciudad:</label>
+                 <select id="city-select" class="form-control ">
+                <option value="Managua">Managua</option>
+                <option value="London">London</option>
+                <option value="New York">New York</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Paris">Paris</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Moscow">Moscow</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Buenos Aires">Buenos Aires</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Vancouver">Vancouver</option>
+                <option value="Sao Paulo">Sao Paulo</option>
+                <option value="Hong Kong">Hong Kong</option>
+                <option value="Bangkok">Bangkok</option>
+                <option value="Seoul">Seoul</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Lima">Lima</option>
+                 </select>
+           </div>
+    </div> 
+                <div id="weather-card" class="weather-card col-lg-3 col-md-8 col-sm-4 mt-4 "></div>
+               
+                
+               
+               
+               
+               <div class="container text-center align-content-center mt-4">
+                    <h3 class="text-warning">Clima extendido</h3>
+                    <div id="extended-forecast" class="extended-forecast col-md-12"></div>
+                </div>
+        
+            <div class="container text-center col-lg-6 col-md-6 mt-4">
+                <div id="hourly-forecast" class="row extended-forecast"></div>
+            </div>
+        
+            <div class="container text-center col-lg-6 col-md-6">
+                <div id="air-quality" class="p-2 mt-5"></div>
+                
+                
+            </div>
+
+            <div id="weather-alerts" class="col-lg-4 col-md-8 col-md-10   align-content-md-center"></div>
+            
+         
+                 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                  <script src="app.js"></script>
+                  <script src="style.js"></script>
+
+                  <script>
+                    window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  
+                    window.myWidgetParam.push({
+                        id: 11,
+                        cityid: '2643743',
+                        appid: 'TU_NUEVA_CLAVE_API',
+                        units: 'metric',
+                        containerid: 'openweathermap-widget-11',
+                    });  
+                    (function() {
+                        var script = document.createElement('script');
+                        script.async = true;
+                        script.charset = "utf-8";
+                        script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(script, s);  
+                    })();
+                </script>
+  </body>  
+ </html>

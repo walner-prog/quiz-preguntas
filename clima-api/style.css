@@ -1,0 +1,130 @@
+:root {
+    /* Variables para los estilos de fondo */
+  /*  --bg-style-1: #282c34;
+    --bg-style-2: #1c1f24;
+    --bg-style-3: #121417;
+    --bg-style-4: background: #FFEFBA;  /* fallback for old browsers */
+        /*          background: -webkit-linear-gradient(to left, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+         /*         background: linear-gradient(to left, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+    /* Variables para los colores */
+    --color-1: #009688;
+    --color-2: #7b1fa2;
+    --color-3: #48dbfb;
+    --color-4: #1dd1a1;
+    --color-5: #5f27cd;
+    --color-6: #9c27b0;
+    --color-6: #4caf50;
+    /* Variables para estilos actuales */
+    --current-bg: var(--bg-style-0);
+    --current-color: var(--color-1);
+   
+}
+
+ /*Colores para mi sitio web */
+
+ .color-red{
+    color:#5f27cd;
+    color:#3f50b5;
+    color:var(--color-1);
+ }
+
+
+
+body{
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2e384e, #444e67);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3f4c6b, #414c65); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
+.weather-icon {
+    font-size: 50px;
+}
+.weather-card {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+   
+}
+.form-control:focus {
+    /* Estilos personalizados cuando el select está en foco */
+    color:#3A6073;
+    box-shadow: 0 0 0 0.2rem rgba(0, 4, 255, 0.185); /* Cambia el color del sombreado aquí */
+    border-color: rgba(0, 23, 92, 0.25); /* Cambia el color del borde aquí si lo deseas */
+}
+option {
+    color: #ffffff; /* Cambia el color del texto */
+    background-color: #16222A;  /* fallback for old browsers */
+    background-color: -webkit-linear-gradient(to top, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background-color: linear-gradient(to top, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+option:hover {
+    color: #ffffff; /* Cambia el color del texto al pasar el mouse */
+    background-color: #021b42;  /* fallback for old browsers */
+    background-color: -webkit-linear-gradient(to top, #6FB1FC, #4364F7, #0052D4);  /* Chrome 10-25, Safari 5.1-6 */
+    background-color: linear-gradient(to top, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.temp {
+    font-size: 27px;
+}
+.city {
+    font-size: 25px;
+    font-weight: bold;
+}
+.date-time {
+    font-size: 16px;
+    margin: 10px 0;
+}
+.details {
+    font-size: 14px;
+}
+.icon-small {
+    font-size: 20px;
+}
+.text-color {
+    color: #c1bfbf;
+}
+.date, .time {
+    display: block;
+}
+.extended-forecast {
+    margin-top: 20px;
+}
+.forecast-card {
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    background: #606c88;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3f4c6b, #262b37);  /* Chrome 10-25, Safari 5.1-6 */
+     background: linear-gradient(to left, #252d3f, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    border-radius: 5px;
+    margin-right: 2px;
+}
+.air-quality-card{
+    font-size: 17px;
+    color: #9fdfff;
+    font-family: 'Open Sans', sans-serif;
+    background: #16222A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
+
+.aire-indice{
+    color: #feffff;
+    padding: 2px;
+    margin:2px;
+    border-radius: 2px;
+    
+
+}

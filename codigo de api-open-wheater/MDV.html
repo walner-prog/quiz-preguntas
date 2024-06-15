@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Función para buscar películas por título
+        function buscarPeliculasPorTitulo(titulo, apiKey, cantidad) {
+            let peliculasEncontradas = [];
+
+            // Calcular el número de páginas necesarias para obtener la cantidad deseada de películas
+            const numPaginas = Math.ceil(cantidad / 10);
+
+            // Función para buscar películas en una página específica
+            function buscarPeliculasEnPagina(page) {
+                const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${titulo}&page=${page}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Agregar las películas encontradas en esta página al arreglo
+                        peliculasEncontradas.push(...data.Search);
+
+                        // Si aún no hemos alcanzado la cantidad deseada y hay más páginas, continuar buscando recursivamente
+                        if (peliculasEncontradas.length < cantidad && page < numPaginas) {
+                            buscarPeliculasEnPagina(page + 1);
+                        } else {
+                            // Una vez que hemos obtenido todas las películas deseadas, mostrarlas
+                            console.log(peliculasEncontradas);
+                        }
+                    })
+                    .catch(error => {
+                        // Manejo de errores
+                        console.error('Error:', error);
+                    });
+            }
+
+            // Iniciar la búsqueda desde la primera página
+            buscarPeliculasEnPagina(1);
+        }
+
+        // Ejemplo de uso
+        const apiKey = "8b7cf433";
+        const titulo = "Titanic"; // Puedes cambiar esto por cualquier título que desees buscar
+        const cantidad = 30; // Cantidad de películas que deseas obtener
+        buscarPeliculasPorTitulo(titulo, apiKey, cantidad);
+    </script>
+</body>
+</html>
